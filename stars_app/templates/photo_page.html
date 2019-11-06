@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <h2>{{photo.title}}</h2>
+    <p>{{photo.date}}</p>
+    <p>{{photo.explanation}}</p>
+    <img src="{{photo.url}}" alt="{{photo.title}}">
+</section>
+<section>
+    <button type="button">Comment</button>
+    <button type="button">I feel inspired</button>
+</section>
+
+<section>
+    <h3>Comments</h3>
+    {% if photo.comments_photo.all %}
+        {% for comment in photo.comments_photo.all %}
+        <p class=comment>
+            {{comment.title}}
+            {{comment.user}}: 
+            {{comment.body}}  
+        </p>
+        <br><br>
+
+        {% endfor %}
+    {% else %}
+        <li class=comment>
+            No Comments yet...
+        </li>
+
+    {% endif %}
+</section>
+
+{% endblock %}
