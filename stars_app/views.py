@@ -34,11 +34,6 @@ def main_page(request):
     response = requests.get(url, data=payload, headers=headers).json()
 
     for photo in response:
-        # date = photo['date']
-        # explanation = photo['explanation']
-        # title = photo['title']
-        # url = photo['url']
-
         # at first check if day photo is not in DB
         date_record = Photo.objects.filter(date = photo['date']).exists()
         if date_record == False:
@@ -48,7 +43,4 @@ def main_page(request):
     # get 20 last photos from DB:
     last_20 = Photo.objects.all().order_by('-id')[:20]
     context = {'photos':last_20}
-
-    # print(response)
-
     return render(request, 'main_page.html', context)
