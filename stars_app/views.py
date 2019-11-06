@@ -44,3 +44,8 @@ def main_page(request):
     last_20 = Photo.objects.all().order_by('-id')[:20]
     context = {'photos':last_20}
     return render(request, 'main_page.html', context)
+
+def photo_details(request, pk):
+    photo = Photo.objects.get(id=pk)
+    context = {"photo":photo}
+    return render(request, 'photo_page.html', context)

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+        <h2>{{photo.title}}</h2>
+        <p>{{photo.date}}</p>
+        <p>{{photo.explanation}}</p>
+        <img src="{{photo.url}}" alt="{{photo.title}}">
+    </section>
+
+{% endblock %}
