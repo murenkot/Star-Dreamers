@@ -5,59 +5,60 @@ from django.contrib import auth
 
 # Create your views here.
 
+def welcome(request):
+    return render (request, 'welcome.html')
+
 def register(request):
-    # if post
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
-        email_form = request.POST['email']
+        email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
-        
         if password == password2:
-            # check if username exists in db
             if User.objects.filter(username=username).exists():
-                context = { 'error': 'Username is already taken.'}
-                return render(request, 'register.html', context)
+                context = { 'error': 'Invalid User' }
+                return render (request, 'register.html', context)
             else:
-                if User.objects.filter(email=email_form).exists():
-                    context = { 'error': 'That email already exists.'}
+                if User.objects.filter(email=email).exists():
+                    context = {'error': 'This email is not valid.' }
                     return render(request, 'register.html', context)
                 else:
-                    # if everything is ok create account
                     user = User.objects.create_user(
-                        username=username, 
-                        email=email_form, 
-                        password=password, 
-                        first_name=first_name, 
-                        last_name=last_name)
+                        first_name = first_name,
+                        last_name = last_name,
+                        username = username,
+                        email = email,
+                        password = password)
                     user.save()
-                    return redirect('artist_list')
+                    return redirect ('main_page')
         else:
-            context = { 'error': 'Passwords do not match'}
+            context = { 'error': 'Your password doesnt match. Please confirm again' }
             return render(request, 'register.html', context)
+
     else:
-        # if not post send form 
         return render(request, 'register.html')
-
-
 
 def login(request):
     if request.method == 'POST':
-        username_form = request.POST['username']
-        password_form = request.POST['password']
-        # authenticate user
-        user = auth.authenticate(
-            username=username_form,
-            password=password_form)
-        if user is not None:
-            # login
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(email = email, password = password)
+        if email is not None:
             auth.login(request, user)
-            # redirect
-            return redirect('artist_list')
+            return redirect ('main_page')
         else:
-            context = { 'error': 'Invalid Credentials'}
-            return render(request, 'login.html', context)
+            context = { 'error': 'Invalid Login' }
+            return render (request, 'login.html', context)
     else:
         return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('main_page')
+
+
+
+
+
