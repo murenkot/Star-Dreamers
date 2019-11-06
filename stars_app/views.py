@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 # import Models
 from .models import Photo
+from .forms import CommentForm
 
 
 # for API requests:
@@ -44,3 +45,23 @@ def main_page(request):
     last_20 = Photo.objects.all().order_by('-id')[:20]
     context = {'photos':last_20}
     return render(request, 'main_page.html', context)
+
+def photo_details(request, pk):
+    photo = Photo.objects.get(id=pk)
+    context = {"photo":photo}
+    return render(request, 'photo_page.html', context)
+
+def add_comment(request, pk):
+    photo = Photo.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            # comment.user = request.user
+            comment.photo = photo
+            comment.save()
+            return redirect('photo_details', pk=comment.photo.pk)
+    else:
+        form = CommentForm()
+    context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
+    return render(request, 'photo_comment_form.html', context)

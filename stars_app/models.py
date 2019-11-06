@@ -21,6 +21,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_user")
     body = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments_post")
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="comments_photo")
 
 class Like(models.Model):
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="likes_photo")

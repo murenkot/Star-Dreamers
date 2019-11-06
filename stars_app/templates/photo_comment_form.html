@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="form-section">
+    <h1>{{header}}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type='submit'>Save</button>
+        <a href="{% url 'photo_details' pk=photo.pk%}">Cancel</a>
+    </form>
+</section>
+
+{% endblock %}
