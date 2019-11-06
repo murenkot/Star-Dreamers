@@ -5,6 +5,9 @@ from django.contrib import auth
 
 # Create your views here.
 
+def welcome(request):
+    return render (request, 'welcome.html')
+
 def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
@@ -50,5 +53,12 @@ def login(request):
             return render (request, 'login.html', context)
     else:
         return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('main_page')
+
+
+
 
 
