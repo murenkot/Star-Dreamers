@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  <h1 class="profile-name">{{user.username}}</h1>
+  <!-- User photo (avatar) -->
+  <img src="{{usr.photo_url}}" alt="{{user.name}}">
+  {{user.name}}
+</li>
+<body>
+    <!-- Greetings Paragraph -->
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    <section>
+        <button class="Follow" type="button">Follow</button>
+    </section>
+    <section>
+        <ul class="posts">
+        <h2>Submitted Post</h2>
+        {% if posts %}
+        {% for post in posts %}
+            <a href="{% url 'post_detail' pk=post.pk %}">
+            <li class="post">
+                <img src="{{post.photo.url}}" alt="{{post.name}}">
+                {{post.name}}
+            </li>
+            </a>
+        {% endif %}
+        </ul>
+    </section>
+    <section>
+        <button class="Like" type="button">Like</button>
+    </section>
+</body>
+{% endblock %}
+
+<!-- "User name
+User photo (avatar)
+greetings paragraph (quote)
+'follow' button
+field with user posts
+'like' button
+count of comments" -->
