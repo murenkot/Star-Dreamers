@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 # import Models
 from .models import Photo
-from .forms import CommentForm
+from .forms import CommentPhoto
 
 
 # for API requests:

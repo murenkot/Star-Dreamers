@@ -16,12 +16,10 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts_user")
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="posts_photo")
 
-class Comment(models.Model):
-    title = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_user")
+class CommentPhoto(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="photocomments_user")
     body = models.TextField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments_post")
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="comments_photo")
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="photocomments_photo")
 
 class Like(models.Model):
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="likes_photo")
@@ -31,3 +29,8 @@ class Profile(models.Model):
     avatar = models.TextField()
     userstory = models.TextField()
     user = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="profiles_user")
+
+class CommentPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="postcomments_user")
+    body = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="postcomments_post")
