@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.models import User
 from django.contrib import auth
-
+from stars_app.models import Profile, Post
 # Create your views here.
 
 def welcome(request):
@@ -57,6 +57,11 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('main_page')
+
+def profile(request):
+    post = Post.objects.filter(user=request.user)
+    context = {'post': post}
+    return render(request, 'profiles.html', context)
 
 
 

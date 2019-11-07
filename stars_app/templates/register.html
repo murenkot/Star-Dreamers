@@ -1,65 +1,45 @@
+{% extends 'account_base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-</head>
-<body>
-    <fieldset id="home">
-        <legend>
-            <div><h1>Register</h1></div>
-        </legend>
-        <form method="POST">
-                {% csrf_token %}
-                <div>
-                    <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" maxlength="25" minlength="2" required>
-                </div>
-                {% if first_name == "" %}
-                <div>Please input your first name</div>
-                {% endif %}
-                <div>
-                    <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" maxlength="25" minlength="2" required>
-                </div>
-                <!-- {% if error %}
-                <div>{{ error }}</div>
-                {% endif %} -->
-                <div>
-                    <label for="username">User Name</label>
-                    <input type="username" name="username" maxlength="25" minlength="2" required>
-                </div>
-                <!-- {% if error %}
-                <div>{{ error }}</div>
-                {% endif %} -->
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" maxlength="25" minlength="2" required>
-                </div>
-                {% if error %}
-                <div>{{ error }}</div>
-                {% endif %}
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" maxlength="10" minlength="4" required>
-                </div>
-                {% if error %}
-                <div>{{ error }}</div>
-                {% endif %}
-                <div>
-                    <label for="password2">Confirm Password</label>
-                    <input type="password2" name="password2" maxlength="10" minlength="4" required>
-                </div>
-                {% if error %}
-                <div>{{ error }}</div>
-                {% endif %}
-                <button type="submit">Register</button>
-            </form>
-    </fieldset>
-</body>
-</html>
+{% block content %}
+
+<main>
+    {% if error %}
+    <p style="background-color: firebrick;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="flex-col">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" maxlength="25" minlength="2" required>
+        </div>
+        {% if first_name == "" %}
+        <div >Please input your first name</div>
+        {% endif %}
+        <div class="flex-col">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="username">User Name</label>
+            <input type="username" name="username" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="email">Email</label>
+            <input type="email" name="email" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="password">Password</label>
+            <input type="password" name="password" maxlength="10" minlength="4" required>
+        </div>
+        <div class="flex-col">
+            <label for="password2">Confirm Password</label>
+            <input type="password2" name="password2" maxlength="10" minlength="4" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</main>
+
+{% endblock %}
 
     
