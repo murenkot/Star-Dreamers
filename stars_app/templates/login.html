@@ -3,10 +3,6 @@
 {% block content %}
 
 <main>
-    {% if error %}
-    <p style="background-color: firebrick;">{{ error }}</p>
-    {% endif %}
-
     <form method="POST">
         {% csrf_token %}
         <div class="flex-col">
@@ -17,6 +13,9 @@
             <label for="password">Password</label>
             <input type="password" name="password" maxlength="8" minlength="4" required>
         </div>
+        {% if error %}
+        <div style="background-color: #f8d7da; color: #94303a;">{{ error }}</div>
+        {% endif %}
         <button type="submit">Log in</button>
     </form>
 </main>

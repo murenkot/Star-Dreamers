@@ -3,19 +3,13 @@
 {% block content %}
 
 <main>
-    {% if error %}
-    <p style="background-color: firebrick;">{{ error }}</p>
-    {% endif %}
-
     <form method="POST">
         {% csrf_token %}
+
         <div class="flex-col">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" maxlength="25" minlength="2" required>
         </div>
-        {% if first_name == "" %}
-        <div >Please input your first name</div>
-        {% endif %}
         <div class="flex-col">
             <label for="last_name">Last Name</label>
             <input type="text" name="last_name" maxlength="25" minlength="2" required>
@@ -35,6 +29,9 @@
         <div class="flex-col">
             <label for="password2">Confirm Password</label>
             <input type="password2" name="password2" maxlength="10" minlength="4" required>
+            {% if error %}
+            <div style="background-color: #f8d7da; color: #94303a;">{{ error }}</div>
+            {% endif %}
         </div>
         <button type="submit">Register</button>
     </form>
