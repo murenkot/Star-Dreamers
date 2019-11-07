@@ -4,8 +4,8 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required 
 
 # import Models
-from .models import Photo, CommentPhoto
-from .forms import CommentPhotoForm
+from .models import Photo, CommentPhoto, Post
+from .forms import CommentPhotoForm, PostForm
 
 
 # for API requests:
@@ -84,3 +84,23 @@ def edit_comment(request, pk, comment_pk):
 def delete_comment(request, pk, comment_pk):
     CommentPhoto.objects.get(id=comment_pk).delete()
     return redirect('photo_details', pk=pk)
+
+def create_post(request, pk):
+    photo = Photo.objects.get(id=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.photo = photo
+            post.user = request.user
+            post.save()
+        return redirect('main_page')
+    else: 
+        form = PostForm()
+    context = {'form': form, "photo":photo, 'header':f"Share your thoughts"}
+    return render(request, 'post_form.html', context)
+
+def post_details(request, pk):
+    post = Post.objects.get(id=pk)
+    context = {"post":post}
+    return render(request, 'post.html', context)
