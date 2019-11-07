@@ -61,12 +61,12 @@ def logout(request):
     return redirect('main_page')
 
 def profile(request):
-
     current_user = request.user.pk
-    posts = Post.objects.get(user=current_user)
-
-    context = {"posts": posts }
-    return render(request, 'post.html', context)
+    current_user_name = request.user.username
+    posts = Post.objects.filter(user=current_user)
+    print(posts)
+    context = {"posts": posts, "author": current_user_name }
+    return render(request, 'profile.html', context)
 
 
 
