@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
+from django.core import serializers
 
 from django.contrib.auth.models import User
 from django.contrib import auth
-
+from stars_app.models import Post
 # Create your views here.
 
 def welcome(request):
@@ -34,7 +36,7 @@ def register(request):
                     user.save()
                     return redirect ('main_page')
         else:
-            context = { 'error': 'Your password doesnt match. Please confirm again' }
+            context = { 'error': 'Your password did not match. Please try again' }
             return render(request, 'register.html', context)
 
     else:
@@ -42,14 +44,14 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(email = email, password = password)
-        if email is not None:
+        user = auth.authenticate(username = username, password = password)
+        if username is not None:
             auth.login(request, user)
             return redirect ('main_page')
         else:
-            context = { 'error': 'Invalid Login' }
+            context = { 'error': 'Your username and password didn not match. Please try again.' }
             return render (request, 'login.html', context)
     else:
         return render(request, 'login.html')
@@ -57,6 +59,14 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('main_page')
+
+def profile(request):
+
+    current_user = request.user.pk
+    posts = Post.objects.get(user=current_user)
+
+    context = {"posts": posts }
+    return render(request, 'post.html', context)
 
 
 

@@ -1,2 +1,18 @@
-<a href="{% url 'login' %}">Log in</a>
-<a href="{% url 'register' %}">Register</a>
+{% extends 'account_base.html' %}
+
+{% block content %}
+    <main class='flex f-a-center f-j-content'>
+        <div>
+            <a href="{% url 'login' %}">Log in</a>
+        </div>
+        <div>
+            <a href="{% url 'register' %}">Register</a>
+        </div>
+        <div>
+            <a href="{% url 'main_page' %}">Stranger</a>
+        </div>
+    </main>
+{% endblock %}
+</body>
+</html>
+

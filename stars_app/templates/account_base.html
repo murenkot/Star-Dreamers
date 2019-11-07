@@ -1,0 +1,29 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{% static  'css/welcome.css' %}">
+    
+    <title>User</title>
+</head>
+<body>
+    <a href="{% url 'login'%}">Click here to login again.</a>
+    <fieldset class='flex centered'>
+        <legend>
+            <div><span class="welcome">WELCOME</span><span class="small-letter">TO</span><</div>
+        </legend>
+        <div class="logo"><h1><span class="brand-logo">Star Dreamer</span></h1></div>
+        
+            {% block content %}
+            {% endblock %}
+
+    </fieldset>
+</body>
+</html>
+
+    
