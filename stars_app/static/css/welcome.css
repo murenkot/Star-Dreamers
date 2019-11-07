@@ -100,9 +100,6 @@ button {
     text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
 }
 
-
-
-
 /* == Adjust == */
 .flex {
     display: flex;
@@ -121,6 +118,38 @@ button {
     align-items: center;
 }
 
+.f-a-end {
+    align-items: end;
+}
+
+.f-a-right {
+    align-items: right;
+}
+
 .f-j-content {
     justify-content: center;
+}
+
+.f-j-right {
+    justify-content: right;
+}
+
+.f-j-end {
+    justify-content: flex-end;
+}
+
+.f-j-item {
+    justify-items: flex-end;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.float-right {
+    float: right;
 }

@@ -1,0 +1,19 @@
+
+{% block content %}
+
+ <main>
+    <section>
+        <h2>User : {{ author }}</h3>
+        <h3>Post</h2>
+        
+        {% for post in posts%}
+            <div>
+                <div>{{ post.title}}</div>
+                <img src="{{ post.photo.url }} ">
+                <div>{{ post.body }}</div>
+            </div>
+        {% endfor %}
+        
+    </section>
+</main>
+{% endblock %}
