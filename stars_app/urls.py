@@ -9,6 +9,13 @@ urlpatterns = [
     path('photos/<int:pk>/comments/delete/<int:comment_pk>', views.delete_comment, name='delete_comment'),
     path('photos/<int:pk>/post/create', views.create_post, name='create_post'),
     path('posts/<int:pk>', views.post_details, name='post_details'),
+    path('posts/<int:pk>/edit', views.post_edit, name='post_edit'),
+    path('posts/<int:pk>/delete', views.post_delete, name='post_delete'),
+    path('posts/<int:pk>/comments/add', views.add_comment_post, name='add_comment_post'),
+    path('posts/<int:pk>/comments/edit/<int:comment_pk>', views.edit_comment_post, name='edit_comment_post'),
+    path('posts/<int:pk>/comments/delete/<int:comment_pk>', views.delete_comment_post, name='delete_comment_post'),
+
+
 
     
 ]
