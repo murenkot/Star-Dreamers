@@ -4,8 +4,8 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required 
 
 # import Models
-from .models import Photo, CommentPhoto, Post
-from .forms import CommentPhotoForm, PostForm
+from .models import Photo, CommentPhoto, CommentPost, Post
+from .forms import CommentPhotoForm, CommentPostForm, PostForm
 
 
 # for API requests:
@@ -67,7 +67,7 @@ def add_comment(request, pk):
     context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
     return render(request, 'photo_comment_form.html', context)
 
-
+@login_required
 def edit_comment(request, pk, comment_pk):
     photo = Photo.objects.get(id=pk)
     comment = CommentPhoto.objects.get(id=comment_pk)
@@ -81,10 +81,12 @@ def edit_comment(request, pk, comment_pk):
     context = {'form': form, 'photo':photo, 'comment':comment, 'header': f"Edit your comment"}
     return render(request, 'photo_comment_form.html', context)
 
+@login_required
 def delete_comment(request, pk, comment_pk):
     CommentPhoto.objects.get(id=comment_pk).delete()
     return redirect('photo_details', pk=pk)
 
+@login_required
 def create_post(request, pk):
     photo = Photo.objects.get(id=pk)
     if request.method == 'POST':
@@ -94,13 +96,76 @@ def create_post(request, pk):
             post.photo = photo
             post.user = request.user
             post.save()
-        return redirect('main_page')
+        return redirect('post_details', pk=post.pk)
     else: 
         form = PostForm()
-    context = {'form': form, "photo":photo, 'header':f"Share your thoughts"}
+    context = {'form': form, "post":form, "photo":photo, 'header':f"Share your thoughts"}
     return render(request, 'post_form.html', context)
 
 def post_details(request, pk):
     post = Post.objects.get(id=pk)
     context = {"post":post}
     return render(request, 'post.html', context)
+
+def post_edit(request, pk):
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save()
+            return redirect('post_details', pk=pk)
+    else:
+        form = PostForm(instance=post)
+    context = {'form': form, 'post':post, 'header': f"Edit your post"}
+    return render(request, 'post_edit_form.html', context)
+
+def post_delete(request, pk):
+    Post.objects.get(id=pk).delete()
+    return redirect('main_page')
+
+
+@login_required
+def add_comment_post(request, pk):
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CommentPostForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+            return redirect('post_details', pk=comment.post.pk)
+    else:
+        form = CommentPostForm()
+    context = {'form': form, 'post':post, 'header':f"Share your thoughts with {post.user}!"}
+    return render(request, 'post_comment_form.html', context)
+
+@login_required
+def edit_comment_post(request, pk, comment_pk):
+    post = Post.objects.get(id=pk)
+    comment = CommentPost.objects.get(id=comment_pk)
+    if request.method == 'POST':
+        form = CommentPostForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save()
+            return redirect('post_details', pk=comment.post.pk)
+    else:
+        form = CommentPostForm(instance=comment)
+    context = {'form': form, 'post':post, 'comment':comment, 'header': f"Edit your comment"}
+    return render(request, 'post_comment_form.html', context)
+
+@login_required
+def delete_comment_post(request, pk, comment_pk):
+    CommentPost.objects.get(id=comment_pk).delete()
+    return redirect('post_details', pk=pk)
+
+
+def previous_page(request, pk):
+    try:
+        photo = Photo.objects.get(id=pk)
+        context = {"photo":photo}
+        return render(request, 'photo_page.html', context)
+    except:
+        post = Post.object.get(id=pk)
+        context = {"post":post}
+        return render(request, 'post.html', context)

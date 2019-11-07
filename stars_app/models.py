@@ -28,9 +28,11 @@ class Like(models.Model):
 class Profile(models.Model):
     avatar = models.TextField()
     userstory = models.TextField()
-    user = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="profiles_user")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profiles_user")
 
 class CommentPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="postcomments_user")
     body = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="postcomments_post")
+
+
