@@ -1,35 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'account_base.html' %}
 
 {% block content %}
 
-    <section class="form-section">
-        <form method="POST">
-            {% csrf_token %}
-            <p>
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" maxlength="25" minlength="2" required>
-            </p>
-            <p>
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" maxlength="25" minlength="2" required>
-            </p>
-            <p>
-                <label for="username">User Name</label>
-                <input type="username" name="username" maxlength="25" minlength="2" required>
-            </p>
-            <p>
-                <label for="email">Email</label>
-                <input type="email" name="email" maxlength="25" minlength="2" required>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input type="password" name="password" maxlength="10" minlength="4" required>
-            </p>
-            <p>
-                <label for="password2">Confirm Password</label>
-                <input type="password2" name="password2" maxlength="10" minlength="4" required>
-            </p>
-            <button type="submit">Register</button>
-        </form>
-    </section>
+<main>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="flex-col">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="username">User Name</label>
+            <input type="username" name="username" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="email">Email</label>
+            <input type="email" name="email" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="password">Password</label>
+            <input type="password" name="password" maxlength="10" minlength="4" required>
+        </div>
+        <div class="flex-col">
+            <label for="password2">Confirm Password</label>
+            <input type="password2" name="password2" maxlength="10" minlength="4" required>
+            {% if error %}
+            <div style="background-color: #f8d7da; color: #94303a;">{{ error }}</div>
+            {% endif %}
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</main>
+
 {% endblock %}
+
+    

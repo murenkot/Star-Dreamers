@@ -1,19 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'account_base.html' %}
+
 {% block content %}
 
-    <section>
-        <form method="POST">
-            {% csrf_token %}
-            <p>
-                <label for="email">Email</label>
-                <input type="email" name="email" maxlength="25" minlength="2" required>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input type="password" name="password" maxlength="8" minlength="4" required>
-            </p>
-            <button type="submit">Log in</button>
-        </form>
-    </section>
+<main>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="flex-col">
+            <label for="username">Username</label>
+            <input type="username" name="username" maxlength="25" minlength="2" required>
+        </div>
+        <div class="flex-col">
+            <label for="password">Password</label>
+            <input type="password" name="password" maxlength="8" minlength="4" required>
+        </div>
+        {% if error %}
+        <div style="background-color: #f8d7da; color: #94303a;">{{ error }}</div>
+        {% endif %}
+        <button type="submit">Log in</button>
+    </form>
+</main>
 
-{%  endblock %}
+{% endblock%}
+
