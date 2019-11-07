@@ -1,8 +1,15 @@
 from django import forms
-from .models import Comment
+from .models import CommentPhoto, CommentPost
 
-class CommentForm(forms.ModelForm):
+class CommentPhotoForm(forms.ModelForm):
 
     class Meta:
-        model = Comment
+        model = CommentPhoto
+        fields = ('body', )
+
+
+class CommentPostForm(forms.ModelForm):
+
+    class Meta:
+        model = CommentPost
         fields = ('body', )
