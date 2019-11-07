@@ -9,20 +9,24 @@
     <img src="{{photo.url}}" alt="{{photo.title}}">
 </section>
 <section>
-    <button type="button">Comment</button>
-    <button type="button">I feel inspired</button>
+    <a href="{% url 'add_comment' pk=photo.pk%}">Comment</a>
+    <a href="#">I feel inspired</a>
 </section>
 
 <section>
     <h3>Comments</h3>
-    {% if photo.comments_photo.all %}
-        {% for comment in photo.comments_photo.all %}
+    {% if photo.photocomments_photo.all %}
+        {% for comment in photo.photocomments_photo.all %}
         <p class=comment>
-            {{comment.title}}
             {{comment.user}}: 
-            {{comment.body}}  
+            {{comment.body}}
+            <br>
+            {% if comment.user == user %}
+            <a href="{% url 'edit_comment' pk=photo.pk comment_pk=comment.pk %}">Edit</a>
+            <a href="{% url 'delete_comment' pk=photo.pk comment_pk=comment.pk %}">Delete</a>
+            {% endif %}
         </p>
-        <br><br>
+        
 
         {% endfor %}
     {% else %}

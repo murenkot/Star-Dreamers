@@ -4,8 +4,8 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required 
 
 # import Models
-from .models import Photo
-from .forms import CommentPhoto
+from .models import Photo, CommentPhoto
+from .forms import CommentPhotoForm
 
 
 # for API requests:
@@ -51,17 +51,36 @@ def photo_details(request, pk):
     context = {"photo":photo}
     return render(request, 'photo_page.html', context)
 
+@login_required
 def add_comment(request, pk):
     photo = Photo.objects.get(id=pk)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentPhotoForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            # comment.user = request.user
+            comment.user = request.user
             comment.photo = photo
             comment.save()
             return redirect('photo_details', pk=comment.photo.pk)
     else:
-        form = CommentForm()
+        form = CommentPhotoForm()
     context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
     return render(request, 'photo_comment_form.html', context)
+
+
+def edit_comment(request, pk, comment_pk):
+    photo = Photo.objects.get(id=pk)
+    comment = CommentPhoto.objects.get(id=comment_pk)
+    if request.method == 'POST':
+        form = CommentPhotoForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save()
+            return redirect('photo_details', pk=pk)
+    else:
+        form = CommentPhotoForm(instance=comment)
+    context = {'form': form, 'photo':photo, 'comment':comment, 'header': f"Edit your comment"}
+    return render(request, 'photo_comment_form.html', context)
+
+def delete_comment(request, pk, comment_pk):
+    CommentPhoto.objects.get(id=comment_pk).delete()
+    return redirect('photo_details', pk=pk)
