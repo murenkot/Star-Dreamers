@@ -1,8 +1,22 @@
+<<<<<<< HEAD
 
 {% block content %}
 
 <h2>{{header}}</h2>
 
     <div>{{ posts }}</div>
+=======
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="form-section">
+    <h1>{{post.title}}</h1>
+    <p>{{post.user}}</p>
+    <p>{{post.body}}</p>
+    <img src="{{post.photo.url}}" alt="">
+</section>
+
+>>>>>>> submaster
 
 {% endblock %}
