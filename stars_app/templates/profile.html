@@ -1,49 +1,33 @@
-<<<<<<< HEAD
-{% extends 'base.html' %}
-
 
 {% block content %}
-  <h1 class="profile-name">{{user.username}}</h1>
-  <!-- User photo (avatar) -->
-  <img src="{{usr.photo_url}}" alt="{{user.name}}">
-  {{user.name}}
-</li>
-<body>
-    <!-- Greetings Paragraph -->
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-    <section>
-        <button class="Follow" type="button">Follow</button>
-    </section>
-    <section>
-        <ul class="posts">
-        <h2>Submitted Post</h2>
-        {% if posts %}
-        {% for post in posts %}
-            <a href="{% url 'post_detail' pk=post.pk %}">
-            <li class="post">
-                <img src="{{post.photo.url}}" alt="{{post.name}}">
-                {{post.name}}
-            </li>
-            </a>
-        {% endif %}
-        </ul>
-    </section>
-    <section>
-        <button class="Like" type="button">Like</button>
-    </section>
-</body>
-{% endblock %}
 
-<!-- "User name
-User photo (avatar)
-greetings paragraph (quote)
-'follow' button
-field with user posts
-'like' button
-count of comments" -->
-=======
+<h1 >{{user.username}}</h1>
+<form action="{% url 'profile_create' %}" method="post">
+    {% csrf_token %}
+<label>
+  <input class="radio" type="radio" name="test" value="https://i.imgur.com/OZUN5stt.png" checked>
+  <img src="https://i.imgur.com/OZUN5stt.png">
+</label>
 
-{% block content %}
+<label>
+  <input type="radio" name="test" value="https://i.imgur.com/bvrB60st.png">
+  <img src="https://i.imgur.com/bvrB60st.png">
+</label>
+
+<label>
+    <input type="radio" name="test" value="https://i.imgur.com/OKNkYdht.png" checked>
+    <img src="https://i.imgur.com/OKNkYdht.png">
+  </label>
+
+  <h2>Your poem</h2>
+
+  
+    Input field:<br>
+    <textarea name="userstory" id="" cols="90" rows="10"></textarea>
+    <br><br>
+    <input type="submit" value="Save">
+</form>
+
 
  <main>
     <section>
@@ -61,4 +45,3 @@ count of comments" -->
     </section>
 </main>
 {% endblock %}
->>>>>>> submaster
