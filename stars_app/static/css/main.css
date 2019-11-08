@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+}
+
 html {
     /* background-color: rgb(39, 39, 143); */
 }
@@ -5,7 +16,108 @@ html {
 body {
     width: 70%;
     margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.01em;
 }
+
+h1 a {
+  font-size: 55px;
+  letter-spacing: 0.09em;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+}
+
+nav {
+  display: flex;
+  position: relative;
+  padding: 20px 0;
+  border-bottom: 1px solid black;
+}
+div p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 60px;
+  padding: 5px 10px;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+}
+
+.menu {
+  position: absolute;
+  right: 0px;
+  bottom: 10px;
+
+}
+
+.menu a {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+}
+
+#profile img {
+  padding: 10px;
+  border-radius: 50%;
+  width: 100px;
+}
+
+.post-user-container {
+  display: flex;
+}
+
+.post-img-user {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.post-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.post-body {
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.user-section {
+  flex-basis: 300px;
+  padding: 0 10px;
+  background-color: blanchedalmond;
+}
+
+.user-post-section {
+  padding: 0 10px;
+}
+
+.box {
+  position: relative;
+}
+
+.userstory-button {
+text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+
+
+
+
 
 img {
     width: 100%;

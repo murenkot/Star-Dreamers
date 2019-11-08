@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
@@ -21,11 +22,11 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                context = { 'error': 'Invalid User' }
+                context = { 'error': 'This user name has been used' }
                 return render (request, 'register.html', context)
             else:
                 if User.objects.filter(email=email).exists():
-                    context = {'error': 'This email is not valid.' }
+                    context = {'error': 'This email is not valid. Please try again' }
                     return render(request, 'register.html', context)
                 else:
                     user = User.objects.create_user(
@@ -48,11 +49,11 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username = username, password = password)
-        if username is not None:
+        if user is not None:
             auth.login(request, user)
             return redirect ('main_page')
         else:
-            context = { 'error': 'Your username and password didn not match. Please try again.' }
+            context = { 'error': 'Your username and password does not match. Please try again.' }
             return render (request, 'login.html', context)
     else:
         return render(request, 'login.html')
@@ -61,25 +62,35 @@ def logout(request):
     auth.logout(request)
     return redirect('main_page')
 
+@login_required(login_url='/login/')
 def profile(request):
     current_user = request.user.pk
     current_user_name = request.user.username
     posts = Post.objects.filter(user=current_user)
-    print(posts)
     context = {"posts": posts, "author": current_user_name }
     return render(request, 'profile.html', context)
 
 def profile_create(request):
+    user = request.user.pk
+    find_profile = Profile.objects.filter(user=user).exists()
+
     if request.method == 'POST':
-        avatar = request.POST['test']
+        avatar = request.POST['avatar']
         userstory = request.POST['userstory']
-        profile = Profile.objects.create(
-            avatar = avatar,
-            userstory = userstory,
-            user = request.user)
-        print(profile)
-        profile.save()
-        return redirect('profile')  
+        
+        if find_profile:
+            new_post_profile = Profile.objects.update(
+                avatar = avatar,
+                userstory = userstory)
+            return redirect('profile')
+
+        else:
+            new_post_profile = Profile.objects.create(
+                avatar = avatar,
+                userstory = userstory,
+                user = request.user)
+            new_post_profile.save()
+            return redirect('profile')
 
 
 

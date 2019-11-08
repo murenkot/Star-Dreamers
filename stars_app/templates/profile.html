@@ -1,47 +1,91 @@
+{% extends 'base.html' %}
 
 {% block content %}
 
-<h1 >{{user.username}}</h1>
-<form action="{% url 'profile_create' %}" method="post">
+<form id='profile' action="{% url 'profile_create'%}" method="post">
     {% csrf_token %}
-<label>
-  <input class="radio" type="radio" name="test" value="https://i.imgur.com/OZUN5stt.png" checked>
-  <img src="https://i.imgur.com/OZUN5stt.png">
-</label>
+    <lable>
+            <div class="image-option">
+             <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" checked>
+                <img src="https://i.imgur.com/OZUN5stt.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png" checked>
+              <img src="https://i.imgur.com/bvrB60st.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
 
-<label>
-  <input class="radio" type="radio" name="test" value="https://i.imgur.com/bvrB60st.png">
-  <img class="radioimage" src="https://i.imgur.com/bvrB60st.png">
-</label>
-
-<label>
-    <input class="radio" type="radio" name="test" value="https://i.imgur.com/OKNkYdht.png" checked>
-    <img src="https://i.imgur.com/OKNkYdht.png">
-  </label>
-
-  <h2>Your poem</h2>
-
-  
-    Input field:<br>
-    <textarea name="userstory" id="" cols="90" rows="10"></textarea>
-    <br><br>
-    <input type="submit" value="Save">
+    <div>Write your inspiration :</div>
+    <div>
+        <textarea name="userstory" cols="90" rows="10" required></textarea>
+        <div class="userstory-button">
+            <input type="submit" value="Create your profile">
+        </div>
+    </div>
 </form>
 
-
  <main>
-    <section>
-        <h2>User : {{ author }}</h3>
-        <h3>Post</h2>
-        
-        {% for post in posts%}
-            <div>
-                <div>{{ post.title}}</div>
-                <img src="{{ post.photo.url }} ">
-                <div>{{ post.body }}</div>
-            </div>
-        {% endfor %}
-        
-    </section>
+   <div class='flex'>
+      <section class='user-section'>
+        <div>Profile</div>
+          <h2>Profile : {{ author }}</h2>
+      </section>
+      <section class='user-post-section col flex'>
+        <div>
+          
+          <h3>Post Story</h3>
+          {% for post in posts%}
+          <div class='post-user-container'>
+              <div>
+                  <img class='post-img-user'src="{{ post.photo.url }} ">
+              </div>
+              <div class='post-user-info col'>
+                  <div class='post-title col'>Written by {{ author }} / {{ post.title }}  </div> 
+                  <div class='post-body col'>Poem : {{ post.body }}</div>
+              </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+   </div>
 </main>
 {% endblock %}
+<!-- <div style="background-image: url({{ post.photo.url }});" class='post-user-container'></div> -->
