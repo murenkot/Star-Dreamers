@@ -71,23 +71,25 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 def profile_create(request):
+    user = request.user.pk
+    find_profile = Profile.objects.filter(user=user).exists()
+
     if request.method == 'POST':
         avatar = request.POST['avatar']
         userstory = request.POST['userstory']
         
-        if Profle.objects.filter(pk=id).exist():
-            profile = Profile.objects(
+        if find_profile:
+            new_post_profile = Profile.objects.update(
                 avatar = avatar,
-                userstory = userstory,
-                user = request.user)
-            profile.save()
+                userstory = userstory)
+            return redirect('profile')
 
         else:
-            profile = Profile.objects.create(
+            new_post_profile = Profile.objects.create(
                 avatar = avatar,
                 userstory = userstory,
                 user = request.user)
-            profile.save()
+            new_post_profile.save()
             return redirect('profile')
 
 

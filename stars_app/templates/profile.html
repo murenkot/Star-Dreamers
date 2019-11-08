@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form id='profile' action="{% url 'profile_create' %}" method="post">
+<form id='profile' action="{% url 'profile_create'%}" method="post">
     {% csrf_token %}
     <label>
       <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" checked>
