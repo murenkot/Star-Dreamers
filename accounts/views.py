@@ -48,11 +48,11 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username = username, password = password)
-        if username is not None:
+        if user is not None:
             auth.login(request, user)
             return redirect ('main_page')
         else:
-            context = { 'error': 'Your username and password didn not match. Please try again.' }
+            context = { 'error': 'Your username and password does not match. Please try again.' }
             return render (request, 'login.html', context)
     else:
         return render(request, 'login.html')
@@ -73,6 +73,14 @@ def profile_create(request):
     if request.method == 'POST':
         avatar = request.POST['test']
         userstory = request.POST['userstory']
+        # if .exist():
+            # profile = Profile.objects(
+            #     avatar = avatar,
+            #     userstory = userstory,
+            #     user = request.user)
+            # )
+            # profile.save()
+        # else:
         profile = Profile.objects.create(
             avatar = avatar,
             userstory = userstory,
