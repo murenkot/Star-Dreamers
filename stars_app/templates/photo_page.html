@@ -7,11 +7,30 @@
     <p>{{photo.date}}</p>
     <p>{{photo.explanation}}</p>
     <img src="{{photo.url}}" alt="{{photo.title}}">
+    <p id='like'>{{ likes }}</p>
+
 </section>
 <section>
     <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
 </section>
+
+<a class='like' href="#">Like</a>
+
+<script type="text/javascript">
+ $(function () {
+        // when hover action on button.
+        $('.like').on('click', function () {
+            // alert the button text.
+            console.log($('#like').text());
+            let likes = Number($('#like').text()) + 1;
+            $('#like').text(likes);
+        });
+    });
+
+</script>
+   
+
 
 <section>
     <h3>Comments</h3>

@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
+from dajaxice.core import dajaxice_autodiscover
+dajaxice_autodiscover()
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
