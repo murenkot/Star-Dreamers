@@ -7,11 +7,42 @@
     <p>{{photo.date}}</p>
     <p>{{photo.explanation}}</p>
     <img src="{{photo.url}}" alt="{{photo.title}}">
+    <p id='like'>Total likes: {{ likes }}</p>
+    <p>Total comments: {{comments}} </p>
+
 </section>
 <section>
     <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
 </section>
+
+<a class='like' >Like</a>
+
+<script type="text/javascript">
+const onSuccess = (response)=>{
+    console.log(response.data);
+    text = "Total likes: " + response.data.likes
+    $('#like').text(text);
+}
+
+const onError = (err1, err2, err3)=>{
+    console.log({err3});
+}
+
+ $(function () {
+        $('.like').on('click', function () {
+            $.ajax({
+                method: "POST",
+                url: 'api/v1/photo/{{photo.pk}}/add_like',
+                success: onSuccess,
+                error: onError,
+            })
+        });
+    });
+
+</script>
+   
+
 
 <section>
     <h3>Comments</h3>

@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required 
+from django.views.decorators.csrf import csrf_exempt
 
 # import Models
-from .models import Photo, CommentPhoto, CommentPost, Post
+from .models import Photo, CommentPhoto, CommentPost, Post, LikePhoto, LikePost
 from .forms import CommentPhotoForm, CommentPostForm, PostForm
 
 
@@ -14,6 +15,11 @@ import datetime
 
 
 # Create your views here.
+
+def count_photo_likes(pk):
+    photo = Photo.objects.get(id=pk)
+    likes = LikePhoto.objects.filter(photo = photo)
+    return len(likes)
 
 def main_page(request):
     current_date = datetime.datetime.today()
@@ -48,7 +54,9 @@ def main_page(request):
 
 def photo_details(request, pk):
     photo = Photo.objects.get(id=pk)
-    context = {"photo":photo}
+    likes = count_photo_likes(pk)
+    comments = len(CommentPhoto.objects.filter(photo = photo))
+    context = {"photo":photo, "likes":likes, "comments":comments}
     return render(request, 'photo_page.html', context)
 
 @login_required
@@ -160,12 +168,18 @@ def delete_comment_post(request, pk, comment_pk):
     return redirect('post_details', pk=pk)
 
 
-def previous_page(request, pk):
-    try:
-        photo = Photo.objects.get(id=pk)
-        context = {"photo":photo}
-        return render(request, 'photo_page.html', context)
-    except:
-        post = Post.object.get(id=pk)
-        context = {"post":post}
-        return render(request, 'post.html', context)
+@csrf_exempt
+def add_like(request, pk):
+    user = request.user
+    photo = Photo.objects.get(id=pk)
+    user_likes = LikePhoto.objects.filter(photo=photo, user=user)
+    if len(user_likes) == 0:
+        like = LikePhoto(photo=photo, user=user)
+        like.save()
+    else:
+        user_likes.delete()
+    likes = count_photo_likes(pk)
+    context = {"likes":likes}
+    print(context)
+    return JsonResponse({'data':context, "status":200})
+
