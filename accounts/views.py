@@ -4,7 +4,8 @@ from django.core import serializers
 
 from django.contrib.auth.models import User
 from django.contrib import auth
-from stars_app.models import Post
+from stars_app.models import Post, Profile
+from stars_app.forms import ProfileForm
 # Create your views here.
 
 def welcome(request):
@@ -67,6 +68,19 @@ def profile(request):
     print(posts)
     context = {"posts": posts, "author": current_user_name }
     return render(request, 'profile.html', context)
+
+def profile_create(request):
+    if request.method == 'POST':
+        avatar = request.POST['test']
+        userstory = request.POST['userstory']
+        profile = Profile.objects.create(
+            avatar = avatar,
+            userstory = userstory,
+            user = request.user)
+        print(profile)
+        profile.save()
+        return redirect('profile')  
+
 
 
 

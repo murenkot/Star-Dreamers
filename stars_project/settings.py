@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'dajaxice',
     'stars_app',
     'accounts',
+    'profiles',
 ]
 
 MIDDLEWARE = [

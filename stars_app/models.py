@@ -33,6 +33,9 @@ class Profile(models.Model):
     avatar = models.TextField()
     userstory = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profiles_user")
+    
+    def __str__(self):
+        return f"{self.user.username} profile post"
 
 class CommentPost(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="postcomments_user")
