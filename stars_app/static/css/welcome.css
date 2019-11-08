@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
 
 * {
@@ -11,7 +10,6 @@
   letter-spacing: 0.01em;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-
 }
 
 html {
@@ -23,6 +21,7 @@ html {
 
 body {
     color: whitesmoke;
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
 }
 
 .centered {
@@ -45,29 +44,30 @@ legend {
 
 label {
     margin: 10px 0;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
+}
+
+.nav-login {
+    position: absolute;
+    right: 0px;
+    top: -20px;
 }
 
 .welcome {
     font-size: 30px;
     font-weight: 800;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
 }
 
 .small-letter {
     font-size: 13px;
     padding: 10px;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
 }
 
 .brand-logo {
     margin-left: 90px;
-    /* margin-top: 5px; */
     letter-spacing: 0.09em;
     font-family: 'Dancing Script', cursive;
     font-size: 33px;
     font-weight: 600;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
 }
 
 main {
@@ -82,7 +82,10 @@ a {
 }
 
 input {
-    color: rgb(106, 102, 102);
+    color: rgb(22, 13, 13);
+    background-color: #f0e8e9c0;
+    font-size: 15px;
+    font-weight: 400;
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -91,16 +94,29 @@ input {
 button {
     margin-top: 15px;
     padding: 10px;
-    float: right;
     background: none;
     border: none;
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 400;
     color: whitesmoke;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
+}
+
+.error {
+    padding: 10px 0;
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #94303a;
+    background-color: #f8d7dac0;
+    color: #94303a;
+    /* text-shadow: none; */
 }
 
 /* == Adjust == */
+
 .flex {
     display: flex;
 }
@@ -152,4 +168,12 @@ button {
 
 .float-right {
     float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.margin {
+    margin-bottom: 10px;
 }
