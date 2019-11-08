@@ -3,9 +3,9 @@
 {% block content %}
 
 <div class=centered>
-    <nav class='flex'>
-        <a href="{% url 'login' %}">Log in</a>
-        <a href="{% url 'main_page' %}">As A Stranger</a>
+    <nav class='nav-login'>
+        <a href="{% url 'login' %}">Already have an account?</a>
+        <a href="{% url 'main_page' %}">Guest</a>
     </nav>
 
     <fieldset class='flex'>
@@ -17,7 +17,9 @@
         <main>
             <form method="POST">
                 {% csrf_token %}
-
+                {% if error %}
+                <div class='error'>{{ error }}</div>
+                {% endif %}
                 <div class="flex-col">
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" maxlength="25" minlength="2" required>
@@ -41,11 +43,11 @@
                 <div class="flex-col">
                     <label for="password2">Confirm Password</label>
                     <input type="password2" name="password2" maxlength="10" minlength="4" required>
-                    {% if error %}
-                    <div style="background-color: #f8d7da; color: #94303a;">{{ error }}</div>
-                    {% endif %}
                 </div>
-                <button type="submit">Register</button>
+                <div class='right margin'>
+                    <button type="submit">Become a member</button>
+                </div>
+                <div class='center'>We never sell your information or spam you.</div>
             </form>
         </main>
 
