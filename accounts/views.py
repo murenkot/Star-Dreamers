@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
@@ -21,11 +22,11 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                context = { 'error': 'Invalid User' }
+                context = { 'error': 'This user name has been used' }
                 return render (request, 'register.html', context)
             else:
                 if User.objects.filter(email=email).exists():
-                    context = {'error': 'This email is not valid.' }
+                    context = {'error': 'This email is not valid. Please try again' }
                     return render(request, 'register.html', context)
                 else:
                     user = User.objects.create_user(
@@ -61,33 +62,33 @@ def logout(request):
     auth.logout(request)
     return redirect('main_page')
 
+@login_required(login_url='/login/')
 def profile(request):
     current_user = request.user.pk
     current_user_name = request.user.username
     posts = Post.objects.filter(user=current_user)
-    print(posts)
     context = {"posts": posts, "author": current_user_name }
     return render(request, 'profile.html', context)
 
 def profile_create(request):
     if request.method == 'POST':
-        avatar = request.POST['test']
+        avatar = request.POST['avatar']
         userstory = request.POST['userstory']
-        # if .exist():
-            # profile = Profile.objects(
-            #     avatar = avatar,
-            #     userstory = userstory,
-            #     user = request.user)
-            # )
-            # profile.save()
-        # else:
-        profile = Profile.objects.create(
-            avatar = avatar,
-            userstory = userstory,
-            user = request.user)
-        print(profile)
-        profile.save()
-        return redirect('profile')  
+        
+        if Profle.objects.filter(pk=id).exist():
+            profile = Profile.objects(
+                avatar = avatar,
+                userstory = userstory,
+                user = request.user)
+            profile.save()
+
+        else:
+            profile = Profile.objects.create(
+                avatar = avatar,
+                userstory = userstory,
+                user = request.user)
+            profile.save()
+            return redirect('profile')
 
 
 

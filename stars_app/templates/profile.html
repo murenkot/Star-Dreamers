@@ -5,29 +5,26 @@
 <form id='profile' action="{% url 'profile_create' %}" method="post">
     {% csrf_token %}
     <label>
-      <input class="radio" type="radio" name="test" value="https://i.imgur.com/OZUN5stt.png" checked>
+      <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" checked>
       <img src="https://i.imgur.com/OZUN5stt.png">
     </label>
     <label>
-      <input type="radio" name="test" value="https://i.imgur.com/bvrB60st.png">
+      <input type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png">
       <img src="https://i.imgur.com/bvrB60st.png">
     </label>
     <label>
-      <input type="radio" name="test" value="https://i.imgur.com/OKNkYdht.png" checked>
+      <input type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png">
       <img src="https://i.imgur.com/OKNkYdht.png">
     </label>
 
     <div>Write your inspiration :</div>
     <div>
-        <textarea name="userstory"cols="90" rows="10" required></textarea>
+        <textarea name="userstory" cols="90" rows="10" required></textarea>
         <div class="userstory-button">
             <input type="submit" value="Create your profile">
         </div>
     </div>
-
-
 </form>
-
 
  <main>
    <div class='flex'>

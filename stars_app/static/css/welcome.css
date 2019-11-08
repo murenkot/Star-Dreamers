@@ -21,7 +21,7 @@ html {
 
 body {
     color: whitesmoke;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
 }
 
 .centered {
@@ -82,9 +82,10 @@ a {
 }
 
 input {
-    color: rgb(106, 102, 102);
+    color: rgb(22, 13, 13);
     background-color: #f0e8e9c0;
     font-size: 15px;
+    font-weight: 400;
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -96,21 +97,22 @@ button {
     background: none;
     border: none;
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 400;
     color: whitesmoke;
-    text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105);
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
 }
 
 .error {
-    padding: 5px;
+    padding: 10px 0;
     margin-top: 5px;
     font-size: 15px;
     font-weight: 800;
     text-align: center;
     border-radius: 10px;
+    border: 1px solid #94303a;
     background-color: #f8d7dac0;
     color: #94303a;
-    text-shadow: none;
+    /* text-shadow: none; */
 }
 
 /* == Adjust == */
