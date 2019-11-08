@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section id="photo-block">
+
 
     {% for photo in photos %}
     <section>
         <!-- <h2>{{photo.title}}</h2>
         <p>{{photo.date}}</p>
         <p>{{photo.explanation}}</p> -->
-        <a href="{% url 'photo_details' pk=photo.pk %}"><img src="{{photo.url}}" alt="{{photo.title}}"></a>
+            <a href="{% url 'photo_details' pk=photo.pk %}">
+                <div class="photo-container">
+                    <img class="photo" src="{{photo.url}}" alt="{{photo.title}}">
+                </div>
+            </a>
     </section>
     {% endfor %}
-
+</section>
 {% endblock %}

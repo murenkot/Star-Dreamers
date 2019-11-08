@@ -44,7 +44,7 @@ def main_page(request):
         # at first check if day photo is not in DB
         date_record = Photo.objects.filter(date = photo['date']).exists()
         if date_record == False:
-            new_photo = Photo(date=photo['date'], explanation = photo['explanation'], title = photo['title'], url = photo['url'])
+            new_photo = Photo(date=photo['date'], explanation = photo['explanation'], title = photo['title'], url = photo['hdurl'])
             new_photo.save()
 
     # get 20 last photos from DB:

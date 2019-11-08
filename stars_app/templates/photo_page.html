@@ -2,15 +2,18 @@
 
 {% block content %}
 
-<section>
+<div class="photo-details">
     <h2>{{photo.title}}</h2>
-    <p>{{photo.date}}</p>
-    <p>{{photo.explanation}}</p>
-    <img src="{{photo.url}}" alt="{{photo.title}}">
+    <!-- <p>{{photo.date}}</p> -->
+    <p class="photo-explanation">{{photo.explanation}}</p>
     <p id='like'>Total likes: {{ likes }}</p>
     <p>Total comments: {{comments}} </p>
+</div>
 
-</section>
+<div class="photo-container">
+    <img src="{{photo.url}}" alt="{{photo.title}}">
+</div>
+
 <section>
     <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>

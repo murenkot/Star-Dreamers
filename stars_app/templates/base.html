@@ -15,9 +15,10 @@
   <nav>
     <div>
         <h1><a href="{% url 'main_page' %}">Star Dreamers</a></h1>
-        <p>Welcome : {{user.username}} </p>
+        
     </div>
     <div class='menu'>
+        <span>Welcome, {{user.username}} </span>
         <a href="{% url 'main_page' %}">Home</a>
         <a href="{% url 'profile'%}">Profile</a>
         {% if user.is_authenticated %}
