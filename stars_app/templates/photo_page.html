@@ -7,7 +7,8 @@
     <p>{{photo.date}}</p>
     <p>{{photo.explanation}}</p>
     <img src="{{photo.url}}" alt="{{photo.title}}">
-    <p id='like'>{{ likes }}</p>
+    <p id='like'>Total likes: {{ likes }}</p>
+    <p>Total comments: {{comments}} </p>
 
 </section>
 <section>
@@ -15,16 +16,27 @@
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
 </section>
 
-<a class='like' href="#">Like</a>
+<a class='like' >Like</a>
 
 <script type="text/javascript">
+const onSuccess = (response)=>{
+    console.log(response.data);
+    text = "Total likes: " + response.data.likes
+    $('#like').text(text);
+}
+
+const onError = (err1, err2, err3)=>{
+    console.log({err3});
+}
+
  $(function () {
-        // when hover action on button.
         $('.like').on('click', function () {
-            // alert the button text.
-            console.log($('#like').text());
-            let likes = Number($('#like').text()) + 1;
-            $('#like').text(likes);
+            $.ajax({
+                method: "POST",
+                url: 'api/v1/photo/{{photo.pk}}/add_like',
+                success: onSuccess,
+                error: onError,
+            })
         });
     });
 

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.contrib.auth.decorators import login_required 
+from django.views.decorators.csrf import csrf_exempt
 
 # import Models
 from .models import Photo, CommentPhoto, CommentPost, Post, LikePhoto, LikePost
@@ -18,7 +19,6 @@ import datetime
 def count_photo_likes(pk):
     photo = Photo.objects.get(id=pk)
     likes = LikePhoto.objects.filter(photo = photo)
-    print(len(likes))
     return len(likes)
 
 def main_page(request):
@@ -55,7 +55,8 @@ def main_page(request):
 def photo_details(request, pk):
     photo = Photo.objects.get(id=pk)
     likes = count_photo_likes(pk)
-    context = {"photo":photo, "likes":likes}
+    comments = len(CommentPhoto.objects.filter(photo = photo))
+    context = {"photo":photo, "likes":likes, "comments":comments}
     return render(request, 'photo_page.html', context)
 
 @login_required
@@ -167,8 +168,7 @@ def delete_comment_post(request, pk, comment_pk):
     return redirect('post_details', pk=pk)
 
 
-
-@login_required
+@csrf_exempt
 def add_like(request, pk):
     user = request.user
     photo = Photo.objects.get(id=pk)
@@ -179,7 +179,7 @@ def add_like(request, pk):
     else:
         user_likes.delete()
     likes = count_photo_likes(pk)
-    context = {"photo":photo, "likes":likes}
-    return redirect('photo_details', pk=photo.pk)
-
+    context = {"likes":likes}
+    print(context)
+    return JsonResponse({'data':context, "status":200})
 
