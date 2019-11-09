@@ -64,26 +64,23 @@ def logout(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    current_user = request.user.pk
     current_user_name = request.user.username
-    posts = Post.objects.filter(user=current_user)
-    context = {"posts": posts, "author": current_user_name }
+    posts = Post.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    context = {"posts": posts, "profile": profile, "author": current_user_name }
     return render(request, 'profile.html', context)
 
 def profile_create(request):
     user = request.user.pk
     find_profile = Profile.objects.filter(user=user).exists()
-
     if request.method == 'POST':
         avatar = request.POST['avatar']
         userstory = request.POST['userstory']
-        
         if find_profile:
             new_post_profile = Profile.objects.update(
                 avatar = avatar,
                 userstory = userstory)
             return redirect('profile')
-
         else:
             new_post_profile = Profile.objects.create(
                 avatar = avatar,
@@ -91,9 +88,3 @@ def profile_create(request):
                 user = request.user)
             new_post_profile.save()
             return redirect('profile')
-
-
-
-
-
-
