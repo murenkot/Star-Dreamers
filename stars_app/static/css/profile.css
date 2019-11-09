@@ -1,30 +1,38 @@
 /* ===================== Post Profile Form  ===================== */
-#profile {
-  position: relative;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 0 8px 6px -6px black;
-  padding: 20px;
-  margin: 0 auto;
-  width:  40%;
-  height: 50%;
-  font-size: 18px;
-  font-weight: 600;
-}
 
 #profile textarea {
-  margin: 15px 0;
+  margin: 10px 10px;
   padding: 10px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   border-radius: 10px;
 }
 
-/* #profile img {
-  padding: 10px;
+#profile img {
+  width: 90px;
   border-radius: 50%;
-  width: 100px;
-} */
+  cursor: pointer;
+}
+
+#profile label img:hover {
+  filter: brightness(30%);
+  transform: scale(1.01);
+}
+
+.profile-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.click-here {
+  font-weight: 800;
+  margin: 10px 0;
+  cursor: pointer;
+}
 
 .close-form {
   text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
@@ -37,11 +45,14 @@
   cursor: pointer;
 }
 
-
-
-
-
-
+.add {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
 
 .profile-button {
@@ -56,7 +67,79 @@
   padding-left: 10px;
 }
 
+.bg-white {
+  background-color: whitesmoke;
+}
 
+
+
+/* ======= Set up ======== */
+
+.container-wrap {
+  width: 40%;
+  height: 70%;
+  margin: 0 auto;
+  position: relative;
+  flex-direction: column;
+}
+
+.box-content {
+  position: relative;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.box-middle {
+  display: none;
+  width: 500px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.box-last {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col {
+  flex: 1;
+}
+
+.f-a-center {
+  align-items: center;
+}
+
+.f-j-content {
+  justify-content: center;
+}
+
+.margin-top {
+  margin: 10px 15px 0;
+}
+
+.margin {
+  margin: 10px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.width-400 {
+  width: 450px;
+}
+
+.width-500 {
+  width: 550px;
+}
 
 
 /* ========= Box and Form Animation =========== */
@@ -64,7 +147,6 @@
   display: none; 
   position: fixed; 
   z-index: 5;
-  padding-top: 150px;
   left: 0;
   top: 0;
   width: 100%;
@@ -72,27 +154,109 @@
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(2, 1, 1, 0.555);
-  animation-name: animatetop;
-  animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 0.6s
 }
 
 .modal-content {
+  position: fixed;
+  bottom: 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 20px;
-  margin: auto;
   padding: 20px;
   border: 2px solid rgb(80, 74, 74);
   box-shadow: 0 8px 6px -6px black;
-  width: 50%;
-  height: 60%;
+  width: 100%;
+  height: 100%;
+  animation-name: fadeInUp;
+  animation-duration: 0.7s
+}
+
+.admin-welcome-image {
+  width: 100px;
+  height: auto;
+}
+
+/* ======== Animation Message ======= */
+.message-box {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 /* ========= Animation =========== */
+.animated-box {
+  width: 50%;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lefted {
+  position: absolute;
+  left: 0;
+
+}
+
+.righted {
+  align-self: flex-end;
+}
+
+.photo-title {
+  position: absolute;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(25, 25, 36);
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  top: -40px;
+  left: 0;
+}
+
 @keyframes animatetop {
   from {top: -200px; opacity: 0}
   to {top: 0; opacity: 1}
+}
+
+@keyframes slideLeft {
+  from {left: -200px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* transition: all .2s ease-in-out;
