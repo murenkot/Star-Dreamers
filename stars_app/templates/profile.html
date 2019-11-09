@@ -4,27 +4,65 @@
 
 <form id='profile' action="{% url 'profile_create'%}" method="post">
     {% csrf_token %}
-    <label>
-      <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" checked>
-      <img src="https://i.imgur.com/OZUN5stt.png">
-    </label>
-    <label>
-      <input type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png">
-      <img src="https://i.imgur.com/bvrB60st.png">
-    </label>
-    <label>
-      <input type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png">
-      <img src="https://i.imgur.com/OKNkYdht.png">
-    </label>
+   <div class="flex-container">
 
-    <div>Write your inspiration :</div>
-    <div>
+            <div class="image-option">
+             <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked>
+                <img src="https://i.imgur.com/OZUN5stt.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png" id="2" checked>
+              <img src="https://i.imgur.com/bvrB60st.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="3" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4s.png" id="4" checked>
+              <img src="https://i.imgur.com/GVNJAmKt.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4t.png" id="5" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="6" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+          <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="7" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+            <lable>
+            <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="8" checked>
+              <img src="https://i.imgur.com/OKNkYdht.png">
+            </div>
+          </lable>
+
+   </div>
+     <div class="panel">
+        <h3>Write your inspiration :</h3>
         <textarea name="userstory" cols="90" rows="10" required></textarea>
         <div class="userstory-button">
             <input type="submit" value="Create your profile">
         </div>
     </div>
-</form>
+</form> 
 
 <main>
    <div class='flex'>
