@@ -1,3 +1,65 @@
+/* ===================== Post Profile Form  ===================== */
+#profile {
+  position: relative;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 8px 6px -6px black;
+  padding: 20px;
+  margin: 0 auto;
+  width:  40%;
+  height: 50%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#profile textarea {
+  margin: 15px 0;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
+/* #profile img {
+  padding: 10px;
+  border-radius: 50%;
+  width: 100px;
+} */
+
+.close-form {
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  color: whitesmoke;
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.profile-button {
+  text-align: right;
+  margin: 10px 0;
+  
+}
+
+.profile-button a {
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+
+
+
+/* ========= Box and Form Animation =========== */
 .modal, .introducing {
   display: none; 
   position: fixed; 
@@ -27,23 +89,7 @@
   height: 60%;
 }
 
-.introducing-content {
-  
-}
-
-.profile-button {
-  text-align: right;
-  margin: 10px 0;
-  
-}
-
-.profile-button a {
-  font-size: 14px;
-  font-weight: 500;
-  padding-left: 10px;
-}
-
-
+/* ========= Animation =========== */
 @keyframes animatetop {
   from {top: -200px; opacity: 0}
   to {top: 0; opacity: 1}

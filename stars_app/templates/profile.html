@@ -3,51 +3,39 @@
 {% block content %}
 
 <div class='introducing'>
-    <p class='close-form'>Close</p>
+  <div>
     <form id='profile' action="{% url 'profile_create'%}" method="post">
+        <p class='close-form'>Close</p>
         {% csrf_token %}
         <div class="flex-container">
           <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked>
-              <img src="https://i.imgur.com/OZUN5stt.png">
+              <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/girl-emotions/512/1-08-512.png" id="1" >
+              <label for="3"><img src="https://cdn4.iconfinder.com/data/icons/girl-emotions/512/1-08-512.png"></label>
           </div>
           <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png" id="2" checked>
-              <img src="https://i.imgur.com/bvrB60st.png">
+              <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="2">
+              <label for="2"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
           </div>
           <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="3" checked>
-              <img src="https://i.imgur.com/OKNkYdht.png">
+              <input class="radio" type="radio" name="avatar" value="https://cdn1.iconfinder.com/data/icons/male-2/64/man_male_boy_cute_person_avatar_people-02-512.png" id="3">
+              <label for="3"><img src="https://cdn1.iconfinder.com/data/icons/male-2/64/man_male_boy_cute_person_avatar_people-02-512.png"></label>
           </div>
           <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4s.png" id="4" checked>
-              <img src="https://i.imgur.com/GVNJAmKt.png">
-          </div>
-          <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4t.png" id="5" checked>
-              <img src="https://i.imgur.com/OKNkYdht.png">
-          </div>
-          <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="6" checked>
-              <img src="https://i.imgur.com/OKNkYdht.png">
-          </div>
-          <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="7" checked>
-              <img src="https://i.imgur.com/OKNkYdht.png">
-          </div>
-          <div class="image-option">
-              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="8" checked>
-              <img src="https://i.imgur.com/OKNkYdht.png">
+              <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="4">
+              <label for="4"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
           </div>
         </div>
-        <div class="panel">
-          <h3>Write your inspiration :</h3>
-          <textarea name="userstory" cols="90" rows="10" required></textarea>
-          <div class="userstory-button">
-              <input type="submit" value="Create your profile">
-          </div>
+
+        <div>Write your inspiration :</div>
+        <div class='flex'>
+          <textarea class='col' name="userstory" rows="4" required></textarea>
         </div>
+        <div class="userstory-button">
+            <input class='submit' type="submit" value="Save">
+        </div>
+        
     </form> 
+  </div>
 </div>
 
 <main>
@@ -88,7 +76,12 @@
    </div>
 </main>
 
-<script>
+<script defer>
+
+    $('input:radio').on('click', function (event) {
+      console.log('hello')
+    })
+
     $('main').on('click', '.mybtn', function (event) {
       event.target.nextElementSibling.style.display = 'block'
     })
