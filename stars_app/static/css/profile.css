@@ -94,10 +94,14 @@
   width: 500px;
   position: relative;
   margin: 20px 0;
+  animation-name: fadeInLeft;
+  animation-duration: 0.7s
 }
 
 .box-last {
   display: none;
+  animation-name: fadeInUp;
+  animation-duration: 0.7s
 }
 
 .flex {
@@ -144,6 +148,7 @@
 
 /* ========= Box and Form Animation =========== */
 .modal, .introducing {
+  transition: .3s linear;
   display: none; 
   position: fixed; 
   z-index: 5;
@@ -190,6 +195,7 @@
 /* ========= Animation =========== */
 .animated-box {
   width: 50%;
+  height: 50%;
 }
 
 .centered {
