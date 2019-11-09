@@ -18,6 +18,11 @@
     <img src="{{photo.url}}" alt="{{photo.title}}">
 </div>
 
+
+<div class="rainbow">
+    Rainbow border
+</div>
+
 <section>
     <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
