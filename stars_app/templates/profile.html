@@ -2,100 +2,84 @@
 
 {% block content %}
 
-<form id='profile' action="{% url 'profile_create'%}" method="post">
-    {% csrf_token %}
-   <div class="flex-container">
-
-            <div class="image-option">
-             <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked>
-                <img src="https://i.imgur.com/OZUN5stt.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+<div class='introducing'>
+    <p class='close-form'>Close</p>
+    <form id='profile' action="{% url 'profile_create'%}" method="post">
+        {% csrf_token %}
+        <div class="flex-container">
+          <div class="image-option">
+              <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked>
+              <img src="https://i.imgur.com/OZUN5stt.png">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png" id="2" checked>
               <img src="https://i.imgur.com/bvrB60st.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="3" checked>
               <img src="https://i.imgur.com/OKNkYdht.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4s.png" id="4" checked>
               <img src="https://i.imgur.com/GVNJAmKt.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4t.png" id="5" checked>
               <img src="https://i.imgur.com/OKNkYdht.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="6" checked>
               <img src="https://i.imgur.com/OKNkYdht.png">
-            </div>
-          </lable>
-          <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="7" checked>
               <img src="https://i.imgur.com/OKNkYdht.png">
-            </div>
-          </lable>
-            <lable>
-            <div class="image-option">
+          </div>
+          <div class="image-option">
               <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="8" checked>
               <img src="https://i.imgur.com/OKNkYdht.png">
-            </div>
-          </lable>
-
-   </div>
-     <div class="panel">
-        <h3>Write your inspiration :</h3>
-        <textarea name="userstory" cols="90" rows="10" required></textarea>
-        <div class="userstory-button">
-            <input type="submit" value="Create your profile">
+          </div>
         </div>
-    </div>
-</form> 
+        <div class="panel">
+          <h3>Write your inspiration :</h3>
+          <textarea name="userstory" cols="90" rows="10" required></textarea>
+          <div class="userstory-button">
+              <input type="submit" value="Create your profile">
+          </div>
+        </div>
+    </form> 
+</div>
 
 <main>
    <div class='flex'>
       <section class='user-section'>
+        <p class='introduce-form'>Click here</p>
         <img class="image-profile" src="{{ profile.avatar }}">
         <p>Profile Information</p>
         <p>{{ user.first_name }} {{ user.last_name }}</p>
         <p>Email : {{ user.email }}</p><br>
-        <p>Inspiration : {{ profile.userstory }}</p>
+        <p>Inspiration : </br>{{ profile.userstory }}</p>
 
       </section>
       <section class='user-post-section col flex'>
         <div>
-          
           <h3>Post Story</h3>
           {% for post in posts%}
           <div class='post-user-container'>
               <div>
                   <img class='post-img-user mybtn'src="{{ post.photo.url }} ">
-
                   <div class="modal">
-                      
-                    <div class="modal-content" style="background-image:url({{ post.photo.url }})"">
-                      <span class="close">&times;</span>
-                      <p>Hello</p>
-                    </div>
-                  
+                    <div class="photo-title">{{ post.photo.title }}</div>
+                    <div class="modal-content" style="background-image:url({{ post.photo.url }})""></div>
                   </div>
-
               </div>
               <div class='post-user-info col'>
                   <div class='post-title col'>Written by {{ author }} / {{ post.title }}  </div> 
                   <div class='post-body col'>Poem : {{ post.body }}</div>
+                  <div class='profile-button'>
+                    <a href="{% url 'post_edit' pk=post.pk %}">Update</a>
+                    <a href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+                  </div>
               </div>
           </div>
           {% endfor %}
@@ -106,13 +90,20 @@
 
 <script>
     $('main').on('click', '.mybtn', function (event) {
-      console.log(event.target.nextElementSibling)
       event.target.nextElementSibling.style.display = 'block'
     })
   
     $('main').on('click', '.modal', function (event) {
-      console.log(event.target.parentElement.parentElement)
-      $('.modal').css('display', 'none');
-    })  
+      $('.modal').css('display', 'none')
+    })
+
+    $('.introduce-form').on('click', function () {
+      $('.introducing').css('display', 'block')
+    })
+
+    $('.close-form').on('click', function () {
+      $('.introducing').css('display', 'none')
+    })
+
 </script>
 {% endblock %}

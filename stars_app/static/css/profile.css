@@ -1,23 +1,53 @@
-.modal {
+.modal, .introducing {
   display: none; 
   position: fixed; 
-  z-index: 1;
-  padding-top: 100px;
+  z-index: 5;
+  padding-top: 150px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(2, 1, 1, 0.555);
+  animation-name: animatetop;
+  animation-duration: 0.5s;
 }
 
 .modal-content {
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  height: 80%;
+  border: 2px solid rgb(80, 74, 74);
+  box-shadow: 0 8px 6px -6px black;
+  width: 50%;
+  height: 60%;
 }
+
+.introducing-content {
+  
+}
+
+.profile-button {
+  text-align: right;
+  margin: 10px 0;
+  
+}
+
+.profile-button a {
+  font-size: 14px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+
+@keyframes animatetop {
+  from {top: -200px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+/* transition: all .2s ease-in-out;
+transition: all .2s ease-in-out; */

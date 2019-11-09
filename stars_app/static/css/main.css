@@ -18,6 +18,7 @@ body {
     margin: 0 auto;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.01em;
+    overflow: auto;
 }
 a {
   color: black;
@@ -52,6 +53,8 @@ nav {
   text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
 }
 
+
+/* ===================== Profile Section ===================== */
 #profile img {
   padding: 10px;
   border-radius: 50%;
@@ -68,9 +71,17 @@ nav {
 }
 
 .post-img-user {
+  margin: 0 20px;
   border-radius: 50%;
+  border: 1px solid black;
   width: 80px;
   height: 80px;
+  cursor: pointer;
+}
+
+.post-img-user:hover {
+  transform: scale(1.01);
+  transition: .3s linear;
 }
 
 .post-user-info {
@@ -83,16 +94,34 @@ nav {
   font-size: 14px;
   font-weight: 400;
 }
+
 .post-body {
-  padding: 0 10px;
-  font-size: 14px;
+  padding: 10px;
   font-weight: 400;
+  border: 1px solid black;
+  border-radius: 10px;
+  line-height: 140%;
+}
+
+.post-body:hover {
+  transform: scale(1.01);
+  transition: .3s linear;
+}
+
+.photo-title {
+  position: absolute;
+  color: whitesmoke;
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(25, 25, 36);
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  top: 110px;
+  left: 25%;
 }
 
 .user-section {
   flex-basis: 300px;
   padding: 0 10px;
-  background-color: blanchedalmond;
 }
 
 .user-section p {
@@ -103,12 +132,18 @@ nav {
   padding: 0 10px;
 }
 
-.box {
-  position: relative;
-}
-
 .userstory-button {
 text-align: right;
+}
+
+.image-profile {
+  width: 150px;
+  margin: 20px 0;
+  border: 1px solid white;
+}
+
+.box {
+  position: relative;
 }
 
 .flex {
@@ -118,15 +153,6 @@ text-align: right;
 .col {
   flex: 1;
 }
-
-.image-profile {
-  width: 150px;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid white;
-}
-
-
 
 
 
