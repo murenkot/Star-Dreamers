@@ -56,7 +56,12 @@ def photo_details(request, pk):
     photo = Photo.objects.get(id=pk)
     likes = count_photo_likes(pk)
     comments = len(CommentPhoto.objects.filter(photo = photo))
-    context = {"photo":photo, "likes":likes, "comments":comments}
+    like = LikePhoto.objects.filter(photo=photo, user=request.user)
+    if len(like)>0:
+        checked = "-checked"
+    else:
+        checked = " "
+    context = {"photo":photo, "likes":likes, "comments":comments, "checked":checked}
     return render(request, 'photo_page.html', context)
 
 @login_required

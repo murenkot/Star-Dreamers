@@ -6,11 +6,15 @@
     <h2>{{photo.title}}</h2>
     <!-- <p>{{photo.date}}</p> -->
     <p class="photo-explanation">{{photo.explanation}}</p>
-    <p id='like'>Total likes: {{ likes }}</p>
-    <p>Total comments: {{comments}} </p>
+    <div class="stat-info">
+            <button class="toggle-icon {{checked}}" title="❤ Toggle Like!"></button>
+            <span class="total-likes">{{ likes }}</span>
+            <i class="fa fa-comment-o"></i>
+            <span class="total-comments">{{comments}}</span>
+        </div>
 </div>
 
-<div class="photo-container">
+<div class="photo-container photo-page">
     <img src="{{photo.url}}" alt="{{photo.title}}">
 </div>
 
@@ -19,35 +23,40 @@
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
 </section>
 
-<a class='like' >Like</a>
+<!-- Comment -->
+<section class='add-comment'>
+    <input class="comment-body" type="text"/>
+</section>
 
 <script type="text/javascript">
 const onSuccess = (response)=>{
     console.log(response.data);
-    text = "Total likes: " + response.data.likes
-    $('#like').text(text);
+    $('.total-likes').text(response.data.likes);
 }
 
-const onError = (err1, err2, err3)=>{
-    console.log({err3});
-}
+const onError = (err1, err2, err3)=>{console.log({err3});}
 
- $(function () {
-        $('.like').on('click', function () {
-            $.ajax({
-                method: "POST",
-                url: 'api/v1/photo/{{photo.pk}}/add_like',
-                success: onSuccess,
-                error: onError,
-            })
-        });
+$(function () {
+    $('.toggle-icon').on('click', function () {
+        $.ajax({
+            method: "POST",
+            url: 'api/v1/photo/{{photo.pk}}/add_like',
+            success: onSuccess,
+            error: onError,
+        })
     });
+});
+
+// Listen to Like button
+$('.toggle-icon').click(function(){
+  $(this).toggleClass('-checked');
+});
 
 </script>
    
 
 
-<section>
+<section class="comments-block">
     <h3>Comments</h3>
     {% if photo.photocomments_photo.all %}
         {% for comment in photo.photocomments_photo.all %}

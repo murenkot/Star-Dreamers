@@ -211,7 +211,8 @@ text-align: right;
   /* Photo page */
 
   .photo-details {
-    margin: 20px auto;
+    margin: 50px auto;
+    width: 80%;
   }
 
   .photo-details *{
@@ -224,10 +225,129 @@ text-align: right;
 
   .photo-page {
     width:100%;
-    height: 100%;
+    height: 800px;
   }
 
   .photo-page img{
     width:100%;
     height: 100%;
   }
+
+
+/* Likes and comments icons */
+.stat-info {
+  position: relative;
+  text-align: right;
+}
+
+.stat-info * {
+  width: 20pt;
+  height: 20pt;
+  font-size: 20pt;
+  margin: 0 2px;
+}
+.stat-info *:nth-child(2){
+  margin-right: 30px;
+}
+
+
+  /* LIKE BUTTON */
+/* body{
+  font:normal 100% sans-serif;
+  color:silver;
+  background:rgba(#000,.1);
+}
+.wrapper-demo{
+  text-align:center;
+  margin-top:40vh;
+}
+:focus{outline:none}  */
+
+
+
+
+/* == Unicodes cheatsheet ==
+   http://fontawesome.bootstrapcheatsheets.com
+*/
+
+/* // heart icon example */
+
+.toggle-icon{
+  width: 20pt;
+  height: 20pt;
+  font-size: 20pt;
+  position: relative;
+  color:gray;
+  cursor:pointer;
+  border:none;
+  background-color:transparent;
+}
+
+.toggle-icon::before, .toggle-icon::after{    
+  position:absolute;
+  top: 0;
+  left: 0;
+  transition:all .3s ease-out;
+  content: "\f08a";
+  font-family:fontawesome;
+}
+
+.toggle-icon:hover::before{
+  transform:scale(1.1);
+}
+
+.toggle-icon:active::before{
+  transition:none;
+  transform:scale(1);
+}
+  
+.toggle-icon:active::after{
+  opacity:0;
+}
+
+.toggle-icon.-checked{
+  color:#A12C2C;
+}
+
+.toggle-icon.-checked::before{
+  content:"\f004";
+}
+
+.toggle-icon.-checked::after{
+  content:"\f004";
+  animation:likeFly .6s ease-in;
+}  
+
+@keyframes heartbeat{
+  from{
+    opacity:1;
+  }
+  to{
+    transform:scale(3);
+    opacity:0;
+  }
+}
+
+@keyframes likeFly{
+  from{
+    opacity:1;
+  }
+  to{
+    transform:scale(3) rotate(45deg) translateY(-90px);
+    opacity:0;
+  }
+}
+
+
+/* Comments */
+
+.comment-body {
+  background-color: #3c444a; 
+  color: rebeccapurple;
+  width: 300px;
+
+}
+
+.comments-block {
+  margin: 30px 0;
+}
