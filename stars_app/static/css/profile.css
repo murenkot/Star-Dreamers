@@ -87,12 +87,7 @@
   cursor: pointer;
 }
 
-
-
-
 /* ===== Profile user information area ======== */
-
-
 .user-section {
   flex-basis: 200px;
   display: flex;
@@ -260,6 +255,7 @@ fieldset {
 
 /* ========= Box and Form Animation =========== */
 .modal, .introducing {
+  position: relative;
   transition: .3s linear;
   display: none; 
   position: fixed; 
@@ -273,26 +269,26 @@ fieldset {
   /* background-color: rgba(143, 97, 97, 0.555); */
   background: radial-gradient(circle at 100%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 50%, #eee 75%, rgba(51, 51, 51, 0.404) 75%);
   animation-name: fadeInLeft;
-  animation-duration: 0.6s
+  animation-duration: 0.9s
 }
 
 .modal-content {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  padding: 20px;
-  border: 2px solid rgb(80, 74, 74);
-  box-shadow: 0 8px 6px -6px black;
-  width: 100%;
-  height: 100%;
-  animation-name: fadeInLeft;
-  animation-duration: 0.9s
+  border: 4px solid rgba(255, 255, 240, 0.637);
+  width: 40%;
+  height: 80%;
+  top: 10%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  animation-name: spin;
+  animation-duration: 200000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
 }
-
-
 
 /* ========= Animation =========== */
 .animated-box {
@@ -307,11 +303,9 @@ fieldset {
   transform: translate(-50%, -50%);
 }
 
-
 .photo-title {
   position: absolute;
   color: whitesmoke;
-  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(25, 25, 36);
   padding: 10px;
   font-size: 15px;
   font-weight: 800;
@@ -358,6 +352,16 @@ fieldset {
   }
 }
 
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 /* transition: all .2s ease-in-out;
 transition: all .2s ease-in-out; */
 
@@ -371,10 +375,13 @@ transition: all .2s ease-in-out; */
   .box-form-profile {
     width: 90%;
     height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  }
+
+  .modal-content {
+    width: 80%;
+    height: 50%;
+    top: 25%;
+    left: 10%;
   }
   
   .main-area-secssion {
