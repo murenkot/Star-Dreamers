@@ -4,7 +4,6 @@
 
 <div class="photo-details">
     <h2>{{photo.title}}</h2>
-    <!-- <p>{{photo.date}}</p> -->
     <p class="photo-explanation">{{photo.explanation}}</p>
     <div class="stat-info">
             <button class="toggle-icon {{checked}}" title="❤ Toggle Like!"></button>
@@ -18,63 +17,47 @@
     <img src="{{photo.url}}" alt="{{photo.title}}">
 </div>
 
-
-<div class="rainbow">
-    Rainbow border
+<div class='button-container'>
+    <div class="btn" id="add-comment">
+        <span><span><span>Comment</span></span></span>
+    </div>
+    <div class="btn">
+        <span><span><span>Got Inspired!</span></span></span>
+    </div>
 </div>
 
 <section>
     <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
     <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
 </section>
-
-<!-- Comment -->
-<section class='add-comment'>
-    <input class="comment-body" type="text"/>
-</section>
-
-<script type="text/javascript">
-const onSuccess = (response)=>{
-    console.log(response.data);
-    $('.total-likes').text(response.data.likes);
-}
-
-const onError = (err1, err2, err3)=>{console.log({err3});}
-
-$(function () {
-    $('.toggle-icon').on('click', function () {
-        $.ajax({
-            method: "POST",
-            url: 'api/v1/photo/{{photo.pk}}/add_like',
-            success: onSuccess,
-            error: onError,
-        })
-    });
-});
-
-// Listen to Like button
-$('.toggle-icon').click(function(){
-  $(this).toggleClass('-checked');
-});
-
-</script>
    
-
+<!-- Comment -->
 
 <section class="comments-block">
-    <h3>Comments</h3>
+    <section class='add-comment hidden'>
+        <textarea class="new-comment-body"></textarea>
+        <div class="flex-right">
+            <button id="cancel-comment" class="small">Cancel</button>
+            <button id="save-comment" class="small">Save</button>
+        </div>
+    </section>
+    <h3 id="comments">Comments</h3>
     {% if photo.photocomments_photo.all %}
         {% for comment in photo.photocomments_photo.all %}
-        <p class=comment>
-            {{comment.user}}: 
-            {{comment.body}}
-            <br>
-            {% if comment.user == user %}
-            <a href="{% url 'edit_comment' pk=photo.pk comment_pk=comment.pk %}">Edit</a>
-            <a href="{% url 'delete_comment' pk=photo.pk comment_pk=comment.pk %}">Delete</a>
-            {% endif %}
-        </p>
-        
+        <div class="comment-frame">
+            <p class="comment">
+                <p id="username">{{comment.user}}: </p>
+                <p>{{comment.body}}</p>
+                {% if comment.user == user %}
+                <div>
+                    <div class="flex-right">
+                        <a href="{% url 'edit_comment' pk=photo.pk comment_pk=comment.pk %}">Edit</a>
+                        <a href="{% url 'delete_comment' pk=photo.pk comment_pk=comment.pk %}">Delete</a>
+                    </div>
+                </div>
+                    {% endif %}
+            </p>
+        </div>
 
         {% endfor %}
     {% else %}
@@ -84,5 +67,70 @@ $('.toggle-icon').click(function(){
 
     {% endif %}
 </section>
+
+<!-- JS -->
+<script type="text/javascript">
+    const onSuccess = (response)=>{
+        console.log(response.data);
+        $('.total-likes').text(response.data.likes);
+    }
+        
+    $(function () {
+        $('.toggle-icon').on('click', function () {
+            $.ajax({
+                method: "POST",
+                url: 'api/v1/photo/{{photo.pk}}/add_like',
+                success: onSuccess,
+                error: onError,
+            })
+        });
+    });
+    
+    // Listen to LIKE button
+    $('.toggle-icon').click(function(){
+      $(this).toggleClass('-checked');
+    });
+    
+    // Listen to ADD COMMENT button:
+    // $('#add-comment').on('click', ()=>{
+    //     console.log("add-comment");
+    //     $('.add-comment').toggleClass('hidden');
+    // })
+    
+    // Listen to SAVE button
+    // const addComment = (response) => {
+    //     $('.new-comment-body').val('');
+    //     $('.add-comment').toggleClass('hidden');
+    //     template = `
+    //     <div class="comment-frame">
+    //         <p class="comment">
+    //             <p id="username">${response.data.username}: </p>
+    //             <p>${response.data.body}</p>
+    //             <div>
+    //                 <div class="flex-right">
+    //                 </div>
+    //             </div>
+    //         </p>
+    //     </div>
+    //     `
+    //     $('#comments').append(template);
+
+    // }
+    
+    $('#save-comment').on('click', ()=>{    
+        let comment = $('.new-comment-body').val();
+        if (comment.length > 0) {
+            $.ajax({ 
+                method: "POST",
+                url: `api/v1/photo/{{photo.pk}}/add_comment/${comment}`,
+                success: addComment,
+                error: onError,
+            })
+        }
+
+    })
+        
+    </script>
+
 
 {% endblock %}

@@ -10,6 +10,9 @@
   --text-color: #6b7b87;
   --botton-active: #a2a6a6;
   --botton-passive: #6b7b87;
+  --text-font-family: 'Montserrat', sans-serif;
+  --text-font-size: 15px;
+
 }
 
 
@@ -172,7 +175,7 @@ text-align: right;
   .photo-container {  
     width:100%;
     height: 700px;
-    margin: 15px auto;  
+    margin: 25px auto;  
     background-color: var(--page-background);
     display: flex;
     justify-content: center;
@@ -232,8 +235,36 @@ text-align: right;
 
   .photo-page img{
     width:100%;
-    height: 100%;
+    /* height: 100%; */
   }
+
+
+/* Text on top of the image */
+
+.image-content {
+  position: absolute;
+}
+
+.image-content .background{
+  width: 50%;
+  height: 700px;
+  margin-right: 100px;
+  background-color: var(--logo-color);
+  opacity: 0.5;
+  padding: 200px 20px 20px 30px;
+  
+
+}
+.background h2 {
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+.background p{
+  font-size: var(--text-font-size);
+  color: whitesmoke;
+}
+
 
 
 /* Likes and comments icons */
@@ -254,25 +285,6 @@ text-align: right;
 
 
   /* LIKE BUTTON */
-/* body{
-  font:normal 100% sans-serif;
-  color:silver;
-  background:rgba(#000,.1);
-}
-.wrapper-demo{
-  text-align:center;
-  margin-top:40vh;
-}
-:focus{outline:none}  */
-
-
-
-
-/* == Unicodes cheatsheet ==
-   http://fontawesome.bootstrapcheatsheets.com
-*/
-
-/* // heart icon example */
 
 .toggle-icon{
   width: 20pt;
@@ -342,237 +354,199 @@ text-align: right;
 
 
 /* Comments */
+.hidden {
+  display: none;
+}
+
+.add-comment{
+  width: 80%;
+}
 .comments-block{
   width: 80%;
-  margin: 30px 0;
+  margin: 30px auto;
+  font-size: var(--text-font-size);
+  font-family: var(--text-font-family);
+  /* line-height: 115%; */
 }
-.comment-body {
-  background-color: #3c444a; 
-  color: white;
-  width: 300px;
-  border: none;
 
+.comment-frame {
+  width: 100%;
+  height: 100%;
+  background-color: #1f1f1f;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.46);
 }
+.comment-frame *{
+  font-size: var(--font-size);
+  padding: 0px;
+  margin-left: 20px;
+}
+#username{
+  font-weight: 800;
+  color: #a2a6a6;
+}
+.comment-frame p{
+  margin-bottom: 5px;;
+}
+.comment-frame a{
+  text-align: right;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-comment {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.new-comment-body {
+  background-color: #3c444a; 
+  color: whitesmoke;
+  width: 100%;
+  margin: 0 auto;
+  height: 100px;
+  border: none;
+  padding: 5px 5px 5px 5px;
+  font-size: var(--font-size);
+  word-wrap: break-word;
+  border: 1px solid var(--botton-active);
+  resize: none;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
+  }
+  ::-webkit-scrollbar-thumb {
+  background: var(--botton-active);
+  }
+  ::-webkit-scrollbar-track {
+  background: #3c444a;
+  border-left: 1px solid var(--botton-active);
+  }
+  /* ::-webkit-resizer {
+  background: yellowgreen;
+  }  */
+
+  /* Regular buttons */
+
+  button.small {
+    width: 60px;
+    height: 30px;
+    padding: 2px 2px 2px 2px;
+    margin: 0 5px;
+  }
+  button.small:hover{
+    cursor: pointer;
+  }
+
 
 /* Buttons */
-/* body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-} */
-
-.rainbow, .rainbow::before, .rainbow::after {
-	box-sizing: border-box;
-}
-
-@keyframes rotate {
-	100% {
-		transform: rotate(1turn);
-	}
-}
-
-.rainbow {
-	position: relative;
-	z-index: 0;
-	width: 100px;
-	height: 25px;
-	/* border-radius: 10px; */
-	overflow: hidden;
-  padding: 2rem;
-}
-	
-.rainbow::before {
-  content: '';
-  position: absolute;
-  z-index: -2;
-  left: -50%;
-  top: -50%;
-  width: 200%;
-  height: 200%;
-  background-color: var(--page-background);
-  background-repeat: no-repeat;
-  background-size: 50% 50%, 50% 50%;
-  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  background-image: linear-gradient(#a2a6a6, #a2a6a6), linear-gradient(#282e33, #282e33), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
-  animation: rotate 5s linear infinite;
-}
-	
-.rainbow::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  left: 1px;
-  top: 1px;
-  width: calc(100% - 2px);
-  height: calc(100% - 2px);
-  background: var(--page-background);
-  /* border-radius: 5px; */
-}
-
-
-/* 2 */
-
-@mixin btn-border-slide($color, $hoverColor, $borderWidth, $time) {
-  $easing: cubic-bezier(0.4, 0, 0.2, 1);
-  
-  position: relative;
-
-  display: inline-block;
-  padding: 0.5em 2em;
-
-  cursor: pointer;
-  overflow: hidden;
-
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-
-    height: $borderWidth;
-    width: 100%;
-
-    background-color: $color;
-  }
-
-  &:before {
-    top: 0;
-  }
-
-  &:after {
-    bottom: 0;
-  }
-
-  &:hover {
-
-    & > * {
-
-      & > * {
-
-        &:before,
-        &:after {
-          transform: translate3d(0, 0, 0);
-        }
-
-        & > * {
-          &:before,
-          &:after {
-            transform: translate3d(0, 0, 0);
-          }
-        }
-      }
-    }
-  }
-
-  & > * {
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-
-      height: 100%;
-      width: $borderWidth;
-
-      background-color: $color;
-    }
-
-    &:before {
-      left: 0;
-    }
-
-    &:after {
-      right: 0;
-    }
-
-    & > * {
-
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        z-index: 9;
-
-        height: $borderWidth;
-        width: 100%;
-
-        background-color: $hoverColor;
-      }
-
-      &:before {
-        top: 0;
-
-        transform: translate3d(-105%, 0, 0);
-        transition: transform $time $easing;
-      }
-
-      &:after {
-        bottom: 0;
-        
-        transform: translate3d(105%, 0, 0);
-        transition: transform $time $easing;
-      }
-
-      & > * {
-
-        &:before,
-        &:after {
-          content: "";
-          position: absolute;
-          top: 0;
-          z-index: 9;
-
-          height: 100%;
-          width: $borderWidth;
-
-          background-color: $hoverColor;
-        }
-
-        &:before {
-          left: 0;
-
-          transform: translate3d(0, 105%, 0);
-          transition: transform $time $easing;
-        }
-
-        &:after {
-          right: 0;
-
-          transform: translate3d(0, -105%, 0);
-          transition: transform $time $easing;
-        }
-      }
-    }
-  }
-}
-
-// Start of styling
-* {
-  box-sizing: border-box;
-}
-
-body {
+.button-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100%;
-  
-  font-family: "Poppins", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background-color: #f2f2f2;
 }
-
-a {
-  font-size: 1.5em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-}
-
 .btn {
-  @include btn-border-slide(#252525, #168dff, 2px, 0.8s);
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 2em;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 10px 20px;
+  margin: 0 20px;
+}
+.btn:before, .btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #252525;
+}
+.btn:before {
+  top: 0;
+}
+.btn:after {
+  bottom: 0;
+}
+.btn:hover > * > *:before, .btn:hover > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.btn:hover > * > * > *:before, .btn:hover > * > * > *:after {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.btn > *:before, .btn > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #252525;
+}
+.btn > *:before {
+  left: 0;
+}
+.btn > *:after {
+  right: 0;
+}
+.btn > * > *:before, .btn > * > *:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  height: 1px;
+  width: 100%;
+  background-color: #a2a6a6;
+}
+.btn > * > *:before {
+  top: 0;
+  -webkit-transform: translate3d(-105%, 0, 0);
+          transform: translate3d(-105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn > * > *:after {
+  bottom: 0;
+  -webkit-transform: translate3d(105%, 0, 0);
+          transform: translate3d(105%, 0, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn > * > * > *:before, .btn > * > * > *:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 1px;
+  background-color: #a2a6a6;
+}
+.btn > * > * > *:before {
+  left: 0;
+  -webkit-transform: translate3d(0, 105%, 0);
+          transform: translate3d(0, 105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn > * > * > *:after {
+  right: 0;
+  -webkit-transform: translate3d(0, -105%, 0);
+          transform: translate3d(0, -105%, 0);
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }

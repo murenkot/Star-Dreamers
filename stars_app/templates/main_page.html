@@ -6,12 +6,23 @@
 
     {% for photo in photos %}
     <section>
-        <!-- <h2>{{photo.title}}</h2>
-        <p>{{photo.date}}</p>
-        <p>{{photo.explanation}}</p> -->
             <a href="{% url 'photo_details' pk=photo.pk %}">
                 <div class="photo-container">
                     <img class="photo" src="{{photo.url}}" alt="{{photo.title}}">
+                    <div class="image-content">
+                        <div class="flex-right">
+                            <div class="background">
+                                <h2>{{photo.title}}</h2>
+                                <p class="photo-explanation">{{photo.explanation}}</p>
+                                <div class="stat-info">
+                                    <button class="toggle-icon {{checked}}" title="❤ Toggle Like!"></button>
+                                    <span class="total-likes">{{ photo.photolikes_user | length }}</span>
+                                    <i class="fa fa-comment-o"></i>
+                                    <span class="total-comments">{{comments}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </a>
     </section>

@@ -64,21 +64,37 @@ def photo_details(request, pk):
     context = {"photo":photo, "likes":likes, "comments":comments, "checked":checked}
     return render(request, 'photo_page.html', context)
 
+# @login_required
+# def add_comment(request, pk):
+#     photo = Photo.objects.get(id=pk)
+#     if request.method == 'POST':
+#         form = CommentPhotoForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.user = request.user
+#             comment.photo = photo
+#             comment.save()
+#             return redirect('photo_details', pk=comment.photo.pk)
+#     else:
+#         form = CommentPhotoForm()
+#     context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
+#     return render(request, 'photo_comment_form.html', context)
 @login_required
-def add_comment(request, pk):
+@csrf_exempt
+def add_comment(request, pk, comment):
+    print("adding comment")
     photo = Photo.objects.get(id=pk)
     if request.method == 'POST':
-        form = CommentPhotoForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.photo = photo
-            comment.save()
-            return redirect('photo_details', pk=comment.photo.pk)
-    else:
-        form = CommentPhotoForm()
-    context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
-    return render(request, 'photo_comment_form.html', context)
+        new_comment = CommentPhoto(user=request.user, body=comment, photo=photo)
+        new_comment.save()
+        print(new_comment.pk)
+        data = {"username": request.user.username, "body": comment, 'photo_pk':photo.pk,  "comment_pk": new_comment.pk}
+        return JsonResponse({'data': data, 'status':200})
+    
+    # else:
+    #     form = CommentPhotoForm()
+    # context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
+    # return render(request, 'photo_comment_form.html', context)
 
 @login_required
 def edit_comment(request, pk, comment_pk):
