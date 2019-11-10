@@ -77,13 +77,13 @@ def profile_create(request):
     if request.method == 'POST':
         avatar = request.POST['avatar']
         userstory = request.POST['userstory']
-        if Profile.objects.filter(user=request.user).exists():
-            profile = Profile.objects.update(
-            avatar = avatar,
-            userstory = userstory,
-            user = request.user)
+        try: 
+            profile = Profile.objects.get(user=request.user)
+            profile.avatar = avatar
+            profile.userstory = userstory
+            profile.save()
             return redirect('profile')
-        else:
+        except Profile.DoesNotExist:
             profile = Profile.objects.create(
             avatar = avatar,
             userstory = userstory,

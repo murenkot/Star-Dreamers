@@ -7,7 +7,8 @@
       <form id='profile' action="{% url 'profile_create'%}" method="post">
         {% csrf_token %}
         <div class='container-wrap centered flex-col'>
-          <div class='box-content width-400'>
+
+          <div class='box-content'>
               <p class='close-form'>Close</p>
             <div class='message-box flex'>
               <div class='flex-col f-a-center'>
@@ -15,11 +16,11 @@
                   <p>Admin</p>
               </div>
               <div class='flex-col f-j-content'>
-                  <p>Welcome To Star Dreamer<br>Select your Avatar</p>
+                  <p>Your can select your Avatar and <br>and tell your story</p>
                   <p class='click-here align-right'>Click here</p>
               </div>
-
             </div>
+
           </div>
           <div class='box-middle righted'>
             <div class='message-box bg-white'>
@@ -78,42 +79,48 @@
       </form>
     </div>
 
-   <div class='flex'>
+   <div class='main-area-secssion'>
       <section class='user-section'>
         <div class='picture-profile'>
             <img class="image-profile" src="{{ profile.avatar }}">
-            <p class='introduce-form'>Update</p>
+            <p class='create-user-profile'>Create Profile</p>
         </div>
-
-        <p>{{ user.first_name }} {{ user.last_name }}</p>
-        <p>Email : {{ user.email }}</p><br>
-        <p>Your story : </br>{{ profile.userstory }}</p>
+        <div class='profile-detail-section'>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>Email : {{ user.email }}</p><br>
+            <div>Your story : <br><br>{{ profile.userstory }}</div>
+        </div>
       </section>
 
-      <section class='user-post-section col flex'>
+      <section class='user-post-section'>
         <div>
-          <h3>Post Story</h3>
+          <h3>Your Poem Story</h3>
+
           {% for post in posts%}
-          <div class='post-user-container'>
-              <div>
-                  <img class='post-img-user mybtn'src="{{ post.photo.url }} ">
-                  <div class="modal">
-                    <div class='centered animated-box'>
-                        <div class="modal-content" style="background-image:url({{ post.photo.url }})";">
-                            <div class="photo-title">{{ post.photo.title }}</div>
-                        </div>  
-                    </div>
+          <fieldset>
+              <legend class='profile-message-area'>
+                  <div class='col'>Title: 
+                    <span class='span-green'>{{ post.title }}</span>
+                  </div> 
+                  <div class=legend2>
+                      <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
+                      <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+                  </div>
+              </legend>
+                
+              <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";"></div>
+              <div class="modal">
+                  <div class='centered animated-box'>
+                      <div class="modal-content" style="background-image:url({{ post.photo.url }})";">
+                          <div class="photo-title">{{ post.photo.title }}</div>
+                      </div>  
                   </div>
               </div>
+            
               <div class='post-user-info col'>
-                  <div class='post-title col'><span class='span-green'>{{ post.title }}</span> / <span class='span-yellow'>Written by {{ author }}</span> </div> 
                   <div class='post-body col'>Poem : {{ post.body }}</div>
-                  <div class='profile-button'>
-                    <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
-                    <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
-                  </div>
               </div>
-          </div>
+          </fieldset>
           {% endfor %}
         </div>
       </section>
@@ -130,7 +137,7 @@
       $('.modal').css('display', 'none')
     })
 
-    $('.introduce-form').on('click', function () {
+    $('.create-user-profile').on('click', function () {
       $('.introducing').css('display', 'block')
     })
     $('.click-here').on('click', function () {
