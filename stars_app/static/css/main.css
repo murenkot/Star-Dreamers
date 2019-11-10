@@ -139,17 +139,4 @@ nav {
 
 
 
-@media only screen and (max-width: 800px) {
-  body {
-    width: 100%;
-    padding: 10px;
-    font-size: 13px;
-  }
-  .main-area-secssion {
-    flex-direction: column;
-  }
 
-  .profile-message-area {
-    flex-direction: column;
-  }
-}

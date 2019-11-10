@@ -6,24 +6,16 @@
     <div class='introducing'>
       <form id='profile' action="{% url 'profile_create'%}" method="post">
         {% csrf_token %}
-        <div class='container-wrap centered flex-col'>
+        <div class='box-form-profile'>
 
-          <div class='box-content'>
+          <div class='boxt-first box-content'>
               <p class='close-form'>Close</p>
-            <div class='message-box flex'>
-              <div class='flex-col f-a-center'>
-                  <img class='admin-welcome-image margin' src="https://cdn4.iconfinder.com/data/icons/girl-emotions/512/1-08-512.png">
-                  <p>Admin</p>
-              </div>
-              <div class='flex-col f-j-content'>
-                  <p>Your can select your Avatar and <br>and tell your story</p>
-                  <p class='click-here align-right'>Click here</p>
-              </div>
-            </div>
-
+              <p>Your can select your Avatar and <br>and tell your story</p>
+              <p class='click-here align-right'>Click here</p>
           </div>
-          <div class='box-middle righted'>
-            <div class='message-box bg-white'>
+
+          <div class='box-middle'>
+            <div class='message-box'>
               <div class="flex-container f-j-content">
                   <div class="image-option">
                       <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="1">
@@ -64,18 +56,16 @@
                 </div>
             </div>
           </div>
-          <div class='box-last box-content width-500'>
-            <div class='message-box'>
-                  <div class='margin-top'>Tell us about your story or how you feel today</div>
-                  <div class='flex'>
-                    <textarea class='col' name="userstory" rows="4" required></textarea>
-                  </div>
-                  <div class="userstory-button">
-                      <input class='add' type="submit" value="Add">
-                  </div>
-            </div>
+
+          <div class='box-last'>
+            <p>Tell us about your story or how you feel today</p>
+            <textarea class='col' name="userstory" rows="4" required></textarea>
+            <input class='add' type="submit" value="Save your profile">
           </div>
+
         </div>
+
+
       </form>
     </div>
 
@@ -144,20 +134,19 @@
       $('.box-middle').css('display', 'block')
     })
 
-    $(".box-middle").on('click', 'img', function () {
-      $('.box-last').css('display', 'block')
-    })
+    // $(".box-middle").on('click', 'img', function () {
+    //   $('.box-last').css('display', 'block')
+    // })
 
     $('.add').on('click', function () {
       $('.introducing').css('display', 'none')
       $('.box-middle').css('display', 'none')
-      $('.box-last').css('display', 'none')
+      // $('.box-last').css('display', 'none')
     })
 
     $('.close-form').on('click', function () {
       $('.introducing').css('display', 'none')
       $('.box-middle').css('display', 'none')
-      $('.box-last').css('display', 'none')
     })
 
 </script>
