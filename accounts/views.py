@@ -65,39 +65,28 @@ def logout(request):
 @login_required(login_url='/login/')
 def profile(request):
     posts = Post.objects.filter(user=request.user)
-    profile = Profile.objects.get(user=request.user)
-    context = {"posts": posts, "profile": profile }
-    return render(request, 'profile.html', context)
-
+    try: 
+        profile = Profile.objects.get(user=request.user)
+        context = { "posts": posts, "profile": profile }
+        return render(request, 'profile.html', context)
+    except Profile.DoesNotExist:
+        context = { "posts": posts }
+        return render(request, 'profile.html', context)
 
 def profile_create(request):
-    user = request.user.pk
-    find_profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         avatar = request.POST['avatar']
         userstory = request.POST['userstory']
-        new_post_profile = Profile.objects.create(
+        if Profile.objects.filter(user=request.user).exists():
+            profile = Profile.objects.update(
             avatar = avatar,
             userstory = userstory,
             user = request.user)
-        new_post_profile.save()
-        return redirect('profile')
-
-# def profile_create(request):
-#     user = request.user.pk
-#     find_profile = Profile.objects.get(user=request.user).exists()
-#     if request.method == 'POST':
-#         avatar = request.POST['avatar']
-#         userstory = request.POST['userstory']
-#         if find_profile:
-#             new_post_profile = Profile.objects.update(
-#                 avatar = avatar,
-#                 userstory = userstory)
-#             return redirect('profile')
-#         else:
-#             new_post_profile = Profile.objects.create(
-#                 avatar = avatar,
-#                 userstory = userstory,
-#                 user = request.user)
-#             new_post_profile.save()
-#             return redirect('profile')
+            return redirect('profile')
+        else:
+            profile = Profile.objects.create(
+            avatar = avatar,
+            userstory = userstory,
+            user = request.user)
+            profile.save()
+            return redirect('profile')
