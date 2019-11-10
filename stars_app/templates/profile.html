@@ -80,8 +80,11 @@
 
    <div class='flex'>
       <section class='user-section'>
-        <img class="image-profile" src="{{ profile.avatar }}">
-        <p class='introduce-form'>Click here</p>
+        <div class='picture-profile'>
+            <img class="image-profile" src="{{ profile.avatar }}">
+            <p class='introduce-form'>Update</p>
+        </div>
+
         <p>{{ user.first_name }} {{ user.last_name }}</p>
         <p>Email : {{ user.email }}</p><br>
         <p>Your story : </br>{{ profile.userstory }}</p>
@@ -96,18 +99,18 @@
                   <img class='post-img-user mybtn'src="{{ post.photo.url }} ">
                   <div class="modal">
                     <div class='centered animated-box'>
-                        <div class="modal-content" style="background-image:url({{ post.photo.url }})"">
+                        <div class="modal-content" style="background-image:url({{ post.photo.url }})";">
                             <div class="photo-title">{{ post.photo.title }}</div>
                         </div>  
                     </div>
                   </div>
               </div>
               <div class='post-user-info col'>
-                  <div class='post-title col'>Written by {{ author }} / {{ post.title }}  </div> 
+                  <div class='post-title col'><span class='span-green'>{{ post.title }}</span> / <span class='span-yellow'>Written by {{ author }}</span> </div> 
                   <div class='post-body col'>Poem : {{ post.body }}</div>
                   <div class='profile-button'>
-                    <a href="{% url 'post_edit' pk=post.pk %}">Update</a>
-                    <a href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+                    <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
+                    <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
                   </div>
               </div>
           </div>
