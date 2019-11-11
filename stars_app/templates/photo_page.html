@@ -70,53 +70,21 @@
 
 <!-- JS -->
 <script type="text/javascript">
-    const onSuccess = (response)=>{
-        console.log(response.data);
-        $('.total-likes').text(response.data.likes);
-    }
-        
+     
+    //  Add Like
     $(function () {
         $('.toggle-icon').on('click', function () {
+            console.log('api/v1/photo/{{photo.pk}}/add_like');
             $.ajax({
                 method: "POST",
                 url: 'api/v1/photo/{{photo.pk}}/add_like',
-                success: onSuccess,
+                success: addLike,
                 error: onError,
             })
         });
     });
     
-    // Listen to LIKE button
-    $('.toggle-icon').click(function(){
-      $(this).toggleClass('-checked');
-    });
-    
-    // Listen to ADD COMMENT button:
-    // $('#add-comment').on('click', ()=>{
-    //     console.log("add-comment");
-    //     $('.add-comment').toggleClass('hidden');
-    // })
-    
-    // Listen to SAVE button
-    // const addComment = (response) => {
-    //     $('.new-comment-body').val('');
-    //     $('.add-comment').toggleClass('hidden');
-    //     template = `
-    //     <div class="comment-frame">
-    //         <p class="comment">
-    //             <p id="username">${response.data.username}: </p>
-    //             <p>${response.data.body}</p>
-    //             <div>
-    //                 <div class="flex-right">
-    //                 </div>
-    //             </div>
-    //         </p>
-    //     </div>
-    //     `
-    //     $('#comments').append(template);
-
-    // }
-    
+    //  Add Comment 
     $('#save-comment').on('click', ()=>{    
         let comment = $('.new-comment-body').val();
         if (comment.length > 0) {
@@ -127,7 +95,6 @@
                 error: onError,
             })
         }
-
     })
         
     </script>

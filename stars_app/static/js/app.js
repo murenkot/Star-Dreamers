@@ -1,33 +1,6 @@
 
-
-// const onSuccess = (response)=>{
-//     console.log(response.data);
-//     $('.total-likes').text(response.data.likes);
-// }
-
-
-// $(function () {
-//     $('.toggle-icon').on('click', function () {
-//         $.ajax({
-//             method: "POST",
-//             url: 'api/v1/photo/{{photo.pk}}/add_like',
-//             success: onSuccess,
-//             error: onError,
-//         })
-//     });
-// });
-
-// // Listen to Like button
-// $('.toggle-icon').click(function(){
-//   $(this).toggleClass('-checked');
-// });
-
-
-
-
-
-  // Listen to ADD COMMENT button:
-  $('#add-comment').on('click', ()=>{
+// Listen to ADD COMMENT button:
+$('#add-comment').on('click', ()=>{
     console.log("add-comment");
     $('.add-comment').toggleClass('hidden');
 })
@@ -55,3 +28,29 @@ const addComment = (response) => {
     `
     $('#comments').append(template);
 }
+
+const addLike = (response)=>{
+    console.log(response.data);
+    $('.total-likes').text(response.data.likes);
+}
+
+// Listen to LIKE button
+$('.toggle-icon').click(function(){
+    $(this).toggleClass('-checked');
+  });
+
+
+
+
+
+// Listen to LIKE button on the main page
+// $('.toggle-icon').on('click', (event) => {
+//     let photo_pk = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute("val");
+//     console.log(`api/v1/photo/${photo_pk}/add_like`);                               
+//     $.ajax({
+//         method: "POST",
+//         url: `api/v1/photo/${photo_pk}/add_like`,
+//         success: addLike,
+//         error: onError,
+//     })
+// });

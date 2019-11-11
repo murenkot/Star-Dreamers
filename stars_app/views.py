@@ -49,7 +49,17 @@ def main_page(request):
 
     # get 20 last photos from DB:
     last_20 = Photo.objects.all().order_by('-id')[:20]
-    context = {'photos':last_20}
+    likes_list = []
+    for photo in last_20:
+        like = LikePhoto.objects.filter(photo=photo, user=request.user)
+        if len(like)>0:
+            checked = "-checked"
+            likes_list.append(checked)
+        else:
+            checked = " "
+            likes_list.append(checked)
+    zipped_list = list(zip(last_20, likes_list))
+    context = {'photos':last_20, "checked": likes_list, 'zipped_list': zipped_list}
     return render(request, 'main_page.html', context)
 
 def photo_details(request, pk):
@@ -191,6 +201,7 @@ def delete_comment_post(request, pk, comment_pk):
 
 @csrf_exempt
 def add_like(request, pk):
+    print("adding likes")
     user = request.user
     photo = Photo.objects.get(id=pk)
     user_likes = LikePhoto.objects.filter(photo=photo, user=user)
@@ -203,4 +214,8 @@ def add_like(request, pk):
     context = {"likes":likes}
     print(context)
     return JsonResponse({'data':context, "status":200})
+
+
+
+
 
