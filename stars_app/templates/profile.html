@@ -2,64 +2,65 @@
 
 {% block content %}
 
-<main>
-    <div class='introducing'>
-      <form id='profile' action="{% url 'profile_create'%}" method="post">
-        {% csrf_token %}
-        <div class='box-form-profile'>
 
-          <div class='boxt-first box-content'>
-              <p class='close-form'>Close X</p>
-              <p>Your can select your Avatar and <br>and give a short story on your profile</p>
-              <p class='click-here'>Select or Change your icon</p>
-          </div>
-          <div class='box-middle'>
-            <div class='message-box'>
-              <div class="flex-container f-j-content">
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="1">
-                      <label for="1"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="2">
-                      <label for="2"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="3">
-                      <label for="3"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="4">
-                      <label for="4"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="5">
-                      <label for="5"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="6">
-                      <label for="6"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="7">
-                      <label for="7"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                  </div>
-                  <div class="image-option">
-                      <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="8">
-                      <label for="8"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                  </div>
+  <div class='introducing'>
+    <form id='profile' action="{% url 'profile_create'%}" method="post">
+      {% csrf_token %}
+      <div class='box-form-profile'>
+
+        <div class='boxt-first box-content'>
+            <p class='close-form'>Close X</p>
+            <p>Your can select your Avatar and <br>and give a short story on your profile</p>
+            <p class='click-here'>Select or Change your icon</p>
+        </div>
+        <div class='box-middle'>
+          <div class='message-box'>
+            <div class="flex-container f-j-content">
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="1" checked="checked">
+                    <label for="1"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
                 </div>
-            </div>
-          </div>
-          <div class='box-last'>
-            <p>Tell us about your story or how you feel today</p>
-            <textarea class='col' name="userstory" rows="4" required></textarea>
-            <input class='add' type="submit" value="Save your profile">
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="2">
+                    <label for="2"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="3">
+                    <label for="3"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="4">
+                    <label for="4"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="5">
+                    <label for="5"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="6">
+                    <label for="6"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="7">
+                    <label for="7"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="8">
+                    <label for="8"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                </div>
+              </div>
           </div>
         </div>
-      </form>
-    </div>
+        <div class='box-last'>
+          <p>Tell us about your story or how you feel today</p>
+          <textarea class='col' name="userstory" rows="4" required></textarea>
+          <input class='add' type="submit" value="Save your profile">
+        </div>
+      </div>
+    </form>
+  </div>
 
+<main>
    <div class='main-area-secssion'>
       <section class='user-section'>
         <div class='picture-profile'>
@@ -99,7 +100,7 @@
               </div>
             
               <div class='post-user-info col'>
-                  <div class='post-body col'>Poem : {{ post.body }}</div>
+                  <div class='post-body col'><span class='span-text'>Your writing : </span>{{ post.body }}</div>
               </div>
           </fieldset>
           {% endfor %}
@@ -109,6 +110,9 @@
 </main>
 
 <script defer>
+
+
+  // # controller # //
     $('main').on('click', '.mybtn', function (event) {
       event.target.nextElementSibling.style.display = 'block'
     })
@@ -127,7 +131,6 @@
     $('.add').on('click', function () {
       $('.introducing').css('display', 'none')
       $('.box-middle').css('display', 'none')
-      // $('.box-last').css('display', 'none')
     })
 
     $('.close-form').on('click', function () {

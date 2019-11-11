@@ -12,11 +12,11 @@
   <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <title>Up To The Stars</title>
 </head>
+
 <body>
   <nav>
     <div>
-        <h1><a href="{% url 'main_page' %}">Star Dreamers</a></h1>
-        <p>Welcome : {{user.username}} </p>
+        <h1><a class='logo' href="{% url 'main_page' %}">Star Dreamers</a></h1>
     </div>
     <div class='menu'>
         <a href="{% url 'main_page' %}">Home</a>
@@ -26,8 +26,6 @@
         {% else %}
         <a href="{% url 'login' %}">Sign In</a>
         {% endif %}
-
-        
     </div>
   </nav>
   

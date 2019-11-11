@@ -21,37 +21,36 @@ body {
     letter-spacing: 0.01em;
     overflow: auto;
 }
-a {
-  color: black;
-}
 
 h1 a {
   font-size: 55px;
   letter-spacing: 0.09em;
   font-family: 'Dancing Script', cursive;
   font-weight: 600;
-  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+  color: gray;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(157, 157, 168);
 }
 
 nav {
   display: flex;
   position: relative;
-  padding: 20px 0;
+  padding: 20px;
   border-bottom: 1px solid black;
+  background: radial-gradient(circle at 100%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 50%, #eee 75%, rgba(51, 51, 51, 0.404) 75%);
 }
 
 .menu {
   position: absolute;
-  right: 0px;
+  right: 20px;
   bottom: 10px;
-
 }
 
 .menu a {
   margin-left: 10px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
-  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+  color: rgb(167, 161, 161);
+  text-shadow: 1px 2px 1px #000, 3px 3px 5px rgb(232, 232, 240);
 }
 
 /* ******************************************************************* */

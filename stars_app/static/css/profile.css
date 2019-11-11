@@ -1,5 +1,6 @@
 .main-area-secssion {
   display: flex;
+  flex-direction: row 
 }
 
 h3 {
@@ -127,9 +128,7 @@ h3 {
 
 /* ===== Profile user information area ======== */
 .user-section {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-grow: 1;
   padding: 0 10px;
   font-weight: 400;
   color: #e0ecec;
@@ -137,7 +136,7 @@ h3 {
 }
 
 .user-post-section {
-  flex-grow: 1;
+  flex-grow: 2;
   margin-top: 20px;
   padding: 0 10px;
 }
@@ -280,7 +279,11 @@ fieldset {
   font-size: 16px;
 }
 
-
+.span-text {
+  color: rgb(41, 164, 180);
+  font-weight: 500;
+  font-size: 16px;
+}
 
 /* ======== Animation Message ======= */
 
@@ -313,9 +316,6 @@ fieldset {
   margin: 10px;
 }
 
-/* .align-right {
-  text-align: right;
-} */
 
 /* ========= Box and Form Animation =========== */
 .modal, .introducing {
@@ -330,7 +330,6 @@ fieldset {
   height: 100%;
   overflow: auto;
   transition: .4s linear;
-  /* background-color: rgba(143, 97, 97, 0.555); */
   background: radial-gradient(circle at 100%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 50%, #eee 75%, rgba(51, 51, 51, 0.404) 75%);
   animation-name: fadeInLeft;
   animation-duration: 0.9s
