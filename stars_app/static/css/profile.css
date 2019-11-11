@@ -28,7 +28,6 @@ html {
   text-decoration: none;
 }
 
-
 body {
     width: 70%;
     margin: 0 auto;
@@ -36,6 +35,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.01em;
     overflow: auto;
+    color: #6b7b87;
 }
 
 h1 a {
@@ -212,8 +212,8 @@ h3 {
   position: relative;
   flex-basis: 31%;
   margin-bottom: 40px;
-  border: 2px solid white;
-  border-radius: 10px;
+  border: 2px solid gray;
+  border-radius: 3px;
   height: 600px;
 }
 
@@ -270,8 +270,8 @@ h3 {
   flex-basis: 31%;
   display: flex;
   margin-bottom: 40px;
-  border: 2px solid white;
-  border-radius: 10px;
+  border: 2px solid gray;
+  border-radius: 3px;
 }
 
 .span-title {
@@ -369,9 +369,10 @@ h3 {
   right: 20px;
   top: 150px;
   width: 60%;
+  height: 80%;
   color: white;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 3px;
   overflow: auto;
   background-color: rgba(36, 33, 33, 0.561);
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.507);
