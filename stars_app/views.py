@@ -44,36 +44,67 @@ def main_page(request):
         # at first check if day photo is not in DB
         date_record = Photo.objects.filter(date = photo['date']).exists()
         if date_record == False:
-            new_photo = Photo(date=photo['date'], explanation = photo['explanation'], title = photo['title'], url = photo['url'])
+            new_photo = Photo(date=photo['date'], explanation = photo['explanation'], title = photo['title'], url = photo['hdurl'])
             new_photo.save()
 
     # get 20 last photos from DB:
     last_20 = Photo.objects.all().order_by('-id')[:20]
-    context = {'photos':last_20}
+    likes_list = []
+    for photo in last_20:
+        like = LikePhoto.objects.filter(photo=photo, user=request.user)
+        if len(like)>0:
+            checked = "-checked"
+            likes_list.append(checked)
+        else:
+            checked = " "
+            likes_list.append(checked)
+    zipped_list = list(zip(last_20, likes_list))
+    context = {'photos':last_20, "checked": likes_list, 'zipped_list': zipped_list}
     return render(request, 'main_page.html', context)
 
 def photo_details(request, pk):
     photo = Photo.objects.get(id=pk)
     likes = count_photo_likes(pk)
     comments = len(CommentPhoto.objects.filter(photo = photo))
-    context = {"photo":photo, "likes":likes, "comments":comments}
+    like = LikePhoto.objects.filter(photo=photo, user=request.user)
+    if len(like)>0:
+        checked = "-checked"
+    else:
+        checked = " "
+    context = {"photo":photo, "likes":likes, "comments":comments, "checked":checked}
     return render(request, 'photo_page.html', context)
 
+# @login_required
+# def add_comment(request, pk):
+#     photo = Photo.objects.get(id=pk)
+#     if request.method == 'POST':
+#         form = CommentPhotoForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.user = request.user
+#             comment.photo = photo
+#             comment.save()
+#             return redirect('photo_details', pk=comment.photo.pk)
+#     else:
+#         form = CommentPhotoForm()
+#     context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
+#     return render(request, 'photo_comment_form.html', context)
 @login_required
-def add_comment(request, pk):
+@csrf_exempt
+def add_comment(request, pk, comment):
+    print("adding comment")
     photo = Photo.objects.get(id=pk)
     if request.method == 'POST':
-        form = CommentPhotoForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.photo = photo
-            comment.save()
-            return redirect('photo_details', pk=comment.photo.pk)
-    else:
-        form = CommentPhotoForm()
-    context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
-    return render(request, 'photo_comment_form.html', context)
+        new_comment = CommentPhoto(user=request.user, body=comment, photo=photo)
+        new_comment.save()
+        print(new_comment.pk)
+        data = {"username": request.user.username, "body": comment, 'photo_pk':photo.pk,  "comment_pk": new_comment.pk}
+        return JsonResponse({'data': data, 'status':200})
+    
+    # else:
+    #     form = CommentPhotoForm()
+    # context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
+    # return render(request, 'photo_comment_form.html', context)
 
 @login_required
 def edit_comment(request, pk, comment_pk):
@@ -170,6 +201,7 @@ def delete_comment_post(request, pk, comment_pk):
 
 @csrf_exempt
 def add_like(request, pk):
+    print("adding likes")
     user = request.user
     photo = Photo.objects.get(id=pk)
     user_likes = LikePhoto.objects.filter(photo=photo, user=user)
@@ -182,4 +214,8 @@ def add_like(request, pk):
     context = {"likes":likes}
     print(context)
     return JsonResponse({'data':context, "status":200})
+
+
+
+
 
