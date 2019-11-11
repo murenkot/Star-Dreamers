@@ -286,7 +286,7 @@ h3 {
   transform: scale(1.01);
   transition: .4s linear;
   opacity: 1;
-  border: 2 solid rgb(228, 5, 61);
+  box-shadow: 10px 5px 5px rgb(206, 175, 175);
 }
 
 .poem-detail {
