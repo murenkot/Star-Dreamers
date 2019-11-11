@@ -2,6 +2,13 @@
   display: flex;
 }
 
+h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  color: rgb(241, 219, 21);
+  padding: 10px;
+  margin-bottom: 20px;
+}
 
 /* ===================== Post Profile Form  ===================== */
 
@@ -17,15 +24,18 @@
 #profile textarea {
   margin: 10px 0;
   padding: 10px;
-  /* font-size: 16px; */
+  font-size: 16px;
   font-weight: 400;
   width: 100%;
   border-radius: 10px;
+  color: rgb(75, 70, 71);
 }
 
 #profile img {
-  width: 80px;
+  width: 70px;
   border-radius: 50%;
+  margin: 5px;
+  border: 2px solid whitesmoke;
   cursor: pointer;
 }
 
@@ -36,21 +46,33 @@
 
 .boxt-first {
   position: relative;
-  padding: 10px 10px 20px 10px;
+  padding: 20px 20px 30px 10px;
   border-radius: 10px 10px 0 0;
-  background: rgba(224, 219, 220, 0.822);
+  background: rgb(75, 70, 71);
+  transition: .4s linear;
+  color: whitesmoke;
 }
 
 .box-middle {
+  padding: 10px;
   display: none;
-  background: whitesmoke;
+  background-color: rosybrown;
+  transition: .4s linear;
+  transition: height 3s;
+  animation-name: fadeInDown;
+  animation-duration: 0.4s
 }
 
 .box-last {
   position: relative;
   padding: 10px;
   border-radius: 0 0 10px 10px;
-  background: rgba(224, 219, 220, 0.822);
+  background: rgba(224, 219, 220);
+  transition: .4s linear;
+}
+
+.box-last p {
+  color: rgb(75, 70, 71);
 }
 
 .click-here {
@@ -58,9 +80,14 @@
   bottom: 0px;
   right: 10px;
   padding-bottom: 10px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
+  color: rgb(227, 252, 227);
   cursor: pointer;
+}
+
+.click-here:hover {
+  color: rgb(77, 112, 156);
 }
 
 .close-form {
@@ -74,24 +101,35 @@
   cursor: pointer;
 }
 
+.close-form:hover {
+  color: royalblue;
+}
+
 .add {
   position: absolute;
-  bottom: -40px;
-  right: 5px;
+  bottom: -50px;
+  right: -10px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   margin: 10px;
   color: whitesmoke;
-  background: none;
+  background: rosybrown;
+  padding: 5px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
 }
 
+.add:hover {
+  background-color: whitesmoke;
+  color: rosybrown;
+}
+
 /* ===== Profile user information area ======== */
 .user-section {
-  flex-basis: 200px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 0 10px;
   font-weight: 400;
   color: #e0ecec;
@@ -111,27 +149,38 @@
 
 .picture-profile {
   position: relative;
-  margin-left: 10px;
-  margin-bottom: 20px;
+  margin: 10px 10px 20px 10px;
 }
 
 .profile-detail-section {
   margin-top: 20px;
+  font-size: 14px;
 }
 
 .image-profile {
   width: 130px;
   margin: 20px 0 0 0;
   border: 1px solid white;
+  border-radius: 10px;
 }
 /* ==Button */
 .create-user-profile {
   position: absolute;
-  bottom: -40px;
-  left: 15px;
+  bottom: -35px;
+  left: 9px;
   margin-bottom: 20px;
   font-weight: 800;
+  font-size: 14px;
+  padding: 5px;
+  color: whitesmoke;
+  background-color: green;
+  border-radius: 10px;
   cursor: pointer;
+}
+
+.create-user-profile:hover {
+  color: green;
+  background-color: whitesmoke;
 }
 
 /* ========== Profile Post Area ========== */
@@ -155,11 +204,9 @@ fieldset {
 }
 
 .profile-message-area a {
-  font-size: 14;
   font-weight: 800;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: white;
 }
 
 .post-body {
@@ -169,11 +216,25 @@ fieldset {
 
 /* ==Button */
 .update {
-  color: rgb(35, 145, 112);
+  color: whitesmoke;
+  font-size: 14;
+  background-color: green;
 }
 
 .delete {
-  color: rgb(167, 95, 95);
+  color: whitesmoke;
+  font-size: 14;
+  background-color: red;
+}
+
+.update:hover {
+  color: green;
+  background-color: whitesmoke;
+}
+
+.delete:hover {
+  color: red;
+  background-color: whitesmoke;
 }
 
 .post-user-info {
@@ -183,6 +244,7 @@ fieldset {
 }
 
 .post-img-user {
+  border-radius: 10px;
   background-position: center;
   background-size: auto, cover;
   opacity: 0.7;
@@ -200,12 +262,23 @@ fieldset {
 }
 
 .span-green {
-  color: #3f5799;
+  color: #7795db;
   font-weight: 800;
+  padding: 0 10px 0 0;
 }
 
+.span-yellow {
+  padding: 0 10px;
+  color: rgb(66, 136, 48);
+  font-weight: 800;
+  font-size: 17px;
+}
 
-/* ======= Set up ======== */
+.span-gray {
+  color: rgb(226, 202, 202);
+  font-weight: 500;
+  font-size: 16px;
+}
 
 
 
@@ -240,18 +313,9 @@ fieldset {
   margin: 10px;
 }
 
-.align-right {
+/* .align-right {
   text-align: right;
-}
-
-.width-400 {
-  width: 450px;
-}
-
-.width-500 {
-  width: 550px;
-}
-
+} */
 
 /* ========= Box and Form Animation =========== */
 .modal, .introducing {
@@ -340,6 +404,17 @@ fieldset {
   }
 }
 
+@keyframes fadeInDown {
+  0% {
+     opacity: 0;
+     transform: translateY(-20px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -351,7 +426,6 @@ fieldset {
     transform: none;
   }
 }
-
 
 @keyframes spin {
     from {
