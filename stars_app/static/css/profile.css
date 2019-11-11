@@ -1,0 +1,468 @@
+.main-area-secssion {
+  display: flex;
+  flex-direction: row 
+}
+
+h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  color: rgb(241, 219, 21);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* ===================== Post Profile Form  ===================== */
+
+.box-form-profile {
+  width: 40%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#profile textarea {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  border-radius: 10px;
+  color: rgb(75, 70, 71);
+}
+
+#profile img {
+  width: 70px;
+  border-radius: 50%;
+  margin: 5px;
+  border: 2px solid whitesmoke;
+  cursor: pointer;
+}
+
+#profile label img:hover {
+  filter: brightness(30%);
+  transform: scale(1.01);
+}
+
+.boxt-first {
+  position: relative;
+  padding: 20px 20px 30px 10px;
+  border-radius: 10px 10px 0 0;
+  background: rgb(75, 70, 71);
+  transition: .4s linear;
+  color: whitesmoke;
+}
+
+.box-middle {
+  padding: 10px;
+  display: none;
+  background-color: rosybrown;
+  transition: .4s linear;
+  transition: height 3s;
+  animation-name: fadeInDown;
+  animation-duration: 0.4s
+}
+
+.box-last {
+  position: relative;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  background: rgba(224, 219, 220);
+  transition: .4s linear;
+}
+
+.box-last p {
+  color: rgb(75, 70, 71);
+}
+
+.click-here {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(227, 252, 227);
+  cursor: pointer;
+}
+
+.click-here:hover {
+  color: rgb(77, 112, 156);
+}
+
+.close-form {
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134);
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.close-form:hover {
+  color: royalblue;
+}
+
+.add {
+  position: absolute;
+  bottom: -50px;
+  right: -10px;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px;
+  color: whitesmoke;
+  background: rosybrown;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.add:hover {
+  background-color: whitesmoke;
+  color: rosybrown;
+}
+
+/* ===== Profile user information area ======== */
+.user-section {
+  flex-basis: 20%;
+  padding: 0 10px;
+  font-weight: 400;
+  color: #e0ecec;
+  margin-top: 20px;
+}
+
+.user-post-section {
+  flex: 2;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: auto;
+}
+
+.picture-profile {
+  position: relative;
+  margin: 10px 10px 20px 10px;
+}
+
+.profile-detail-section {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.image-profile {
+  width: 130px;
+  margin: 20px 0 0 0;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+/* ==Button */
+.create-user-profile {
+  position: absolute;
+  bottom: -35px;
+  left: 9px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 5px;
+  color: whitesmoke;
+  background-color: green;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.create-user-profile:hover {
+  color: green;
+  background-color: whitesmoke;
+}
+
+/* ========== Profile Post Area ========== */
+
+fieldset {
+  position: relative; 
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.legend2 { 
+  position: absolute; 
+  top: -3px; 
+  right: 30px; 
+  
+}
+
+.profile-message-area {
+  margin: 10px 0;
+}
+
+.profile-message-area a {
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.post-body {
+  padding: 10px 0;
+  line-height: 150%;
+}
+
+/* ==Button */
+.update {
+  color: whitesmoke;
+  font-size: 14;
+  background-color: green;
+}
+
+.delete {
+  color: whitesmoke;
+  font-size: 14;
+  background-color: red;
+}
+
+.update:hover {
+  color: green;
+  background-color: whitesmoke;
+}
+
+.delete:hover {
+  color: red;
+  background-color: whitesmoke;
+}
+
+.post-user-info {
+  display: flex;
+  flex-direction: column;
+  color: #e0ecec;
+}
+
+.post-img-user {
+  border-radius: 10px;
+  background-position: center;
+  background-size: auto, cover;
+  opacity: 0.7;
+  width: 100%;
+  height: 100px;
+  cursor: pointer;
+}
+
+.post-img-user:hover {
+  filter: brightness(120%);
+  transform: scale(1.01);
+  transition: .4s linear;
+  opacity: 1;
+  border: 2 solid pink;
+}
+
+.span-green {
+  color: #7795db;
+  font-weight: 800;
+  padding: 0 10px 0 0;
+}
+
+.span-yellow {
+  padding: 0 10px;
+  color: rgb(66, 136, 48);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.span-gray {
+  color: rgb(226, 202, 202);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.span-text {
+  color: rgb(41, 164, 180);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* ======== Animation Message ======= */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col {
+  flex: 1;
+}
+
+.f-a-center {
+  align-items: center;
+}
+
+.f-j-content {
+  justify-content: center;
+}
+
+.margin-top {
+  margin: 10px 15px 0;
+}
+
+.margin {
+  margin: 10px;
+}
+
+
+/* ========= Box and Form Animation =========== */
+.modal, .introducing {
+  position: relative;
+  transition: .3s linear;
+  display: none; 
+  position: fixed; 
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  transition: .4s linear;
+  background: radial-gradient(circle at 100%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 50%, #eee 75%, rgba(51, 51, 51, 0.404) 75%);
+  animation-name: fadeInLeft;
+  animation-duration: 0.9s
+}
+
+.modal-content {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 240, 0.637);
+  width: 40%;
+  height: 80%;
+  top: 10%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  animation-name: spin;
+  animation-duration: 200000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+/* ========= Animation =========== */
+.animated-box {
+  width: 50%;
+  height: 80%;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photo-title {
+  position: absolute;
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  top: -40px;
+  left: 0;
+}
+
+@keyframes animatetop {
+  from {top: -200px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+@keyframes slideLeft {
+  from {left: -200px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+     opacity: 0;
+     transform: translateY(-20px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+/* transition: all .2s ease-in-out;
+transition: all .2s ease-in-out; */
+
+@media only screen and (max-width: 800px) {
+  body {
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    font-size: 13px;
+  } 
+  
+  .box-form-profile {
+    width: 90%;
+    height: auto;
+  }
+
+  .modal-content {
+    width: 80%;
+    height: 50%;
+    top: 25%;
+    left: 10%;
+  }
+  
+  .main-area-secssion {
+    flex-direction: column;
+  }
+
+  .profile-message-area {
+    flex-direction: column;
+  }
+}
