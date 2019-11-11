@@ -40,17 +40,10 @@ $('.toggle-icon').click(function(){
   });
 
 
+// To make lables invisible:
+$('#new-post form p lable')[1].addClass('hidden');
+$('#new-post form p lable')[2].addClass('hidden');
+
+console.log($('#new-post form p lable'));
 
 
-
-// Listen to LIKE button on the main page
-// $('.toggle-icon').on('click', (event) => {
-//     let photo_pk = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute("val");
-//     console.log(`api/v1/photo/${photo_pk}/add_like`);                               
-//     $.ajax({
-//         method: "POST",
-//         url: `api/v1/photo/${photo_pk}/add_like`,
-//         success: addLike,
-//         error: onError,
-//     })
-// });

@@ -189,8 +189,10 @@ text-align: right;
   
 .photo-container img{
   flex-shrink: 2;
-  min-width: 1300px;
+  /* min-width: 1300px; */
+  min-width: 100vw;
 }
+
 
 .photo-container::after {
   position: absolute;

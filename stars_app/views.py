@@ -138,7 +138,7 @@ def create_post(request, pk):
         return redirect('post_details', pk=post.pk)
     else: 
         form = PostForm()
-    context = {'form': form, "post":form, "photo":photo, 'header':f"Share your thoughts"}
+    context = {'form': form, "post":form, "photo":photo, 'header':f"Share your dreams"}
     return render(request, 'post_form.html', context)
 
 def post_details(request, pk):
@@ -146,6 +146,7 @@ def post_details(request, pk):
     context = {"post":post}
     return render(request, 'post.html', context)
 
+@login_required
 def post_edit(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
@@ -158,6 +159,7 @@ def post_edit(request, pk):
     context = {'form': form, 'post':post, 'header': f"Edit your post"}
     return render(request, 'post_edit_form.html', context)
 
+@login_required
 def post_delete(request, pk):
     Post.objects.get(id=pk).delete()
     return redirect('main_page')
