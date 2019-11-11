@@ -50,6 +50,8 @@ def main_page(request):
     # get 20 last photos from DB:
     last_20 = Photo.objects.all().order_by('-id')[:20]
     likes_list = []
+
+    # @login_required
     for photo in last_20:
         like = LikePhoto.objects.filter(photo=photo, user=request.user)
         if len(like)>0:
@@ -61,6 +63,7 @@ def main_page(request):
     zipped_list = list(zip(last_20, likes_list))
     context = {'photos':last_20, "checked": likes_list, 'zipped_list': zipped_list}
     return render(request, 'main_page.html', context)
+
 
 def photo_details(request, pk):
     photo = Photo.objects.get(id=pk)
