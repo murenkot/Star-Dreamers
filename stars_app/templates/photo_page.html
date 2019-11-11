@@ -21,9 +21,9 @@
     <div class="btn" id="add-comment">
         <span><span><span>Comment</span></span></span>
     </div>
-    <div class="btn" id="got-inspired">
+    <a href="{% url 'create_post' pk=photo.pk %}" ><div class="btn" id="got-inspired">
         <span><span><span>Got Inspired!</span></span></span>
-    </div>
+    </div></a>
 </div>
    
 <!-- Comment -->
@@ -93,7 +93,7 @@
     })
     
     // Add New Post
-    
+
 
     </script>
 
