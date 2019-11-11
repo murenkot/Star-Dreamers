@@ -83,7 +83,7 @@ a {
 
 input {
     color: rgb(22, 13, 13);
-    background-color: #f0e8e9c0;
+    /* background-color: #f0e8e9c0; */
     font-size: 15px;
     font-weight: 400;
     padding: 10px;

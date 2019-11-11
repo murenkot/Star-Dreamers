@@ -1,14 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section id="photo-block">
 
-    {% for photo in photos %}
+
+    {% for photo, checked in zipped_list %}
     <section>
-        <!-- <h2>{{photo.title}}</h2>
-        <p>{{photo.date}}</p>
-        <p>{{photo.explanation}}</p> -->
-        <a href="{% url 'photo_details' pk=photo.pk %}"><img src="{{photo.url}}" alt="{{photo.title}}"></a>
+                <div class="photo-container" val="{{photo.pk}}">
+                    <img class="photo" src="{{photo.url}}" alt="{{photo.title}}">
+                    <div class="image-content">
+                        <div class="flex-right">
+                            <div class="background">
+                                <a href="{% url 'photo_details' pk=photo.pk %}">
+                                <h2>{{photo.title}}</h2>
+                                <p class="photo-explanation">{{photo.explanation}}</p>
+                                </a>
+                                <div class="stat-info">
+                                    <button class="toggle-icon {{ checked }}" title="❤ Toggle Like!"></button>
+                                    <span class="total-likes">{{ photo.photolikes_photo.all | length }}</span>
+                                    <i class="fa fa-comment-o"></i>
+                                    <span class="total-comments">{{ photo.photocomments_photo.all | length }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </section>
     {% endfor %}
 
+</section>
+
+<script>
+        $('.toggle-icon').on('click', (event) => {
+            let photo_pk = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute("val");
+            console.log(`api/v1/photo/${photo_pk}/add_like`);                               
+            $.ajax({
+                method: "POST",
+                url: `photos/api/v1/photo/${photo_pk}/add_like`,
+                success: addLike,
+                error: onError,
+            })
+        });
+    </script>    
 {% endblock %}
