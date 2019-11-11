@@ -21,15 +21,10 @@
     <div class="btn" id="add-comment">
         <span><span><span>Comment</span></span></span>
     </div>
-    <div class="btn">
+    <div class="btn" id="got-inspired">
         <span><span><span>Got Inspired!</span></span></span>
     </div>
 </div>
-
-<section>
-    <a href="{% url 'add_comment' pk=photo.pk %}">Comment</a>
-    <a href="{% url 'create_post' pk=photo.pk %}">I feel inspired</a>
-</section>
    
 <!-- Comment -->
 
@@ -41,7 +36,7 @@
             <button id="save-comment" class="small">Save</button>
         </div>
     </section>
-    <h3 id="comments">Comments</h3>
+    <p id="comments" style="font-size: 25px;">Comments</p>
     {% if photo.photocomments_photo.all %}
         {% for comment in photo.photocomments_photo.all %}
         <div class="comment-frame">
@@ -54,8 +49,8 @@
                         <a href="{% url 'edit_comment' pk=photo.pk comment_pk=comment.pk %}">Edit</a>
                         <a href="{% url 'delete_comment' pk=photo.pk comment_pk=comment.pk %}">Delete</a>
                     </div>
-                </div>
-                    {% endif %}
+                </div>  
+                    {% endif %} 
             </p>
         </div>
 
@@ -96,7 +91,10 @@
             })
         }
     })
-        
+    
+    // Add New Post
+    
+
     </script>
 
 
