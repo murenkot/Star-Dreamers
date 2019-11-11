@@ -1,3 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Inconsolata|Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+:root {
+  --page-background: rgb(20, 20, 20);
+  --h1-phont: 'Questrial', sans-serif;
+  --logo-color: #3b444b;
+  --text-color: #6b7b87;
+  --botton-active: #a2a6a6;
+  --botton-passive: #6b7b87;
+  --text-font-family: 'Montserrat', sans-serif;
+  --text-font-size: 15px;
+
+}
+
+html {
+  background-color: #202020;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+
+body {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.01em;
+    overflow: auto;
+}
+
+h1 a {
+  font-size: 55px;
+  letter-spacing: 0.09em;
+  font-family: var(--h1-phont);
+  font-weight: 600;
+  color: var(--logo-color);
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(157, 157, 168);
+}
+
+nav {
+  /* display: flex; */
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu a {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--logo-color);
+  /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134); */
+} 
+
+
+.menu span{
+  color: var(--logo-color);
+  font-size: 18px;
+
+}
+
 .main-area-secssion {
   display: flex;
   width: 100%;
@@ -286,7 +361,7 @@ h3 {
   transform: scale(1.01);
   transition: .4s linear;
   opacity: 1;
-  border: 2 solid rgb(228, 5, 61);
+  box-shadow: 10px 5px 5px rgb(206, 175, 175);
 }
 
 .poem-detail {
