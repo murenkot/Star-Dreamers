@@ -1,6 +1,34 @@
-{% extends 'base.html' %}
+{% load staticfiles %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static  'css/profile.css' %}">
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script defer src="{% static 'js/app.js' %}"></script>
+  <script src="https://kit.fontawesome.com/4634847c36.js"></script>
+  <title>Up To The Stars</title>
+</head>
+
+<body>
+  <nav>
+    <div>
+        <h1><a class='logo' href="{% url 'main_page' %}">Star Dreamers</a></h1>
+    </div>
+    <div class='menu'>
+        <span>Welcome, {{user.username}} </span>
+        <a href="{% url 'main_page' %}">Home</a>
+        <a href="{% url 'profile'%}">Profile</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Sign Out</a>
+        {% else %}
+        <a href="{% url 'login' %}">Sign In</a>
+        {% endif %}
+    </div>
+  </nav>
 
   <div class='introducing'>
     <form id='profile' action="{% url 'profile_create'%}" method="post">
@@ -16,20 +44,32 @@
           <div class='message-box'>
             <div class="flex-container f-j-content">
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="1" checked="checked">
-                    <label for="1"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked="checked">
+                    <label for="1"><img src="https://i.imgur.com/OZUN5stt.png"></label>
                 </div>
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="2">
-                    <label for="2"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/bvrB60st.png" id="2">
+                    <label for="2"><img src="https://i.imgur.com/bvrB60st.png"></label>
                 </div>
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="3">
-                    <label for="3"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OKNkYdht.png" id="3">
+                    <label for="3"><img src="https://i.imgur.com/OKNkYdht.png"></label>
                 </div>
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="4">
-                    <label for="4"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4s.png" id="4">
+                    <label for="4"><img src="https://i.imgur.com/rY6gOb4s.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/GVNJAmKt.png" id="5">
+                    <label for="5"><img src="https://i.imgur.com/GVNJAmKt.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/rY6gOb4t.png" id="6">
+                    <label for="6"><img src="https://i.imgur.com/rY6gOb4t.png"></label>
+                </div>
+                <div class="image-option">
+                    <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/GVNJAmKt.png" id="7">
+                    <label for="7"><img src="https://i.imgur.com/GVNJAmKt.png"></label>
                 </div>
             </div>
           </div>
@@ -44,54 +84,40 @@
   </div>
 
 <main>
-   <div class='main-area-secssion'>
-      <section class='user-section'>
-        <div class='picture-profile'>
-            <img class="image-profile" src="{{ profile.avatar }}" />
+    <h3>Your Story</h3>
+    <section class='user-post-section'>
+        <div class='user-section'>
             <p class='create-user-profile'>Update Profile</p>
+            <img class="image-profile" src="{{ profile.avatar }}">
+            <p class='info'>{{ user.first_name }} {{ user.last_name }}</p>
+            <p class='info'>{{ user.email }}</p>
+            <div class='profile-detail-section'>
+                <p><span class='span-gray'>Your story : </span></p><br>
+                <p>{{ profile.userstory }}</p>
+            </div>
         </div>
-        <div class='profile-detail-section'>
-            <p>{{ user.first_name }} {{ user.last_name }}</p>
-            <p>{{ user.email }}</p><br>
-            <p><span class='span-gray'>Your story : </span></p> 
-            <p>{{ profile.userstory }}</p>
-        </div>
-      </section>
-      <section class='user-post-section'>
-        <div>
-          <h3>Your Story</h3>
-          {% for post in posts%}
-          <fieldset>
-              <legend class='profile-message-area'>
-                  <div class='col'><span class='span-yellow'>Name : </span>
-                    <span class='span-green'>{{ post.title }}</span>
-                  </div> 
-                  <div class=legend2>
-                      <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
-                      <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
-                  </div>
-              </legend>
-                
-              <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";"></div>
-              <div class="modal">
-                  
-                      <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
-                      <!-- #<div class="photo-title">{{ post.photo.title }}</div> #-->
-                  
-              </div>
-            
-              <div class='post-user-info col'>
-                  <div class='post-body col'><span class='span-text'>Your writing : </span>{{ post.body }}</div>
-              </div>
-          </fieldset>
-          {% endfor %}
-        </div>
-      </section>
-   </div>
+
+        {% for post in posts%}
+        <div class='post-author-poem'>
+          <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";">
+              <p class='poem-detail'>{{ post.body }}</p>
+          </div>
+          <div class="modal">
+              <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
+                <div class='read-me-poem'>
+                    <div class="photo-title">{{ post.photo.title }}</div>
+                    <p class='poem-detail-read'>{{ post.body }}</p>
+                </div>
+          </div>
+          <p class='span-title'>{{ post.title }}</p>
+            <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
+            <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+          </div>
+        {% endfor %}
+    </section>
 </main>
 
 <script defer>
-
 
   // # controller # //
     $('main').on('click', '.mybtn', function (event) {
@@ -120,4 +146,6 @@
     })
 
 </script>
-{% endblock %}
+
+</body>
+</html>

@@ -1,12 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Inconsolata|Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+:root {
+  --page-background: rgb(20, 20, 20);
+  --h1-phont: 'Questrial', sans-serif;
+  --logo-color: #3b444b;
+  --text-color: #6b7b87;
+  --botton-active: #a2a6a6;
+  --botton-passive: #6b7b87;
+  --text-font-family: 'Montserrat', sans-serif;
+  --text-font-size: 15px;
+
+}
+
+html {
+  background-color: #202020;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+
+body {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.01em;
+    overflow: auto;
+}
+
+h1 a {
+  font-size: 55px;
+  letter-spacing: 0.09em;
+  font-family: var(--h1-phont);
+  font-weight: 600;
+  color: var(--logo-color);
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(157, 157, 168);
+}
+
+nav {
+  /* display: flex; */
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu a {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--logo-color);
+  /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134); */
+} 
+
+
+.menu span{
+  color: var(--logo-color);
+  font-size: 18px;
+
+}
+
 .main-area-secssion {
   display: flex;
-  flex-direction: row 
+  width: 100%;
 }
 
 h3 {
   font-family: 'Dancing Script', cursive;
-  font-size: 35px;
-  color: rgb(241, 219, 21);
+  font-size: 34px;
+  color: rgb(230, 228, 217);
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -59,7 +134,7 @@ h3 {
   display: none;
   background-color: rosybrown;
   transition: .4s linear;
-  transition: height 3s;
+  transition: .5s ease;
   animation-name: fadeInDown;
   animation-duration: 0.4s
 }
@@ -127,52 +202,45 @@ h3 {
 }
 
 /* ===== Profile user information area ======== */
-.user-section {
-  flex-basis: 20%;
-  padding: 0 10px;
-  font-weight: 400;
-  color: #e0ecec;
-  margin-top: 20px;
-}
-
-.user-post-section {
-  flex: 2;
-  margin-top: 20px;
-  padding: 0 10px;
-}
 
 .profile-avatar {
   width: 50px;
   height: auto;
 }
 
-.picture-profile {
+.user-section {
   position: relative;
-  margin: 10px 10px 20px 10px;
+  flex-basis: 31%;
+  margin-bottom: 40px;
+  border: 2px solid white;
+  border-radius: 10px;
+  height: 600px;
 }
 
-.profile-detail-section {
-  margin-top: 20px;
-  font-size: 14px;
+.info {
+  padding: 0 20px;
+  color: whitesmoke;
 }
 
 .image-profile {
   width: 130px;
-  margin: 20px 0 0 0;
-  border: 1px solid white;
-  border-radius: 10px;
+  padding: 10px;
 }
+
+.picture-profile {
+  margin: 10px 10px 20px 10px;
+}
+
 /* ==Button */
 .create-user-profile {
   position: absolute;
-  bottom: -35px;
-  left: 9px;
-  margin-bottom: 20px;
+  top: -15px;
+  right: 20px;
   font-weight: 800;
   font-size: 14px;
-  padding: 5px;
+  padding: 10px;
   color: whitesmoke;
-  background-color: green;
+  background-color: rgb(73, 75, 73);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -182,20 +250,40 @@ h3 {
   background-color: whitesmoke;
 }
 
+.profile-detail-section {
+  position: absolute;
+  bottom: 0px;
+  padding: 0 0 20px 20px;
+  color: whitesmoke;
+}
+
 /* ========== Profile Post Area ========== */
 
-fieldset {
-  position: relative; 
-  margin-bottom: 30px;
-  padding: 15px;
+.user-post-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.post-author-poem {
+  position: relative;
+  flex-basis: 31%;
+  display: flex;
+  margin-bottom: 40px;
+  border: 2px solid white;
   border-radius: 10px;
 }
 
-.legend2 { 
-  position: absolute; 
-  top: -3px; 
-  right: 30px; 
-  
+.span-title {
+  position: absolute;
+  top: 38px;
+  left: 20px;
+  font-size: 25px;
+  font-weight: 900;
+  color: whitesmoke;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 110%;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(56, 56, 61);
 }
 
 .profile-message-area {
@@ -215,25 +303,39 @@ fieldset {
 
 /* ==Button */
 .update {
-  color: whitesmoke;
-  font-size: 14;
-  background-color: green;
+  position: absolute;
+  top: -18px;
+  right: 20px;
+  color: rgb(255, 251, 251);
+  font-size: 18;
+  padding: 8px;
+  border-radius: 3px;
+  background-color: rgb(20, 91, 124);
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
 }
 
 .delete {
+  position: absolute;
+  top: -18px;
+  right: 100px;
   color: whitesmoke;
-  font-size: 14;
-  background-color: red;
+  font-size: 18;
+  padding: 8px;
+  border-radius: 3px;
+  background-color: rgb(218, 69, 69);
+  width: 75px;
+  text-align: center;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
 }
 
 .update:hover {
-  color: green;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(4, 160, 233);
 }
 
 .delete:hover {
-  color: red;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(233, 29, 29);
 }
 
 .post-user-info {
@@ -243,12 +345,14 @@ fieldset {
 }
 
 .post-img-user {
+  position: relative;
   border-radius: 10px;
   background-position: center;
   background-size: auto, cover;
   opacity: 0.7;
   width: 100%;
-  height: 100px;
+  height: 600px;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -257,13 +361,20 @@ fieldset {
   transform: scale(1.01);
   transition: .4s linear;
   opacity: 1;
-  border: 2 solid pink;
+  box-shadow: 10px 5px 5px rgb(206, 175, 175);
 }
 
-.span-green {
-  color: #7795db;
-  font-weight: 800;
-  padding: 0 10px 0 0;
+.poem-detail {
+  position: absolute;
+  right: 20px;
+  top: 150px;
+  width: 60%;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  overflow: auto;
+  background-color: rgba(36, 33, 33, 0.561);
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.507);
 }
 
 .span-yellow {
@@ -330,7 +441,7 @@ fieldset {
   height: 100%;
   overflow: auto;
   transition: .4s linear;
-  background: radial-gradient(circle at 100%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 50%, #eee 75%, rgba(51, 51, 51, 0.404) 75%);
+  background: radial-gradient(circle at 80%, rgba(51, 51, 51, 0.493), rgba(51, 51, 51, 0.424) 40%, #eee 70%, rgba(51, 51, 51, 0.596) 80%);
   animation-name: fadeInLeft;
   animation-duration: 0.9s
 }
@@ -345,13 +456,25 @@ fieldset {
   width: 40%;
   height: 80%;
   top: 10%;
-  left: 30%;
+  left: 29%;
   transform: translate(-50%, -50%);
   animation-name: spin;
   animation-duration: 200000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear; 
 }
+
+.read-me-poem {
+  position: absolute;
+  top: 70%;
+  left: 35%;
+  width: 700px;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+
 
 /* ========= Animation =========== */
 .animated-box {
@@ -435,10 +558,32 @@ fieldset {
     }
 }
 
-/* transition: all .2s ease-in-out;
-transition: all .2s ease-in-out; */
+@media only screen and (max-width: 1400px) {
+  body {
+    width: 80%;
+    height: 100vh;
+    padding: 10px;
+    font-size: 14px;
+  } 
+  
+  .box-form-profile {
+    width: 90%;
+    height: auto;
+  }
 
-@media only screen and (max-width: 800px) {
+  .modal-content {
+    width: 80%;
+    height: 50%;
+    top: 25%;
+    left: 10%;
+  }
+
+  .user-section, .post-author-poem {
+    flex-basis: 40%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
   body {
     width: 100%;
     height: 100vh;
@@ -457,12 +602,8 @@ transition: all .2s ease-in-out; */
     top: 25%;
     left: 10%;
   }
-  
-  .main-area-secssion {
-    flex-direction: column;
-  }
 
-  .profile-message-area {
-    flex-direction: column;
+  .user-section, .post-author-poem {
+    flex-basis: 85%;
   }
 }

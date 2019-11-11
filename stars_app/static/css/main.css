@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Inconsolata|Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 
@@ -58,17 +59,11 @@ div p {
   /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(49, 49, 134); */
 }
 
- /* .menu {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-  margin-bottom: 15px;
-}*/
-
 .menu {
   display: flex;
   justify-content: flex-end;
 }
+
 
 .menu a {
   margin-left: 10px;
