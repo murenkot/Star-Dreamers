@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
   <div class='introducing'>
     <form id='profile' action="{% url 'profile_create'%}" method="post">
       {% csrf_token %}
@@ -21,34 +20,18 @@
                     <label for="1"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
                 </div>
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="2">
-                    <label for="2"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="2">
+                    <label for="2"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
                 </div>
                 <div class="image-option">
                     <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="3">
                     <label for="3"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
                 </div>
                 <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="4">
-                    <label for="4"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
+                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="4">
+                    <label for="4"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
                 </div>
-                <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="5">
-                    <label for="5"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                </div>
-                <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png" id="6">
-                    <label for="6"><img src="https://cdn4.iconfinder.com/data/icons/people-avatars-8/256/PEOPLE_ICON-31-512.png"></label>
-                </div>
-                <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="7">
-                    <label for="7"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                </div>
-                <div class="image-option">
-                    <input class="radio" type="radio" name="avatar" value="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png" id="8">
-                    <label for="8"><img src="https://cdn2.iconfinder.com/data/icons/lady-worker/300/e-512.png"></label>
-                </div>
-              </div>
+            </div>
           </div>
         </div>
         <div class='box-last'>
@@ -64,7 +47,7 @@
    <div class='main-area-secssion'>
       <section class='user-section'>
         <div class='picture-profile'>
-            <img class="image-profile" src="{{ profile.avatar }}">
+            <img class="image-profile" src="{{ profile.avatar }}" />
             <p class='create-user-profile'>Update Profile</p>
         </div>
         <div class='profile-detail-section'>
@@ -92,9 +75,7 @@
               <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";"></div>
               <div class="modal">
                   
-                      <div class="modal-content" style="background-image:url({{ post.photo.url }})";">
-                          
-                      </div>  
+                      <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
                       <!-- #<div class="photo-title">{{ post.photo.title }}</div> #-->
                   
               </div>

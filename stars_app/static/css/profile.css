@@ -128,7 +128,7 @@ h3 {
 
 /* ===== Profile user information area ======== */
 .user-section {
-  flex-grow: 1;
+  flex-basis: 20%;
   padding: 0 10px;
   font-weight: 400;
   color: #e0ecec;
@@ -136,7 +136,7 @@ h3 {
 }
 
 .user-post-section {
-  flex-grow: 2;
+  flex: 2;
   margin-top: 20px;
   padding: 0 10px;
 }
@@ -440,7 +440,8 @@ transition: all .2s ease-in-out; */
 
 @media only screen and (max-width: 800px) {
   body {
-    width: 100% !important;
+    width: 100%;
+    height: 100vh;
     padding: 10px;
     font-size: 13px;
   } 
