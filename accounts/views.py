@@ -91,8 +91,11 @@ def profile_create(request):
             profile.save()
             return redirect('profile')
 
+@login_required
 def profile_show(request, pk):
-    posts = Post.objects.filter(id=pk)
-    context = {'posts': posts}
+    posts = Post.objects.filter(user=pk)
+    author = User.objects.get(id=pk)
+    print (posts)
+    context = {'posts': posts, 'author': author}
     return render(request, 'profile.html', context)
 
