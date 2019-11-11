@@ -149,6 +149,7 @@ h3 {
 
 .image-profile {
   width: 130px;
+  padding: 10px;
 }
 
 .picture-profile {
@@ -196,17 +197,18 @@ h3 {
   margin-bottom: 40px;
   border: 2px solid white;
   border-radius: 10px;
-  
 }
-
 
 .span-title {
   position: absolute;
-  top: 30px;
+  top: 38px;
   left: 20px;
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  color: whitesmoke;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 110%;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(56, 56, 61);
 }
 
 .profile-message-area {
@@ -229,11 +231,12 @@ h3 {
   position: absolute;
   top: -18px;
   right: 20px;
-  color: whitesmoke;
+  color: rgb(255, 251, 251);
   font-size: 18;
   padding: 8px;
-  border-radius: 10px;
-  background-color: green;
+  border-radius: 3px;
+  background-color: rgb(20, 91, 124);
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
 }
 
 .delete {
@@ -243,20 +246,21 @@ h3 {
   color: whitesmoke;
   font-size: 18;
   padding: 8px;
-  border-radius: 10px;
-  background-color: red;
+  border-radius: 3px;
+  background-color: rgb(218, 69, 69);
   width: 75px;
   text-align: center;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
 }
 
 .update:hover {
-  color: green;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(4, 160, 233);
 }
 
 .delete:hover {
-  color: red;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(233, 29, 29);
 }
 
 .post-user-info {
@@ -282,7 +286,7 @@ h3 {
   transform: scale(1.01);
   transition: .4s linear;
   opacity: 1;
-  border: 2 solid pink;
+  border: 2 solid rgb(228, 5, 61);
 }
 
 .poem-detail {
