@@ -90,3 +90,9 @@ def profile_create(request):
             user = request.user)
             profile.save()
             return redirect('profile')
+
+def profile_show(request, pk):
+    posts = Post.objects.filter(id=pk)
+    context = {'posts': posts}
+    return render(request, 'profile.html', context)
+
