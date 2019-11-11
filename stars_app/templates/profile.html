@@ -64,7 +64,10 @@
           </div>
           <div class="modal">
               <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
-                  <!-- #<div class="photo-title">{{ post.photo.title }}</div> #-->
+                <div class='read-me-poem'>
+                    <div class="photo-title">{{ post.photo.title }}</div>
+                    <p class='poem-detail-read'>{{ post.body }}</p>
+                </div>
           </div>
           <p class='span-title'>{{ post.title }}</p>
             <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
