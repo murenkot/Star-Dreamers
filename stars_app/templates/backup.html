@@ -44,37 +44,53 @@
   </div>
 
 <main>
-    <h3>Your Story</h3>
-    <section class='user-post-section'>
-        <div class='user-section'>
+   <div class='main-area-secssion'>
+      <section class='user-section'>
+        <div class='picture-profile'>
+            <img class="image-profile" src="{{ profile.avatar }}" />
             <p class='create-user-profile'>Update Profile</p>
-            <img class="image-profile" src="{{ profile.avatar }}">
-            <p class='info'>{{ user.first_name }} {{ user.last_name }}</p>
-            <p class='info'>{{ user.email }}</p>
-            <div class='profile-detail-section'>
-                <p><span class='span-gray'>Your story : </span></p><br>
-                <p>{{ profile.userstory }}</p>
-            </div>
         </div>
-
-        {% for post in posts%}
-        <div class='post-author-poem'>
-          <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";">
-              <p class='poem-detail'>{{ post.body }}</p>
-          </div>
-          <div class="modal">
-              <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
-                  <!-- #<div class="photo-title">{{ post.photo.title }}</div> #-->
-          </div>
-          <p class='span-title'>{{ post.title }}</p>
-            <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
-            <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
-          </div>
-        {% endfor %}
-    </section>
+        <div class='profile-detail-section'>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>{{ user.email }}</p><br>
+            <p><span class='span-gray'>Your story : </span></p> 
+            <p>{{ profile.userstory }}</p>
+        </div>
+      </section>
+      <section class='user-post-section'>
+        <div>
+          <h3>Your Story</h3>
+          {% for post in posts%}
+          <fieldset>
+              <legend class='profile-message-area'>
+                  <div class='col'><span class='span-yellow'>Name : </span>
+                    <span class='span-green'>{{ post.title }}</span>
+                  </div> 
+                  <div class=legend2>
+                      <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
+                      <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+                  </div>
+              </legend>
+                
+              <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";"></div>
+              
+              <div class="modal">
+                  <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
+                      <!-- #<div class="photo-title">{{ post.photo.title }}</div> #-->
+              </div>
+            
+              <div class='post-user-info col'>
+                  <div class='post-body col'><span class='span-text'>Your writing : </span>{{ post.body }}</div>
+              </div>
+          </fieldset>
+          {% endfor %}
+        </div>
+      </section>
+   </div>
 </main>
 
 <script defer>
+
 
   // # controller # //
     $('main').on('click', '.mybtn', function (event) {
