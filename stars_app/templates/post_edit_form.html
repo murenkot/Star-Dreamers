@@ -2,15 +2,35 @@
 
 {% block content %}
 
-<section class="form-section post_details">
-    <h1>{{header}}</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type='submit'>Save</button>
-        <a href="{% url 'post_details' pk=post.pk%}">Cancel</a>
-        <img src="{{photo.url}}" alt="{{photo.title}}">
-    </form>
+<section class="form-section">
+    <div class="photo-container photo-page post-img-container">
+        <img src="{{post.photo.url}}" alt="{{post.photo.title}}">
+
+    </div>
+    <div class="post-text">
+        <form id="new-post" method="POST">
+            <h1>{{header}}</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="flex-right">
+                <a href="{% url 'post_details' pk=post.pk%}">Cancel</a>
+                <button type='submit'>Save</button>
+            </div>
+        </form>
+    </div>
+    
 </section>
+<script>
+    // to hide lables:
+    window.onload = function () {
+        $('#new-post').children().children()[0].classList.add("hidden");
+        $('#new-post').children().children()[2].classList.add("hidden");
+    }
+    
+</script>
 
 {% endblock %}
+
+
+
+

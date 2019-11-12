@@ -19,9 +19,13 @@
         </div>
     </div>
 </div>
-    <!-- <div class="photo-container photo-page">
-        <img src="{{post.photo.url}}" alt="{{post.photo.title}}">
-    </div> -->
+
+{% if post.user == user %}
+<div class="flex-right">
+    <a href="{% url 'post_edit' pk=post.pk%}" style="margin-right: 20px;">Edit</a>
+    <a href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+</div>
+{% endif %}
 
 <div class='button-container'>
     <div class="btn" id="add-comment">

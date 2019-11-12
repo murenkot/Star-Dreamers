@@ -26,7 +26,8 @@ const addComment = (response) => {
         </p>
     </div>
     `
-    $('#comments').append(template);
+    $('.comment-frame:last-child').after(template);
+
 }
 
 const addLike = (response)=>{
