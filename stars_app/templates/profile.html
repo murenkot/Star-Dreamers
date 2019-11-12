@@ -125,7 +125,7 @@
             <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
             <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
             {% endif %}
-          </div>
+        </div>
         {% endfor %}
     </section>
 </main>
@@ -156,6 +156,10 @@
     $('.close-form').on('click', function () {
       $('.introducing').css('display', 'none')
       $('.box-middle').css('display', 'none')
+    })
+
+    $('main').on('click', '.post-author-poem', function (event) {
+      console.log(event.target.$('.update'))
     })
 
 </script>
