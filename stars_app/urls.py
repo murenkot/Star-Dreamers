@@ -9,6 +9,7 @@ urlpatterns = [
     path('photos/<int:pk>/comments/edit/<int:comment_pk>', views.edit_comment, name='edit_comment'),
     path('photos/<int:pk>/comments/delete/<int:comment_pk>', views.delete_comment, name='delete_comment'),
     path('photos/<int:pk>/post/create', views.create_post, name='create_post'),
+    path('posts/', views.all_posts, name='all_posts'),
     path('posts/<int:pk>', views.post_details, name='post_details'),
     path('posts/<int:pk>/edit', views.post_edit, name='post_edit'),
     path('posts/<int:pk>/delete', views.post_delete, name='post_delete'),
@@ -17,8 +18,7 @@ urlpatterns = [
     path('posts/<int:pk>/comments/delete/<int:comment_pk>', views.delete_comment_post, name='delete_comment_post'),
     path('photos/api/v1/photo/<int:pk>/add_like', views.add_like, name='add_like'),
     path('photos/api/v1/photo/<int:pk>/add_comment/<str:comment>', views.add_comment, name='add_comment'),
-
-
-
+    path('posts/api/v1/post/<int:pk>/add_like', views.add_like_post, name='add_like_post'),
+    path('posts/api/v1/post/<int:pk>/add_comment/<str:comment>', views.add_comment_post, name='add_comment_post'),
     
 ]

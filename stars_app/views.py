@@ -65,6 +65,21 @@ def main_page(request):
     context = {'photos':last_20, "checked": likes_list, 'zipped_list': zipped_list}
     return render(request, 'main_page.html', context)
 
+def all_posts(request):
+    posts_20 = Post.objects.all().order_by('-id')[:20]
+    likes_list = []
+    for post in posts_20:
+        like = LikePost.objects.filter(post=post, user=request.user)
+        if len(like)>0:
+            checked = "-checked"
+            likes_list.append(checked)
+        else:
+            checked = " "
+            likes_list.append(checked)
+    zipped_list = list(zip(posts_20, likes_list))
+    context = {'posts':posts_20, "checked": likes_list, 'zipped_list': zipped_list}
+    return render(request, 'posts_page.html', context)
+
 
 
 def photo_details(request, pk):
@@ -79,21 +94,6 @@ def photo_details(request, pk):
     context = {"photo":photo, "likes":likes, "comments":comments, "checked":checked}
     return render(request, 'photo_page.html', context)
 
-# @login_required
-# def add_comment(request, pk):
-#     photo = Photo.objects.get(id=pk)
-#     if request.method == 'POST':
-#         form = CommentPhotoForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.user = request.user
-#             comment.photo = photo
-#             comment.save()
-#             return redirect('photo_details', pk=comment.photo.pk)
-#     else:
-#         form = CommentPhotoForm()
-#     context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
-#     return render(request, 'photo_comment_form.html', context)
 @login_required
 @csrf_exempt
 def add_comment(request, pk, comment):
@@ -106,11 +106,6 @@ def add_comment(request, pk, comment):
         data = {"username": request.user.username, "body": comment, 'photo_pk':photo.pk,  "comment_pk": new_comment.pk}
         return JsonResponse({'data': data, 'status':200})
     
-    # else:
-    #     form = CommentPhotoForm()
-    # context = {'form': form, 'photo':photo, 'header':f"Add your comment to {photo.title}"}
-    # return render(request, 'photo_comment_form.html', context)
-
 @login_required
 def edit_comment(request, pk, comment_pk):
     photo = Photo.objects.get(id=pk)
@@ -143,14 +138,22 @@ def create_post(request, pk):
         return redirect('post_details', pk=post.pk)
     else: 
         form = PostForm()
-    context = {'form': form, "post":form, "photo":photo, 'header':f"Share your thoughts"}
+    context = {'form': form, "post":form, "photo":photo, 'header':f"Share your dreams"}
     return render(request, 'post_form.html', context)
 
 def post_details(request, pk):
     post = Post.objects.get(id=pk)
-    context = {"post":post}
+    likes = len(LikePost.objects.filter(post=post))
+    comments = len(CommentPost.objects.filter(post = post))
+    like = LikePost.objects.filter(post=post, user=request.user)
+    if len(like)>0:
+        checked = "-checked"
+    else:
+        checked = " "
+    context = {"post":post, "likes":likes, "comments":comments, "checked":checked}    
     return render(request, 'post.html', context)
 
+@login_required
 def post_edit(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
@@ -163,26 +166,25 @@ def post_edit(request, pk):
     context = {'form': form, 'post':post, 'header': f"Edit your post"}
     return render(request, 'post_edit_form.html', context)
 
+@login_required
 def post_delete(request, pk):
     Post.objects.get(id=pk).delete()
     return redirect('main_page')
 
 
 @login_required
-def add_comment_post(request, pk):
+@csrf_exempt
+def add_comment_post(request, pk, comment):
     post = Post.objects.get(id=pk)
+    print("post =====>>>>>")
+    print(post)
     if request.method == 'POST':
-        form = CommentPostForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.post = post
-            comment.save()
-            return redirect('post_details', pk=comment.post.pk)
-    else:
-        form = CommentPostForm()
-    context = {'form': form, 'post':post, 'header':f"Share your thoughts with {post.user}!"}
-    return render(request, 'post_comment_form.html', context)
+        new_comment = CommentPost(user=request.user, body=comment, post=post)
+        new_comment.save()
+        print(new_comment.pk)
+        data = {"username": request.user.username, "body": comment, 'post_pk':post.pk,  "comment_pk": new_comment.pk}
+        return JsonResponse({'data': data, 'status':200})
+    
 
 @login_required
 def edit_comment_post(request, pk, comment_pk):
@@ -221,6 +223,24 @@ def add_like(request, pk):
     return JsonResponse({'data':context, "status":200})
 
 
+
+@csrf_exempt
+def add_like_post(request, pk):
+    print("adding likes")
+    user = request.user
+    post = Post.objects.get(id=pk)
+    user_likes = LikePost.objects.filter(post=post, user=user)
+    if len(user_likes) == 0:
+        like = LikePost(post=post, user=user)
+        like.save()
+    else:
+        user_likes.delete()
+    likes = len(LikePost.objects.filter(post = post))
+    print('likes=====>>>>>>')
+    print(likes)
+    context = {"likes":likes}
+    print(context)
+    return JsonResponse({'data':context, "status":200})
 
 
 
