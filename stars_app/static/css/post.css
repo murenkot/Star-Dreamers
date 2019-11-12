@@ -56,3 +56,31 @@
     padding: 2px 2px 2px 2px;
     margin: 0 50px 0 25px;
 }
+
+#poem-photo {
+    width: 600px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: inline;
+
+
+
+}
+.flex-container-no-wrap {
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+.flex-container-no-wrap * {
+
+}
+
+#post-details {
+    width: 500px;
+    position: relative;
+
+}

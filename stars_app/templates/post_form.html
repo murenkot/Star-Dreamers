@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
 
@@ -22,8 +22,11 @@
 </section>
 <script>
     // to hide lables:
-    $('#new-post').children().children()[0].classList.add("hidden");
-    $('#new-post').children().children()[2].classList.add("hidden");
+    window.onload = function () {
+        $('#new-post').children().children()[0].classList.add("hidden");
+        $('#new-post').children().children()[2].classList.add("hidden");
+    }
+    
 </script>
 
 {% endblock %}

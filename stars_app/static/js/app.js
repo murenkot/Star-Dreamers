@@ -30,6 +30,7 @@ const addComment = (response) => {
 }
 
 const addLike = (response)=>{
+    console.log("adding likes")
     console.log(response.data);
     $('.total-likes').text(response.data.likes);
 }
@@ -40,10 +41,6 @@ $('.toggle-icon').click(function(){
   });
 
 
-// To make lables invisible:
-$('#new-post form p lable')[1].addClass('hidden');
-$('#new-post form p lable')[2].addClass('hidden');
 
-console.log($('#new-post form p lable'));
 
 

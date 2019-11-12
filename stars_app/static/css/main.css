@@ -225,6 +225,10 @@ text-align: right;
     margin: 10px 0;
   }
 
+  .photo-details p {
+    white-space: pre-line;
+  }
+
   .photo-explanation {
     font-size: 15px;
   }
@@ -250,6 +254,7 @@ text-align: right;
 
 .image-content .background{
   width: 50%;
+  min-width: 50%;
   height: 700px;
   margin-right: 100px;
   /* background-color: rgba(0, 0, 0, 0.863); */

@@ -1,35 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
+<div class="flex-container-no-wrap">
+    <div id="poem-photo" style="background-image: url('{{post.photo.url}}'); background-size: 700px 500px;"></div>
+    <div id="post-details" class="photo-details">
+        <h2>{{post.title}}</h2>
+        <a href="#"><p>{{ post.user.username }}</p></a>
+        <p id="poem" class="photo-explanation">{{post.body}}</p>
+        <div class="stat-info">
+            <button class="toggle-icon {{checked}}" title="❤ Toggle Like!"></button>
+            <span class="total-likes">{{ likes }}</span>
+            <i class="fa fa-comment-o"></i>
+            <span class="total-comments">{{ comments }}</span>
+        </div>
+    </div>
+</div>
+    <!-- <div class="photo-container photo-page">
+        <img src="{{post.photo.url}}" alt="{{post.photo.title}}">
+    </div> -->
 
-<section class="form-section">
-    <h1>{{post.title}}</h1>
-    <p>{{post.user}}</p>
-    <p>{{post.body}}</p>
-    <img src="{{post.photo.url}}" alt="">
-</section>
-<section>
-    {% if post.user == user %}
-    <a href="{% url 'post_edit' pk=post.pk %}">Edit</a>
-    <a href="{% url 'post_delete' pk=post.pk %}">Delete</a>
-    {% endif %}
-</section>
+<div class='button-container'>
+    <div class="btn" id="add-comment">
+        <span><span><span>Comment</span></span></span>
+    </div>
+</div>
+   
+<!-- Comment -->
 
-
-<section>
-    <h3>Comments</h3>
-    <a href="{% url 'add_comment_post' pk=post.pk %}">Comment</a>
+<section class="comments-block">
+    <section class='add-comment hidden'>
+        <textarea class="new-comment-body"></textarea>
+        <div class="flex-right">
+            <button id="cancel-comment" class="small">Cancel</button>
+            <button id="save-comment" class="small">Save</button>
+        </div>
+    </section>
+    <p id="comments" style="font-size: 25px;">Comments</p>
     {% if post.postcomments_post.all %}
         {% for comment in post.postcomments_post.all %}
-        <p class=comment>
-            {{comment.user}}: 
-            {{comment.body}}
-            <br>
-            {% if comment.user == user %}
-            <a href="{% url 'edit_comment_post' pk=post.pk comment_pk=comment.pk %}">Edit</a>
-            <a href="{% url 'delete_comment_post' pk=post.pk comment_pk=comment.pk %}">Delete</a>
-            {% endif %}
-        </p>
+        <div class="comment-frame">
+            <p class="comment">
+                <p id="username">{{comment.user}}: </p>
+                <p>{{comment.body}}</p>
+                {% if comment.user == user %}
+                <div>
+                    <div class="flex-right">
+                        <a href="{% url 'edit_comment_post' pk=post.pk comment_pk=comment.pk %}">Edit</a>
+                        <a href="{% url 'delete_comment_post' pk=post.pk comment_pk=comment.pk %}">Delete</a>
+                    </div>
+                </div>  
+                    {% endif %} 
+            </p>
+        </div>
 
         {% endfor %}
     {% else %}
@@ -39,5 +61,51 @@
 
     {% endif %}
 </section>
+
+<!-- JS -->
+<script type="text/javascript">
+     
+    //  Add Like
+    $(function () {
+        $('.toggle-icon').on('click', function () {
+            console.log('api/v1/post/{{post.pk}}/add_like');
+            $.ajax({
+                method: "POST",
+                url: 'api/v1/post/{{post.pk}}/add_like',
+                success: addLike,
+                error: onError,
+            })
+        });
+    });
+    
+    //  Add Comment 
+    $('#save-comment').on('click', ()=>{    
+        let comment = $('.new-comment-body').val();
+        console.log(comment)
+        if (comment.length > 0) {
+            $.ajax({ 
+                method: "POST",
+                url: `api/v1/post/{{post.pk}}/add_comment/${comment}`,
+                success: addComment,
+                error: onError,
+            })
+        }
+    })
+    
+    // Format text
+    window.onload = function () {
+            console.log("making paragrafs...")
+            var p_elements = document.getElementById('poem');
+            console.log(p_elements);
+
+            var unixNewLine = new RegExp("\n", "g");
+            for (var i = p_elements.length - 1; i >= 0; i--) {
+                p_elements[i].innerHTML = p_elements[i].innerHTML.replace(unixNewLine, '<br/>');
+            }
+        }
+
+
+    </script>
+
 
 {% endblock %}

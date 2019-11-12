@@ -27,7 +27,7 @@ class LikePhoto(models.Model):
 
 class LikePost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="postlikes_post")
-    user = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name="postlikes_user")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="postlikes_user")
 
 class Profile(models.Model):
     avatar = models.TextField()
