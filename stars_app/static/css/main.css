@@ -422,16 +422,23 @@ text-align: right;
   font-size: var(--font-size);
   padding: 0px;
   margin-left: 20px;
+
 }
 #username{
   font-weight: 800;
   color: #a2a6a6;
 }
 .comment-frame p{
-  margin-bottom: 5px;;
+  margin-bottom: 5px;
 }
-.comment-frame a{
+.comment-frame p:nth-child(3){
+  margin-left: 40px;
+}
+
+.comment-frame p a{
   text-align: right;
+  margin-left: 0;
+
 }
 
 .flex-right {

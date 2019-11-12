@@ -45,7 +45,7 @@
         {% for comment in post.postcomments_post.all %}
         <div class="comment-frame">
             <p class="comment">
-                <p id="username">{{comment.user}}: </p>
+                <a href="{% url 'profile_show' pk=comment.user.pk %}"><p id="username">{{comment.user}}: </p></a>
                 <p>{{comment.body}}</p>
                 {% if comment.user == user %}
                 <div>

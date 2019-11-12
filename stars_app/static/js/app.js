@@ -19,8 +19,8 @@ const addComment = (response) => {
             <p>${response.data.body}</p>
             <div>
                 <div class="flex-right">
-                    <a href="{% url 'edit_comment' pk=${response.data.photo_pk} comment_pk=${response.data.comment_pk} %}">Edit</a>
-                    <a href="{% url 'delete_comment' pk=${response.data.photo_pk} comment_pk=${response.data.comment_pk} %}">Delete</a>
+                    <a href="{% url 'edit_comment' pk=${response.data.photo_pk} comment_pk=${response.data.comment_pk} %}" style="size: 16px;">Edit</a>
+                    <a href="{% url 'delete_comment' pk=${response.data.photo_pk} comment_pk=${response.data.comment_pk} %}" style="size: 16px;">Delete</a>
                 </div>
             </div>
         </p>
