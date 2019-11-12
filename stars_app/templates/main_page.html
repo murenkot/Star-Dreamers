@@ -3,7 +3,7 @@
 {% block content %}
 <section id="photo-block">
 
-
+    {% if user.is_authenticated %}
     {% for photo, checked in zipped_list %}
     <section>
                 <div class="photo-container" val="{{photo.pk}}">
@@ -27,6 +27,25 @@
                 </div>
     </section>
     {% endfor %}
+    {% else %}
+    <section>
+            {% for photo in photo %}
+            <section>
+                <div class="photo-container" val="{{photo.pk}}">
+                    <img class="photo" src="{{photo.url}}" alt="{{photo.title}}">
+                    <div class="image-content">
+                        <div class="flex-right">
+                            <div class="background">
+                                <h2>{{photo.title}}</h2>
+                                <p class="photo-explanation">{{photo.explanation}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
+    </section>
+    {% endif%}
 
 </section>
 
