@@ -16,13 +16,21 @@
 <body>
   <nav>
     <div>
+        {% if user.is_authenticated%}
         <h1><a class='logo' href="{% url 'main_page' %}">Star Dreamers</a></h1>
+        {% else %}
+        <h1><a class='logo' href="{% url 'guest_login' %}">Star Dreamers</a></h1>
+        {% endif %}
     </div>
     <div class='menu'>
         <span>Welcome, {{user.username}} </span>
+        {% if user.is_authenticated%}
         <a href="{% url 'main_page' %}">Home</a>
-        <a href="{% url 'profile'%}">Profile</a>
+        {% else %}
+        <a href="{% url 'guest_login' %}">Home</a>
+        {% endif %}
         {% if user.is_authenticated %}
+        <a href="{% url 'profile'%}">Profile</a>
         <a href="{% url 'logout' %}">Sign Out</a>
         {% else %}
         <a href="{% url 'login' %}">Sign In</a>
@@ -33,6 +41,20 @@
 <main>
     <h3>Poem written by : {{ author.first_name}} {{ author.last_name }}</h3>
     <section class='user-post-section'>
+        <div class='user-section' style="background-image:url({{ profile.avatar }});">
+
+            <div class='user-info-detail'>
+                <p class='info'><span class='span-yellow'>Author</span></p><br>
+                <p class='info'>{{ author.first_name }} {{ author.last_name }}</p>
+                <p class='info'>{{ author.email }}</p>
+            </div>
+            <div class='profile-detail-section'>
+                <p><span class='span-gray'>Message from author : </span></p><br>
+                <p>{{ profile.userstory }}</p>
+            </div>
+        </div>
+
+
         {% for post in posts%}
         <div class='post-author-poem'>
           <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }});">

@@ -5,9 +5,12 @@ from django.core import serializers
 
 from django.contrib.auth.models import User
 from django.contrib import auth
-from stars_app.models import Post, Profile
+from stars_app.models import Post, Profile, Photo
 from stars_app.forms import ProfileForm
 # Create your views here.
+
+import requests 
+import datetime
 
 def welcome(request):
     return render (request, 'welcome.html')
@@ -60,7 +63,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('welcome')
+    return redirect('login')
 
 @login_required(login_url='/login/')
 def profile(request):
@@ -95,6 +98,37 @@ def profile_create(request):
 def profile_show(request, pk):
     posts = Post.objects.filter(user=pk)
     author = User.objects.get(id=pk)
-    context = {'posts': posts, 'author': author }
+    profile = Profile.objects.get(user=pk)
+    context = {'posts': posts, 'author': author, 'profile': profile }
     return render(request, 'author_profile.html', context)
+
+
+def guest_login(request):
+    current_date = datetime.datetime.today()
+    one_day = datetime.timedelta(days=1)
+    end_date = current_date.strftime('%Y-%m-%d')
+    start_date = (current_date - one_day*20).strftime('%Y-%m-%d')
+
+    """ NASA API """
+    api_key = "WvjNlI8EFTS53dSAK4MKnJO4dAWKqwP1pNcjAfPK"
+    url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}&start_date={start_date}&end_date={end_date}"
+
+    payload = ""
+    headers = {
+        'x-rapidapi-host': "NasaAPIdimasV1.p.rapidapi.com",
+        'x-rapidapi-key': "75e8b98d64msh7c71a65cb0fbfd7p12a3b5jsn2896b7bca1de",
+        'content-type': "application/x-www-form-urlencoded"
+        }
+
+    response = requests.get(url, data=payload, headers=headers).json()
+
+    for photo in response:
+        date_record = Photo.objects.filter(date = photo['date']).exists()
+        if date_record == False:
+            new_photo = Photo(date=photo['date'], explanation = photo['explanation'], title = photo['title'], url = photo['url'])
+            new_photo.save()
+
+    last_20 = Photo.objects.all().order_by('-id')[:20]
+    context = {'photo':last_20}
+    return render(request, 'main_page.html', context) 
 

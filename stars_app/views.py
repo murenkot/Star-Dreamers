@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 # import Models
-from .models import Photo, CommentPhoto, CommentPost, Post, LikePhoto, LikePost
+from .models import Photo, CommentPhoto, CommentPost, Post, LikePhoto, LikePost, User
 from .forms import CommentPhotoForm, CommentPostForm, PostForm
 
 
@@ -51,6 +51,7 @@ def main_page(request):
     last_20 = Photo.objects.all().order_by('-id')[:20]
     likes_list = []
 
+
     # @login_required
     for photo in last_20:
         like = LikePhoto.objects.filter(photo=photo, user=request.user)
@@ -78,6 +79,7 @@ def all_posts(request):
     zipped_list = list(zip(posts_20, likes_list))
     context = {'posts':posts_20, "checked": likes_list, 'zipped_list': zipped_list}
     return render(request, 'posts_page.html', context)
+
 
 
 def photo_details(request, pk):
