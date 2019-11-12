@@ -84,13 +84,13 @@
   </div>
 
 <main>
-    {% if post.user == user %}
+    {% if user %}
     <h3>Your Story</h3>
     {% else %}
     <h3>Poem written by : {{ author.first_name}} {{ author.last_name }}</h3>
     {% endif %}
     <section class='user-post-section'>
-        {% if post.user == user %}
+        {% if user %}
         <div class='user-section' style="background-image:url({{ profile.avatar }});">
             {% if user.is_authenticated %}
             <p class='create-user-profile'>Update Profile</p>
