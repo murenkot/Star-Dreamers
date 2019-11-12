@@ -42,7 +42,7 @@
         </div>
         <div class='box-middle'>
           <div class='message-box'>
-            <div class="flex-container f-j-content">
+            <div class="flex f-j-content">
                 <div class="image-option">
                     <input class="radio" type="radio" name="avatar" value="https://i.imgur.com/OZUN5stt.png" id="1" checked="checked">
                     <label for="1"><img src="https://i.imgur.com/OZUN5stt.png"></label>
@@ -84,34 +84,46 @@
   </div>
 
 <main>
+    {% if user %}
     <h3>Your Story</h3>
+    {% else %}
+    <h3>Poem written by : {{ author.first_name}} {{ author.last_name }}</h3>
+    {% endif %}
     <section class='user-post-section'>
-        <div class='user-section'>
+        
+        <div class='user-section' style="background-image:url({{ profile.avatar }});">
+            {% if user.is_authenticated %}
             <p class='create-user-profile'>Update Profile</p>
-            <img class="image-profile" src="{{ profile.avatar }}">
-            <p class='info'>{{ user.first_name }} {{ user.last_name }}</p>
-            <p class='info'>{{ user.email }}</p>
+            {% endif %}
+            <div class='user-info-detail'>
+                <p class='info'><span class='span-yellow'>About Author</span></p><br>
+                <p class='info'>{{ user.first_name }} {{ user.last_name }}</p>
+                <p class='info'>{{ user.email }}</p>
+            </div>
             <div class='profile-detail-section'>
                 <p><span class='span-gray'>Your story : </span></p><br>
                 <p>{{ profile.userstory }}</p>
             </div>
         </div>
+        
 
         {% for post in posts%}
         <div class='post-author-poem'>
-          <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }})";">
+          <div class='post-img-user mybtn' style="background-image:url({{ post.photo.url }});">
               <p class='poem-detail'>{{ post.body }}</p>
           </div>
           <div class="modal">
-              <div class="modal-content" style="background-image:url({{ post.photo.url }})";"></div>  
+              <div class="modal-content" style="background-image:url({{ post.photo.url }});"></div>  
                 <div class='read-me-poem'>
                     <div class="photo-title">{{ post.photo.title }}</div>
                     <p class='poem-detail-read'>{{ post.body }}</p>
                 </div>
           </div>
           <p class='span-title'>{{ post.title }}</p>
+            {% if user.is_authenticated %}
             <a class='update' href="{% url 'post_edit' pk=post.pk %}">Update</a>
             <a class='delete' href="{% url 'post_delete' pk=post.pk%}">Delete</a>
+            {% endif %}
           </div>
         {% endfor %}
     </section>

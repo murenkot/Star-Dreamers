@@ -79,9 +79,9 @@ nav {
 }
 
 h3 {
-  font-family: 'Dancing Script', cursive;
+  /* font-family: 'Dancing Script', cursive; */
   font-size: 34px;
-  color: rgb(230, 228, 217);
+  color: whitesmoke;
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -123,16 +123,17 @@ h3 {
 .boxt-first {
   position: relative;
   padding: 20px 20px 30px 10px;
-  border-radius: 10px 10px 0 0;
-  background: rgb(75, 70, 71);
+  border-radius: 3px 3px 0 0;
+  background: #252525;
   transition: .4s linear;
-  color: whitesmoke;
+  color: #a2a6a6;
+  font-size: 16px;
 }
 
 .box-middle {
   padding: 10px;
   display: none;
-  background-color: rosybrown;
+  background-color: #a2a6a6;
   transition: .4s linear;
   transition: .5s ease;
   animation-name: fadeInDown;
@@ -142,13 +143,15 @@ h3 {
 .box-last {
   position: relative;
   padding: 10px;
-  border-radius: 0 0 10px 10px;
-  background: rgba(224, 219, 220);
+  border-radius: 0 0 3px 3px;
+  background: #252525;
   transition: .4s linear;
 }
 
 .box-last p {
-  color: rgb(75, 70, 71);
+  color: #a2a6a6;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .click-here {
@@ -188,17 +191,17 @@ h3 {
   font-size: 16px;
   font-weight: 400;
   margin: 10px;
-  color: whitesmoke;
-  background: rosybrown;
-  padding: 5px;
-  border-radius: 10px;
+  color: #a2a6a6;
+  background: #252525;
+  padding: 10px;
+  border-radius: 3px;
   border: none;
   cursor: pointer;
 }
 
 .add:hover {
-  background-color: whitesmoke;
-  color: rosybrown;
+  background-color: #a2a6a6;
+  color: #252525;
 }
 
 /* ===== Profile user information area ======== */
@@ -212,14 +215,19 @@ h3 {
   position: relative;
   flex-basis: 31%;
   margin-bottom: 40px;
-  border: 2px solid gray;
-  border-radius: 3px;
-  height: 600px;
+  /* border: 2px solid gray; */
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  /* opacity: 0.7; */
+  height: 610px;
 }
 
 .info {
   padding: 0 20px;
   color: whitesmoke;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .image-profile {
@@ -238,23 +246,32 @@ h3 {
   right: 20px;
   font-weight: 800;
   font-size: 14px;
-  padding: 10px;
+  padding: 10px; 
   color: whitesmoke;
-  background-color: rgb(73, 75, 73);
-  border-radius: 10px;
+  background-color: rgb(155, 196, 209);
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .create-user-profile:hover {
-  color: green;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: rgb(42, 112, 136);
+}
+
+.user-info-detail {
+  padding: 20px 15px;
+  color: #a2a6a6;
+  width: 100%;
+  background-color: rgba(36, 33, 33, 0.561);
 }
 
 .profile-detail-section {
   position: absolute;
   bottom: 0px;
-  padding: 0 0 20px 20px;
-  color: whitesmoke;
+  padding: 15px;
+  color: white;
+  width: 100%;
+  background-color: rgba(36, 33, 33, 0.561);
 }
 
 /* ========== Profile Post Area ========== */
@@ -262,7 +279,7 @@ h3 {
 .user-post-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .post-author-poem {
@@ -270,8 +287,12 @@ h3 {
   flex-basis: 31%;
   display: flex;
   margin-bottom: 40px;
-  border: 2px solid gray;
+  /* border: 2px solid gray; */
   border-radius: 3px;
+}
+
+.post-author-poem:hover {
+  border: none;
 }
 
 .span-title {
@@ -283,7 +304,10 @@ h3 {
   color: whitesmoke;
   font-family: 'Quicksand', sans-serif;
   letter-spacing: 110%;
-  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(56, 56, 61);
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(2, 2, 2);
+  background-color: rgba(0, 0, 0, 0.561);
+  width: 90%;
+  padding: 10px;
 }
 
 .profile-message-area {
@@ -306,12 +330,11 @@ h3 {
   position: absolute;
   top: -18px;
   right: 20px;
-  color: rgb(255, 251, 251);
   font-size: 18;
   padding: 8px;
   border-radius: 3px;
-  background-color: rgb(20, 91, 124);
-  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
+  color: whitesmoke;
+  background-color: rgb(57, 128, 57);
 }
 
 .delete {
@@ -322,20 +345,24 @@ h3 {
   font-size: 18;
   padding: 8px;
   border-radius: 3px;
-  background-color: rgb(218, 69, 69);
+  background-color: #d85d54;
   width: 75px;
   text-align: center;
-  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(127, 127, 138);
 }
+
 
 .update:hover {
   color: whitesmoke;
-  background-color: rgb(4, 160, 233);
+  background-color: rgb(3, 68, 5);
+  font-weight: 800;
+  filter: brightness(140%);
 }
 
 .delete:hover {
   color: whitesmoke;
-  background-color: rgb(233, 29, 29);
+  background-color: #8f251d;
+  font-weight: 800;
+  filter: brightness(140%);
 }
 
 .post-user-info {
@@ -349,7 +376,7 @@ h3 {
   border-radius: 10px;
   background-position: center;
   background-size: auto, cover;
-  opacity: 0.7;
+  /* opacity: 0.7; */
   width: 100%;
   height: 600px;
   overflow: hidden;
@@ -357,11 +384,12 @@ h3 {
 }
 
 .post-img-user:hover {
-  filter: brightness(120%);
+  filter: brightness(140%);
   transform: scale(1.01);
   transition: .4s linear;
   opacity: 1;
-  box-shadow: 10px 5px 5px rgb(206, 175, 175);
+  border: none;
+  /* box-shadow: 5px 5px 5px rgb(141, 137, 137); */
 }
 
 .poem-detail {
@@ -370,7 +398,8 @@ h3 {
   top: 150px;
   width: 60%;
   height: 80%;
-  color: white;
+  color: whitesmoke;
+  filter: brightness(140%);
   padding: 15px;
   border-radius: 3px;
   overflow: auto;
@@ -379,15 +408,15 @@ h3 {
 }
 
 .span-yellow {
-  padding: 0 10px;
-  color: rgb(66, 136, 48);
+  /* padding: 0 10px; */
+  color: yellow;
   font-weight: 800;
   font-size: 17px;
 }
 
 .span-gray {
-  color: rgb(226, 202, 202);
-  font-weight: 500;
+  color: yellow;
+  font-weight: 700;
   font-size: 16px;
 }
 
@@ -453,9 +482,9 @@ h3 {
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  border: 4px solid rgba(255, 255, 240, 0.637);
-  width: 40%;
-  height: 80%;
+  border: 3px solid rgba(51, 51, 51, 0.493);
+  width: 600px;
+  height: 600px;
   top: 10%;
   left: 29%;
   transform: translate(-50%, -50%);
@@ -470,9 +499,12 @@ h3 {
   top: 70%;
   left: 35%;
   width: 700px;
-  padding: 10px;
-  background-color: whitesmoke;
-  border-radius: 10px;
+  padding: 10px 20px;
+  color: whitesmoke;
+  font-weight: 800px;
+  background-color: #252525d2;
+  border-radius: 3px;
+  border: 1px solid #252525;
 }
 
 
@@ -492,9 +524,10 @@ h3 {
 
 .photo-title {
   position: absolute;
-  color: whitesmoke;
+  text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(118, 118, 124);
+  color: #c1eb08;
   padding: 10px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 800;
   top: -40px;
   left: 0;
@@ -566,6 +599,10 @@ h3 {
     padding: 10px;
     font-size: 14px;
   } 
+
+  .user-post-section {
+    justify-content: space-around;
+  }
   
   .box-form-profile {
     width: 90%;
@@ -573,16 +610,23 @@ h3 {
   }
 
   .modal-content {
-    width: 80%;
-    height: 50%;
-    top: 25%;
-    left: 10%;
+    width: 500px;
+    height: 500px;
+    top: 20%;
+    left: 30%;
   }
 
   .user-section, .post-author-poem {
     flex-basis: 40%;
   }
+
+  .read-me-poem {
+    top: 70%;
+    left: 35%;
+    width: 600px;
+  }
 }
+
 
 @media only screen and (max-width: 700px) {
   body {
@@ -591,6 +635,10 @@ h3 {
     padding: 10px;
     font-size: 13px;
   } 
+
+  .user-post-section {
+    justify-content: space-around;
+  }
   
   .box-form-profile {
     width: 90%;
@@ -598,8 +646,8 @@ h3 {
   }
 
   .modal-content {
-    width: 80%;
-    height: 50%;
+    width: 400px;
+    height: 400px;
     top: 25%;
     left: 10%;
   }
@@ -607,4 +655,14 @@ h3 {
   .user-section, .post-author-poem {
     flex-basis: 85%;
   }
+
+  .read-me-poem {
+    top: 63%;
+    left: 13%;
+    width: 400px;
+  }
+  .photo-title {
+    font-size: 14px;
+  }
+
 }

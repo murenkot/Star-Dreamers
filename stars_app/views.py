@@ -50,6 +50,8 @@ def main_page(request):
     # get 20 last photos from DB:
     last_20 = Photo.objects.all().order_by('-id')[:20]
     likes_list = []
+
+    # @login_required
     for photo in last_20:
         like = LikePhoto.objects.filter(photo=photo, user=request.user)
         if len(like)>0:
