@@ -95,7 +95,9 @@ def profile_create(request):
 def profile_show(request, pk):
     posts = Post.objects.filter(user=pk)
     author = User.objects.get(id=pk)
+    user = request.user.id
     print (posts)
-    context = {'posts': posts, 'author': author}
+    print (user)
+    context = {'posts': posts, 'author': author, 'user': user}
     return render(request, 'profile.html', context)
 
