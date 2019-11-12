@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
 <section id="photo-block">
@@ -15,7 +15,7 @@
                                 <h2>{{photo.title}}</h2>
                                 <p class="photo-explanation">{{photo.explanation}}</p>
                                 </a>
-                                <div class="stat-info">
+                                <div class="stat-info-main">
                                     <button class="toggle-icon {{ checked }}" title="❤ Toggle Like!"></button>
                                     <span class="total-likes">{{ photo.photolikes_photo.all | length }}</span>
                                     <i class="fa fa-comment-o"></i>

@@ -30,6 +30,7 @@ const addComment = (response) => {
 }
 
 const addLike = (response)=>{
+    console.log("adding likes")
     console.log(response.data);
     $('.total-likes').text(response.data.likes);
 }
@@ -43,14 +44,3 @@ $('.toggle-icon').click(function(){
 
 
 
-// Listen to LIKE button on the main page
-// $('.toggle-icon').on('click', (event) => {
-//     let photo_pk = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute("val");
-//     console.log(`api/v1/photo/${photo_pk}/add_like`);                               
-//     $.ajax({
-//         method: "POST",
-//         url: `api/v1/photo/${photo_pk}/add_like`,
-//         success: addLike,
-//         error: onError,
-//     })
-// });

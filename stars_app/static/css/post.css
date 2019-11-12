@@ -1,0 +1,95 @@
+/* NEW POST PAGE */
+
+.form-section {
+    position: relative;
+}
+
+.post-img-container, .post-text {
+    position: absolute;
+}
+
+.post-img-container {
+    margin-top: 40px;
+}
+.post-text{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#new-post {
+    background-color: rgba(0, 0, 0, 0.658);
+    margin: 150px auto;
+    width: 600px;
+    height: 500px;
+}
+
+#new-post h1{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#new-post p{
+    margin: 0 50px 10px 40px;
+}
+#new-post p input {
+    width: 500px;
+    height: 25px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+#new-post p textarea {
+    width: 500px;
+    height: 300px;
+    font-size: 16px;
+    padding: 5px 10px;
+    resize: none;
+    white-space: pre-wrap;
+
+}
+
+#new-post button {
+    width: 60px;
+    height: 30px;
+    padding: 2px 2px 2px 2px;
+    margin: 0 50px 0 25px;
+}
+
+#poem-photo {
+    width: 600px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: inline;
+    margin-top: 70px;
+
+
+
+}
+.flex-container-no-wrap {
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.flex-container-no-wrap * {
+
+}
+
+#post-details2 {
+    width: 400px;
+    position: relative;
+    display: inline-block;
+}
+
+#post-preview {
+    text-overflow: ellipsis;
+    height: 290px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+
+}

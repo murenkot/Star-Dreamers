@@ -36,7 +36,7 @@ def register(request):
                         email = email,
                         password = password)
                     user.save()
-                    return redirect ('main_page')
+                    return render(request, 'login.html')
         else:
             context = { 'error': 'Your password did not match. Please try again' }
             return render(request, 'register.html', context)
@@ -54,13 +54,13 @@ def login(request):
             return redirect ('main_page')
         else:
             context = { 'error': 'Your username and password does not match. Please try again.' }
-            return render (request, 'login.html', context)
+            return render(request, 'login.html', context)
     else:
         return render(request, 'login.html')
 
 def logout(request):
     auth.logout(request)
-    return redirect('main_page')
+    return redirect('welcome')
 
 @login_required(login_url='/login/')
 def profile(request):
