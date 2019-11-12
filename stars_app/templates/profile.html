@@ -90,7 +90,7 @@
     <h3>Poem written by : {{ author.first_name}} {{ author.last_name }}</h3>
     {% endif %}
     <section class='user-post-section'>
-        {% if user %}
+        
         <div class='user-section' style="background-image:url({{ profile.avatar }});">
             {% if user.is_authenticated %}
             <p class='create-user-profile'>Update Profile</p>
@@ -105,7 +105,7 @@
                 <p>{{ profile.userstory }}</p>
             </div>
         </div>
-        {% endif %}
+        
 
         {% for post in posts%}
         <div class='post-author-poem'>
