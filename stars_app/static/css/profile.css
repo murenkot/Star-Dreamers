@@ -215,8 +215,8 @@ h3 {
   position: relative;
   flex-basis: 31%;
   margin-bottom: 40px;
-  border: 2px solid gray;
-  border-radius: 3px;
+  /* border: 2px solid gray; */
+  border-radius: 10px;
   background-position: center;
   background-size: cover;
   /* opacity: 0.7; */
@@ -248,14 +248,14 @@ h3 {
   font-size: 14px;
   padding: 10px; 
   color: whitesmoke;
-  background-color: #008CBA;
+  background-color: rgb(155, 196, 209);
   border-radius: 3px;
   cursor: pointer;
 }
 
 .create-user-profile:hover {
   color: whitesmoke;
-  background-color: rgb(90, 197, 233);
+  background-color: rgb(42, 112, 136);
 }
 
 .user-info-detail {
@@ -287,7 +287,7 @@ h3 {
   flex-basis: 31%;
   display: flex;
   margin-bottom: 40px;
-  border: 2px solid gray;
+  /* border: 2px solid gray; */
   border-radius: 3px;
 }
 
@@ -301,7 +301,7 @@ h3 {
   left: 20px;
   font-size: 25px;
   font-weight: 900;
-  color: rgb(107, 211, 93);
+  color: whitesmoke;
   font-family: 'Quicksand', sans-serif;
   letter-spacing: 110%;
   text-shadow: 1px 2px 1px rgb(27, 26, 26), 3px 3px 5px rgb(2, 2, 2);
@@ -334,7 +334,7 @@ h3 {
   padding: 8px;
   border-radius: 3px;
   color: whitesmoke;
-  background-color: #4CAF50;
+  background-color: rgb(57, 128, 57);
 }
 
 .delete {
@@ -345,7 +345,7 @@ h3 {
   font-size: 18;
   padding: 8px;
   border-radius: 3px;
-  background-color: #f44336;
+  background-color: #d85d54;
   width: 75px;
   text-align: center;
 }
@@ -389,7 +389,7 @@ h3 {
   transition: .4s linear;
   opacity: 1;
   border: none;
-  box-shadow: 5px 5px 5px rgb(141, 137, 137);
+  /* box-shadow: 5px 5px 5px rgb(141, 137, 137); */
 }
 
 .poem-detail {
@@ -483,8 +483,8 @@ h3 {
   background-position: center;
   border-radius: 50%;
   border: 3px solid rgba(51, 51, 51, 0.493);
-  width: 40%;
-  height: 80%;
+  width: 600px;
+  height: 600px;
   top: 10%;
   left: 29%;
   transform: translate(-50%, -50%);
@@ -610,8 +610,8 @@ h3 {
   }
 
   .modal-content {
-    width: 40%;
-    height: 60%;
+    width: 500px;
+    height: 500px;
     top: 20%;
     left: 30%;
   }
@@ -635,6 +635,10 @@ h3 {
     padding: 10px;
     font-size: 13px;
   } 
+
+  .user-post-section {
+    justify-content: space-around;
+  }
   
   .box-form-profile {
     width: 90%;
@@ -642,8 +646,8 @@ h3 {
   }
 
   .modal-content {
-    width: 80%;
-    height: 50%;
+    width: 400px;
+    height: 400px;
     top: 25%;
     left: 10%;
   }
