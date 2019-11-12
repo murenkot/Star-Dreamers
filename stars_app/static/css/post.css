@@ -63,6 +63,7 @@
     position: relative;
     overflow: hidden;
     display: inline;
+    margin-top: 70px;
 
 
 
@@ -71,7 +72,6 @@
     flex-wrap: nowrap;
     display: flex;
     align-items: flex-start;
-    flex-wrap: nowrap;
     height: 100%;
 }
 
@@ -79,8 +79,17 @@
 
 }
 
-#post-details {
-    width: 500px;
+#post-details2 {
+    width: 400px;
     position: relative;
+    display: inline-block;
+}
+
+#post-preview {
+    text-overflow: ellipsis;
+    height: 290px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    margin-bottom: 15px;
 
 }

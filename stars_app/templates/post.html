@@ -1,11 +1,15 @@
 {% extends 'base2.html' %}
 
 {% block content %}
+<!-- <div id="biiigphoto" style="background-image: url('{{post.photo.url}}'); height: 100vh; width: 100vw; position: absolute;; "> -->
+
 <div class="flex-container-no-wrap">
-    <div id="poem-photo" style="background-image: url('{{post.photo.url}}'); background-size: 700px 500px;"></div>
-    <div id="post-details" class="photo-details">
+
+
+    <div id="poem-photo" style="background-image: url('{{post.photo.url}}'); background-size: 600px 500px; display: inline-block;"></div>
+    <div id="post-details2" class="photo-details" style=" width: 400px;">
         <h2>{{post.title}}</h2>
-        <a href="#"><p>{{ post.user.username }}</p></a>
+        <a href="{% url 'profile_show' pk=post.user.pk %}"><p>{{ post.user.username }}</p></a>
         <p id="poem" class="photo-explanation">{{post.body}}</p>
         <div class="stat-info">
             <button class="toggle-icon {{checked}}" title="❤ Toggle Like!"></button>
@@ -24,7 +28,8 @@
         <span><span><span>Comment</span></span></span>
     </div>
 </div>
-   
+
+</div>
 <!-- Comment -->
 
 <section class="comments-block">

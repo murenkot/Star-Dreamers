@@ -269,6 +269,7 @@ text-align: right;
 .background {
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.658);
+  width: 700px;
 
 }
 
@@ -281,6 +282,7 @@ text-align: right;
 .background p{
   font-size: var(--text-font-size);
   color: whitesmoke;
+ 
 }
 
 
@@ -289,7 +291,26 @@ text-align: right;
 .stat-info {
   position: relative;
   text-align: right;
+
 }
+
+.stat-info-main {
+  position: absolute;
+  left:450px;
+  top:640px;
+}
+
+.stat-info-main * {
+  width: 20pt;
+  height: 20pt;
+  font-size: 20pt;
+  margin: 0 2px;
+}
+.stat-info-main *:nth-child(2){
+  margin-right: 20px;
+}
+
+
 
 .stat-info * {
   width: 20pt;
@@ -298,7 +319,7 @@ text-align: right;
   margin: 0 2px;
 }
 .stat-info *:nth-child(2){
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 
