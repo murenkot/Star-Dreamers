@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+html {
+    background: url("/static/sky.d7a2068da631.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: whitesmoke;
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+fieldset {
+    position: relative;
+    width: 550px;
+    border-radius: 10px;
+    border-color: whitesmoke;
+}
+
+legend {
+    margin-left: 40px;
+}
+
+label {
+    margin: 10px 0;
+}
+
+.nav-login {
+    position: absolute;
+    right: 0px;
+    top: -20px;
+}
+
+.welcome {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.small-letter {
+    font-size: 13px;
+    padding: 10px;
+}
+
+.brand-logo {
+    margin-left: 90px;
+    letter-spacing: 0.09em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 33px;
+    font-weight: 600;
+}
+
+main {
+    margin: 20px;
+}
+
+a {
+    color: whitesmoke;
+    font-weight: 300;
+    padding: 10px;
+    cursor: pointer;
+}
+
+input {
+    color: rgb(22, 13, 13);
+    /* background-color: #f0e8e9c0; */
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+    color: whitesmoke;
+    /* text-shadow: 1px 1px 1px #000, 3px 3px 5px rgb(10, 10, 105); */
+}
+
+.error {
+    padding: 10px 0;
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #94303a;
+    background-color: #f8d7dac0;
+    color: #94303a;
+    /* text-shadow: none; */
+}
+
+/* == Adjust == */
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col {
+    flex: 1;
+}
+
+.f-a-center {
+    align-items: center;
+}
+
+.f-a-end {
+    align-items: end;
+}
+
+.f-a-right {
+    align-items: right;
+}
+
+.f-j-content {
+    justify-content: center;
+}
+
+.f-j-right {
+    justify-content: right;
+}
+
+.f-j-end {
+    justify-content: flex-end;
+}
+
+.f-j-item {
+    justify-items: flex-end;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.float-right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.margin {
+    margin-bottom: 10px;
+}
