@@ -110,11 +110,11 @@
 
         {% for post in posts%}
         <div class='post-author-poem'>
-          <div class='post-img-user mybtn' style="background-image: url('{{ post.photo.url }}');">
+          <div class='post-img-user mybtn' style="background-image: url({{ post.photo.url }});">
               <p class='poem-detail'>{{ post.body }}</p>
           </div>
           <div class="modal">
-              <div class="modal-content" style="background-image: url('{{ post.photo.url }}');"></div>  
+              <div class="modal-content" style="background-image: url({{ post.photo.url }});"></div>  
                 <div class='read-me-poem'>
                     <div class="photo-title">{{ post.photo.title }}</div>
                     <p class='poem-detail-read'>{{ post.body }}</p>
