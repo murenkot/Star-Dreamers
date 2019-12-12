@@ -176,8 +176,6 @@ def post_delete(request, pk):
 @csrf_exempt
 def add_comment_post(request, pk, comment):
     post = Post.objects.get(id=pk)
-    print("post =====>>>>>")
-    print(post)
     if request.method == 'POST':
         new_comment = CommentPost(user=request.user, body=comment, post=post)
         new_comment.save()
@@ -205,10 +203,9 @@ def delete_comment_post(request, pk, comment_pk):
     CommentPost.objects.get(id=comment_pk).delete()
     return redirect('post_details', pk=pk)
 
-
+@login_required
 @csrf_exempt
 def add_like(request, pk):
-    print("adding likes")
     user = request.user
     photo = Photo.objects.get(id=pk)
     user_likes = LikePhoto.objects.filter(photo=photo, user=user)
@@ -219,14 +216,12 @@ def add_like(request, pk):
         user_likes.delete()
     likes = count_photo_likes(pk)
     context = {"likes":likes}
-    print(context)
     return JsonResponse({'data':context, "status":200})
 
 
-
+@login_required
 @csrf_exempt
 def add_like_post(request, pk):
-    print("adding likes")
     user = request.user
     post = Post.objects.get(id=pk)
     user_likes = LikePost.objects.filter(post=post, user=user)
@@ -236,10 +231,7 @@ def add_like_post(request, pk):
     else:
         user_likes.delete()
     likes = len(LikePost.objects.filter(post = post))
-    print('likes=====>>>>>>')
-    print(likes)
     context = {"likes":likes}
-    print(context)
     return JsonResponse({'data':context, "status":200})
 
 
