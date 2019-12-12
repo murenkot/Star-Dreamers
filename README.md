@@ -25,5 +25,7 @@ Ability to follow users
 
 The team:
 > Tanya Kelly: https://git.generalassemb.ly/tanyakelly
+
 > Jun Potisanmetee: https://git.generalassemb.ly/potisanmetee
+
 > Mick Valiyee: https://git.generalassemb.ly/mvaliyee
