@@ -29,3 +29,36 @@ The team:
 > Jun Potisanmetee: https://git.generalassemb.ly/potisanmetee
 
 > Mick Valiyee: https://git.generalassemb.ly/mvaliyee
+
+
+## Preview
+
+### Welcome page
+![alt text](https://i.imgur.com/DPaVGH5.jpg)
+
+### Login page
+![alt text](https://i.imgur.com/l1RJCUY.png)
+
+### SignUp Page
+![alt text](https://i.imgur.com/PCJQDiM.png)
+
+### Main Page
+![alt text](https://i.imgur.com/p50NDEv.png)
+
+### Post Page
+![alt text](https://i.imgur.com/HriPKft.png)
+
+### Comments
+![alt text](https://i.imgur.com/t9Rt7IW.png)
+
+### Poetry page
+![alt text](https://i.imgur.com/QLpDAoO.png)
+
+### New Post page
+![alt text](https://i.imgur.com/k4h1Y9R.png)
+
+
+
+
+
+
